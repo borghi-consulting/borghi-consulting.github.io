@@ -9,9 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--black:#141412;--black-soft:#3a3a36;--black-faint:#7a7a74;--white:#ffffff;--paper:#f9f8f6;--blue:#A8D8EA;--blue-deeper:#2e8aaa;--blue-pale:#e8f5fa;--blue-mid:#c8e8f4;--rule:rgba(20,20,18,0.08);--display:'Bebas Neue',sans-serif;--script:'Dancing Script',cursive;--body:'DM Sans',system-ui,sans-serif}
+:root{--black:#141412;--black-soft:#3a3a36;--black-faint:#7a7a74;--white:#fff;--paper:#f9f8f6;--blue:#A8D8EA;--blue-deeper:#2e8aaa;--blue-pale:#e8f5fa;--blue-mid:#c8e8f4;--rule:rgba(20,20,18,.08);--display:'Bebas Neue',sans-serif;--script:'Dancing Script',cursive;--body:'DM Sans',system-ui,sans-serif}
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:var(--body);background:var(--white);color:var(--black);line-height:1.7}
+
 nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--rule);padding:0 clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;height:60px}
 .nav-logo-wrap{display:flex;flex-direction:column;line-height:1;text-decoration:none}
 .nav-logo-main{font-family:var(--display);font-size:1.25rem;letter-spacing:.08em;color:var(--black)}
@@ -19,34 +20,41 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .nav-pill{font-family:var(--display);font-size:.72rem;letter-spacing:.1em;color:var(--blue-deeper);background:var(--blue-pale);border:1px solid var(--blue-mid);border-radius:20px;padding:5px 14px;text-decoration:none}
 
 .hero{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem) 2.5rem;border-bottom:1px solid var(--rule)}
-.hero h1{font-family:var(--display);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:.04em;color:var(--black);margin-bottom:.75rem}
-.hero-meta{font-size:.8rem;color:var(--black-faint);font-weight:300}
-.hero-notice{background:var(--blue-pale);border:1px solid var(--blue-mid);border-radius:8px;padding:1.25rem 1.5rem;margin-top:1.5rem;font-size:.85rem;color:var(--blue-deeper);line-height:1.7;font-style:italic;max-width:720px}
+.hero h1{font-family:var(--display);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:.04em;color:var(--black);margin-bottom:.5rem}
+.hero-ref{font-size:.78rem;color:var(--black-faint);font-weight:300;line-height:1.8}
+.notice{background:var(--blue-pale);border:1px solid var(--blue-mid);border-radius:8px;padding:1.25rem 1.5rem;margin-top:1.5rem;font-size:.85rem;color:var(--blue-deeper);line-height:1.75;max-width:760px}
+.notice strong{font-weight:500}
 
-.layout{display:grid;grid-template-columns:220px 1fr;gap:0;max-width:1100px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem);padding-top:3rem;padding-bottom:6rem;align-items:start}
+.layout{display:grid;grid-template-columns:240px 1fr;max-width:1120px;margin:0 auto;padding:3rem clamp(1.5rem,5vw,4rem) 6rem;align-items:start;gap:0}
 .toc{position:sticky;top:80px;padding-right:2rem;border-right:1px solid var(--rule)}
-.toc-label{font-family:var(--display);font-size:.68rem;letter-spacing:.15em;color:var(--black-faint);margin-bottom:.75rem}
-.toc a{display:block;font-size:.78rem;color:var(--black-faint);text-decoration:none;padding:4px 0;border-left:2px solid transparent;padding-left:10px;transition:all .15s;line-height:1.4;margin-bottom:2px}
-.toc a:hover,.toc a.active{color:var(--blue-deeper);border-left-color:var(--blue)}
+.toc-section-label{font-family:var(--display);font-size:.68rem;letter-spacing:.15em;color:var(--blue-deeper);margin:1.25rem 0 .5rem;padding-left:10px}
+.toc-section-label:first-child{margin-top:0}
+.toc a{display:block;font-size:.75rem;color:var(--black-faint);text-decoration:none;padding:3px 0 3px 10px;border-left:2px solid transparent;transition:all .15s;line-height:1.4;margin-bottom:1px}
+.toc a:hover{color:var(--blue-deeper);border-left-color:var(--blue)}
 
 .content{padding-left:3rem}
-.doc-section{margin-bottom:3.5rem}
-.doc-section h2{font-family:var(--display);font-size:1.6rem;letter-spacing:.05em;color:var(--black);margin-bottom:1rem;padding-top:.5rem;border-bottom:1px solid var(--rule);padding-bottom:.5rem}
-.doc-section h3{font-family:var(--display);font-size:1rem;letter-spacing:.06em;color:var(--blue-deeper);margin:1.5rem 0 .5rem}
-.doc-section p{font-size:.88rem;color:var(--black-soft);font-weight:300;line-height:1.9;margin-bottom:.9rem}
-.doc-section ul{margin:.5rem 0 .9rem 1.25rem}
-.doc-section ul li{font-size:.85rem;color:var(--black-soft);font-weight:300;line-height:1.8;margin-bottom:.3rem}
-.doc-section strong{font-weight:500;color:var(--black)}
-.doc-section .warning{background:#fef3e8;border:1px solid #fad8a8;border-radius:8px;padding:1rem 1.25rem;font-size:.83rem;color:#a05a10;line-height:1.7;margin:1rem 0;font-style:italic}
-
-#privacy{scroll-margin-top:80px}
+.part-header{font-family:var(--display);font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:.05em;color:var(--black);margin:0 0 2rem;padding-bottom:1rem;border-bottom:2px solid var(--blue-mid)}
+.clause{margin-bottom:2.5rem;scroll-margin-top:80px}
+.clause h2{font-family:var(--display);font-size:1.2rem;letter-spacing:.06em;color:var(--black);margin-bottom:.75rem;padding:.5rem 0;border-bottom:1px solid var(--rule)}
+.clause h3{font-family:var(--display);font-size:.88rem;letter-spacing:.07em;color:var(--blue-deeper);margin:1.25rem 0 .4rem}
+.clause p{font-size:.86rem;color:var(--black-soft);font-weight:300;line-height:1.9;margin-bottom:.8rem}
+.clause ul,.clause ol{margin:.5rem 0 .8rem 1.25rem}
+.clause li{font-size:.84rem;color:var(--black-soft);font-weight:300;line-height:1.8;margin-bottom:.3rem}
+.clause strong{font-weight:500;color:var(--black)}
+.warning{background:#fef3e8;border:1px solid #fad8a8;border-left:3px solid #e07820;border-radius:4px;padding:1rem 1.25rem;font-size:.83rem;color:#854010;line-height:1.75;margin:1rem 0}
+.warning strong{color:#6b3308}
+.part-divider{border:none;border-top:2px solid var(--blue-mid);margin:3rem 0}
+.definitions-grid{display:grid;gap:.6rem;margin:.75rem 0}
+.def-item{border-left:3px solid var(--blue-mid);padding:.5rem 1rem;background:var(--paper);border-radius:0 6px 6px 0}
+.def-term{font-family:var(--display);font-size:.78rem;letter-spacing:.06em;color:var(--black);margin-bottom:2px}
+.def-desc{font-size:.78rem;color:var(--black-faint);font-weight:300;line-height:1.6}
 
 footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:2rem clamp(1.5rem,5vw,4rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-family:var(--display);font-size:1rem;letter-spacing:.08em;color:var(--white)}
 .footer-script{font-family:var(--script);font-size:.85rem;color:var(--blue)}
-footer p{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:4px}
+footer p{font-size:.7rem;color:rgba(255,255,255,.28);margin-top:3px}
 
-@media(max-width:720px){.layout{grid-template-columns:1fr}.toc{display:none}.content{padding-left:0}}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.toc{display:none}.content{padding-left:0}}
 </style>
 </head>
 <body>
@@ -61,160 +69,430 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:4px}
 
 <div style="padding:0 clamp(1.5rem,5vw,4rem);">
   <div class="hero">
-    <h1>Terms & Conditions<br>Privacy Policy</h1>
-    <div class="hero-meta">Document Reference: BC-UTC-TC-PP-V3 · Issued by: Borghi Consulting™ — Alessandro Borghi & Giulia D'Agostino · Governing Law: State of Western Australia, Australia · Contact: admin@borghiconsulting.com</div>
-    <div class="hero-notice">The services provided by Uncrypto The Crypto™ are strictly educational and informational in nature. They do not constitute financial advice, investment advice, tax advice, legal advice, or any form of regulated financial service under the Corporations Act 2001 (Cth) or any other applicable legislation. By engaging with these services, you acknowledge and accept this disclaimer in full.</div>
-    <p style="margin-top:1rem;font-size:.8rem;color:var(--black-faint);font-weight:300;">Full document also available: <a href="https://drive.google.com/file/d/1X4vIUwMjG2j_KdVIyzTZtBhfN_cpwmD4/view?usp=sharing" target="_blank" style="color:var(--blue-deeper);">View on Google Drive →</a></p>
+    <h1>Terms & Conditions<br>& Privacy Policy</h1>
+    <div class="hero-ref">
+      Document Reference: BC-UTC-TC-PP-V3 &nbsp;·&nbsp; Issued by: Borghi Consulting™ — Alessandro Borghi & Giulia D'Agostino<br>
+      Governing Law: State of Western Australia, Australia &nbsp;·&nbsp; Contact: <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a>
+    </div>
+    <div class="notice">
+      <strong>Important notice — please read carefully.</strong> The services provided by Uncrypto The Crypto™ are strictly educational and informational in nature. They do not constitute financial advice, investment advice, tax advice, legal advice, or any form of regulated financial service under the Corporations Act 2001 (Cth) or any other applicable legislation. By engaging with these services, you acknowledge and accept this disclaimer in full.
+    </div>
   </div>
 </div>
 
 <div class="layout">
   <aside class="toc">
-    <div class="toc-label">Contents</div>
-    <a href="#part-a">Part A — Terms & Conditions</a>
-    <a href="#services">Services offered</a>
-    <a href="#frameworks">Proprietary frameworks</a>
-    <a href="#hqea">HQEA™ system</a>
-    <a href="#tiers">Subscription tiers</a>
-    <a href="#payments">Payments & cancellation</a>
-    <a href="#ip">Intellectual property</a>
-    <a href="#disclaimer">No financial advice</a>
-    <a href="#governing">Governing law</a>
-    <a href="#privacy" id="privacy-link">Part B — Privacy Policy</a>
-    <a href="#data-collection">Data we collect</a>
-    <a href="#data-use">How we use it</a>
-    <a href="#your-rights">Your rights</a>
-    <a href="#contact-privacy">Contact DPO</a>
+    <div class="toc-section-label">Part A — Terms & Conditions</div>
+    <a href="#s1">1. Introduction and Scope</a>
+    <a href="#s2">2. Definitions</a>
+    <a href="#s3">3. Services Offered</a>
+    <a href="#s4">4. Proprietary Frameworks</a>
+    <a href="#s5">5. Hive Quantum Enhanced™ System</a>
+    <a href="#s6">6. NFT Distribution Lines</a>
+    <a href="#s7">7. Subscription Plans</a>
+    <a href="#s8">8. Booking & Payments</a>
+    <a href="#s9">9. Pricing, Currency & GST</a>
+    <a href="#s10">10. Cancellations & Termination</a>
+    <a href="#s11">11. Session Validity</a>
+    <a href="#s12">12. Client Responsibilities</a>
+    <a href="#s13">13. Intellectual Property</a>
+    <a href="#s14">14. Prohibition on Disclosure</a>
+    <a href="#s15">15. Subcontractors</a>
+    <a href="#s16">16. Performance & No-Guarantee</a>
+    <a href="#s17">17. No Financial Advice</a>
+    <a href="#s18">18. Content Guidelines</a>
+    <a href="#s19">19. Media Usage</a>
+    <a href="#s20">20. Exclusivity</a>
+    <a href="#s21">21. Liability & Indemnity</a>
+    <a href="#s22">22. Force Majeure</a>
+    <a href="#s23">23. Digital Acceptance</a>
+    <a href="#s24">24. Governing Law</a>
+    <a href="#s25">25. Amendments & Severability</a>
+    <a href="#s26">26. Non-Assignment</a>
+    <a href="#s27">27. Governing Language</a>
+    <div class="toc-section-label" id="privacy">Part B — Privacy Policy</div>
+    <a href="#s28">28. Privacy Commitment</a>
+    <a href="#s29">29. Information We Collect</a>
+    <a href="#s30">30. Purposes for Using Data</a>
+    <a href="#s31">31. Disclosure of Information</a>
+    <a href="#s32">32. Client Data & Consent</a>
+    <a href="#s33">33. Data Security</a>
+    <a href="#s34">34. Data Retention</a>
+    <a href="#s35">35. Your Rights</a>
+    <a href="#s36">36. Cookies</a>
+    <a href="#s37">37. International Transfers</a>
+    <a href="#s38">38. Children's Privacy</a>
+    <a href="#s39">39. International Users</a>
+    <a href="#s40">40. Policy Changes</a>
+    <a href="#s41">41. Contact & DPO</a>
+    <a href="#s42">42. Governing Law & Definitions</a>
   </aside>
 
   <main class="content">
 
-    <div class="doc-section" id="part-a">
-      <h2>Part A — Terms & Conditions</h2>
-      <p>This document constitutes the legally binding agreement between Borghi Consulting™, operating through its Uncrypto The Crypto™ division ("the Company", "we", "us", or "our"), and the Client who engages the Company for educational, strategic, analytical, and practical guidance services related to blockchain technology, cryptocurrency navigation, decentralised finance, and associated digital asset ecosystems.</p>
-      <p>By confirming a service plan, submitting payment, engaging in a session, or initiating any working relationship with the Company, the Client agrees to be fully and irrevocably bound by this Agreement. This Agreement complies with the Electronic Transactions Act 1999 (Cth), the Australian Consumer Law, the Privacy Act 1988 (Cth), and all other applicable legal standards.</p>
+    <div class="part-header">Part A — Terms & Conditions</div>
+
+    <div class="clause" id="s1">
+      <h2>1. Introduction and Scope</h2>
+      <p>This document constitutes the legally binding agreement ("Agreement") between Borghi Consulting™, operating through its Uncrypto The Crypto™ division ("the Company", "we", "us", or "our"), and the Client who engages the Company for educational, strategic, analytical, and practical guidance services related to blockchain technology, cryptocurrency navigation, decentralised finance, and associated digital asset ecosystems.</p>
+      <p>These Terms & Conditions apply to all services, deliverables, materials, frameworks, tools, and methodologies offered by the Uncrypto The Crypto™ division in any format, including but not limited to live sessions, digital content, subscription plans, proprietary analytical outputs, and educational frameworks.</p>
+      <p>By confirming a service plan, submitting payment, engaging in a session, or initiating any working relationship with the Company, the Client agrees to be fully and irrevocably bound by this Agreement and any supporting proposals, schedules, or annexes issued by Borghi Consulting™.</p>
+      <p>This Agreement complies with the Electronic Transactions Act 1999 (Cth), the Australian Consumer Law, the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and all other applicable legal standards. It supersedes any prior informal arrangements, discussions, verbal representations, or prior versions of any agreement unless otherwise explicitly confirmed in writing by both Parties.</p>
     </div>
 
-    <div class="doc-section" id="services">
-      <h2>Services offered</h2>
-      <p>The Uncrypto The Crypto™ division provides educational and strategic services to support individuals, professionals, and organisations in understanding, navigating, and applying blockchain technology and cryptocurrencies responsibly. All Services are delivered within the Uncrypto The Crypto™ ecosystem.</p>
-      <h3>Educational services</h3>
-      <p>Practical training covering blockchain foundations, cryptocurrency mechanics, DeFi, NFTs, wallet operations, security practices, custody solutions, and market structure.</p>
-      <h3>Strategic consulting</h3>
+    <div class="clause" id="s2">
+      <h2>2. Definitions</h2>
+      <p>For the purposes of this Agreement, the following definitions shall apply:</p>
+      <div class="definitions-grid">
+        <div class="def-item"><div class="def-term">Agreement</div><div class="def-desc">These Terms & Conditions and Privacy Policy, including any annexes, service proposals, schedules, or other documents formally issued by Borghi Consulting™.</div></div>
+        <div class="def-item"><div class="def-term">Client</div><div class="def-desc">The individual, professional, or organisation entering into this Agreement to receive services from the Uncrypto The Crypto™ division.</div></div>
+        <div class="def-item"><div class="def-term">Company</div><div class="def-desc">Borghi Consulting™, including its founders Alessandro Borghi and Giulia D'Agostino, employees, authorised collaborators, and approved third-party service providers acting on its behalf.</div></div>
+        <div class="def-item"><div class="def-term">Services</div><div class="def-desc">All educational, strategic, advisory, analytical, and practical guidance activities delivered by the Uncrypto The Crypto™ division under this Agreement.</div></div>
+        <div class="def-item"><div class="def-term">Session</div><div class="def-desc">A scheduled educational, strategic, or analytical engagement between the Client and the Company, delivered in person or through digital platforms.</div></div>
+        <div class="def-item"><div class="def-term">Catch-Up</div><div class="def-desc">A periodic light-format session available at the Uncrypto Access™ tier, distinct from a full 1:1 session, designed to provide general market context and ecosystem updates without personalised analytical output.</div></div>
+        <div class="def-item"><div class="def-term">Subscription</div><div class="def-desc">A recurring service plan billed on a monthly basis offering continuous access to defined services, deliverables, and support levels as specified by the applicable subscription tier.</div></div>
+        <div class="def-item"><div class="def-term">Package</div><div class="def-desc">A fixed-term service agreement comprising a predefined number of sessions or consulting engagements.</div></div>
+        <div class="def-item"><div class="def-term">Uncrypto The Crypto™ Ecosystem</div><div class="def-desc">The overarching proprietary ecosystem developed by Borghi Consulting™, conceptually inspired by the Beehive Conjecture, within which all frameworks, tools, services, methodologies, and client engagements operate.</div></div>
+        <div class="def-item"><div class="def-term">Proprietary Frameworks</div><div class="def-desc">All methodologies, tools, systems, and frameworks created and owned exclusively by Borghi Consulting™, including The Hive Block Strategy™, The Hive Risk Ladder™, The Hive Flow Routes™, The Hive Shield Protocol™, The Hive Educational Whitepaper™, The Hive Quantum Enhanced™ system, The Hive Assessment Lab™, The Hive Strategy Layer™, The Hive Core Admin™, The Hive Mechanics Guides™, and all associated sub-frameworks.</div></div>
+        <div class="def-item"><div class="def-term">Hive Quantum Enhanced™</div><div class="def-desc">The proprietary central intelligence engine developed exclusively by Borghi Consulting™ that powers the analytical, structural, and behavioural layers of the Uncrypto The Crypto™ ecosystem.</div></div>
+        <div class="def-item"><div class="def-term">Hive5 Dispatch Signals™</div><div class="def-desc">Structured analytical outputs generated by the Hive Quantum Enhanced™ system and distributed to eligible Clients according to their subscription tier.</div></div>
+        <div class="def-item"><div class="def-term">Hive Assessment Lab™</div><div class="def-desc">The proprietary assessment instrument through which the Hive Quantum Enhanced™ system analyses Client quiz results to generate structured individual assessments.</div></div>
+        <div class="def-item"><div class="def-term">Hive Strategy Layer™</div><div class="def-desc">The proprietary reporting and wallet analysis instrument through which the Hive Quantum Enhanced™ system delivers structured advancement reports and wallet analyses.</div></div>
+        <div class="def-item"><div class="def-term">Hive Core Admin™</div><div class="def-desc">The proprietary suite of wallet management tools and resources available exclusively at the Uncrypto Pathway™ tier.</div></div>
+        <div class="def-item"><div class="def-term">Hive Mechanics Guides™</div><div class="def-desc">Proprietary educational and operational guides forming part of the service deliverables at the Uncrypto Insight™, Uncrypto Framework™, and Uncrypto Pathway™ tiers at varying levels of access.</div></div>
+        <div class="def-item"><div class="def-term">NFT Distribution Lines™</div><div class="def-desc">Proprietary non-fungible token collections developed and issued by Borghi Consulting™. Receipt does not confer financial rights, guaranteed value, or any form of financial product.</div></div>
+        <div class="def-item"><div class="def-term">Materials</div><div class="def-desc">All content, documents, guides, reports, visual decks, Visual Snapshots, Session Replays, Strategy Reports, templates, frameworks, signals, quiz outputs, wallet analyses, assessment results, and any other deliverable produced by the Company.</div></div>
+        <div class="def-item"><div class="def-term">Digital Consent</div><div class="def-desc">Client acceptance of the Agreement through electronic means, including payment, email confirmation, digital signatures, or affirmative written response, holding full legal validity under the Electronic Transactions Act 1999 (Cth).</div></div>
+        <div class="def-item"><div class="def-term">Engagement Period</div><div class="def-desc">The timeframe agreed for the delivery of Services as defined in the Service Proposal or Subscription Plan, subject to the minimum engagement period of three (3) calendar months.</div></div>
+        <div class="def-item"><div class="def-term">Session Replay</div><div class="def-desc">A recorded reproduction of a session made available exclusively at the Uncrypto Pathway™ tier, subject to technical availability.</div></div>
+        <div class="def-item"><div class="def-term">Service Proposal</div><div class="def-desc">The formal document issued by Borghi Consulting™ setting out the agreed scope of services, applicable tier, pricing, and engagement terms, acceptance of which constitutes entry into this Agreement.</div></div>
+      </div>
+    </div>
+
+    <div class="clause" id="s3">
+      <h2>3. Services Offered</h2>
+      <p>The Uncrypto The Crypto™ division of Borghi Consulting™ provides flexible, high-impact educational and strategic services to support individuals, professionals, and organisations in understanding, navigating, and applying blockchain technology and cryptocurrencies responsibly and effectively.</p>
+      <h3>3.1 Educational Services</h3>
+      <p>Practical training sessions covering blockchain foundations, cryptocurrency mechanics, decentralised finance (DeFi), non-fungible tokens (NFTs), wallet operations, security practices, custody solutions, market structure, and associated terminology.</p>
+      <h3>3.2 Strategic Consulting</h3>
       <p>Personalised consulting to align the Client's cryptocurrency interactions with their personal, professional, or organisational objectives, including roadmap development, asset structuring orientation, and risk management framework application.</p>
-      <h3>On-chain and fundamental analysis</h3>
-      <p>Structured evaluation of blockchain data, wallet activity, and project fundamentals to enhance decision-making. This analysis is educational in nature and does not constitute financial advice.</p>
-      <div class="warning">The Company does not manage funds, execute financial transactions on behalf of Clients, or provide financial advice as defined under the Corporations Act 2001 (Cth). All actions taken based on insights, frameworks, or outputs remain the sole responsibility of the Client.</div>
+      <h3>3.3 On-Chain and Fundamental Analysis</h3>
+      <p>Structured evaluation of blockchain transaction data, wallet activity, smart contract interactions, and project fundamentals to enhance decision-making, mitigate risks, and support strategic planning. This analysis is educational in nature and does not constitute financial advice.</p>
+      <h3>3.4 Hive Quantum Enhanced™ Analytical Outputs</h3>
+      <p>Eligible Clients receive structured analytical outputs and signals generated by the Hive Quantum Enhanced™ proprietary algorithm system, distributed via our membership system according to the Client's subscription tier. These outputs are educational and informational instruments only. They do not constitute investment recommendations, buy/sell signals, or financial advice of any kind. The Client retains full and sole responsibility for any decision made in connection with such outputs.</p>
+      <h3>3.5 NFT Distribution Lines</h3>
+      <p>Borghi Consulting™ has developed proprietary NFT collections which may be distributed to Clients in accordance with specific engagement terms. Receipt of any NFT does not confer any financial rights, guaranteed value, investment return, or any form of financial product. All intellectual property associated with Borghi Consulting™ NFT lines remains exclusively owned by the Company.</p>
+      <h3>3.6 Coaching and Structured Learning</h3>
+      <p>Every service is grounded in the Hive Educational Whitepaper™ framework, ensuring structured, progressive, and accessible delivery of all concepts at a pace that suits the Client's experience level.</p>
+      <h3>3.7 Service Delivery Format</h3>
+      <p>Services are delivered through a combination of live sessions (online or in-person), documented session materials, analytical reports, visual decks, asynchronous learning support, practical simulations, and consulting meetings, depending on the engagement structure.</p>
+      <div class="warning">The Client acknowledges that the Company does not manage funds, execute financial transactions on behalf of Clients, or provide financial advice as defined under the Corporations Act 2001 (Cth). All actions taken based on insights, frameworks, or outputs shared during the Services remain the sole responsibility of the Client.</div>
     </div>
 
-    <div class="doc-section" id="frameworks">
-      <h2>Proprietary frameworks</h2>
-      <p>Borghi Consulting™ owns exclusively a suite of proprietary frameworks including:</p>
+    <div class="clause" id="s4">
+      <h2>4. Proprietary Frameworks and Methodologies</h2>
+      <h3>4.1 The Uncrypto The Crypto™ Ecosystem</h3>
+      <p>Uncrypto The Crypto™ is the ecosystem within which every framework, tool, service, and client engagement operates. Conceptually inspired by the Beehive Conjecture — the mathematical principle establishing that the hexagonal honeycomb structure represents the most efficient way to divide space into equal units with the least perimeter — it is built on the same foundational principle: every element must be purposeful, every component connected, and the whole greater than the sum of its parts.</p>
+      <h3>4.2 The Hive Block Strategy™</h3>
+      <p>The core portfolio structuring methodology applied across all eligible service tiers. It organises holdings across five functional blocks: SEED Block™ (stable assets and custody security), CORE Block™ (long-term asset positioning), FLOW Block™ (liquidity management and structured capital rotation), INNOVATION Block™ (emerging and thesis-driven positions with defined exposure limits), and YIELD Block™ (staking, income-generating strategies, and their structural application).</p>
+      <h3>4.3 The Hive Risk Ladder™</h3>
+      <p>A structured five-zone asset risk classification system: Green Hive Zone™, Lime Hive Zone™, Amber Hive Zone™, Orange Hive Zone™, and Red Hive Zone™. Each zone defines specific parameters for allocation sizing, monitoring frequency, and action triggers, enabling consistent criteria-based decision-making independent of market sentiment.</p>
+      <h3>4.4 The Hive Flow Routes™</h3>
+      <p>Defines capital movement logic across every type of transaction, including entering positions, adding to holdings, taking profits, reducing exposure, and receiving cryptocurrency as payment. The framework ensures that capital routing decisions are established in advance, eliminating reactive decision-making during market volatility.</p>
+      <h3>4.5 The Hive Shield Protocol™</h3>
+      <p>A comprehensive security framework covering preventive security practices, recognition and response procedures for wallet compromise, exchange issues, phishing attempts, and structured recovery processes designed to minimise damage in the event of a security incident.</p>
+      <h3>4.6 The Hive Educational Whitepaper™</h3>
+      <p>The master delivery framework governing how every concept, tool, and session is structured, communicated, and made accessible to Clients. It ensures consistency, clarity, and progressive knowledge-building across all engagements and all subscription tiers.</p>
+    </div>
+
+    <div class="clause" id="s5">
+      <h2>5. Hive Quantum Enhanced™ System</h2>
+      <p>The Hive Quantum Enhanced™ is the proprietary central intelligence engine developed exclusively by Borghi Consulting™ that powers the analytical, structural, and behavioural layers of the entire Uncrypto The Crypto™ ecosystem. It operates across two interconnected dimensions: Structural Analysis (processing and applying the four analytical pillars that form the foundation of all market and asset intelligence) and Behavioural Analysis (processing client-specific data to generate personalised outputs calibrated to each Client's objectives, stage of understanding, and subscription tier).</p>
+      <p>The system is self-updating — continuously integrating new information derived from specific market tests, proprietary quizzes, session reports, and Client target data to refine and adapt its outputs over time.</p>
+      <h3>5.1 Tier-Based Application</h3>
       <ul>
-        <li><strong>Uncrypto The Crypto™</strong> — The overarching ecosystem within which all services operate</li>
-        <li><strong>Hive Block Strategy™</strong> — Core portfolio structuring methodology across five functional blocks: SEED Block™, CORE Block™, FLOW Block™, INNOVATION Block™, YIELD Block™</li>
-        <li><strong>Hive Risk Ladder™</strong> — Five-zone risk classification: Green, Lime, Amber, Orange, Red Hive Zone™</li>
-        <li><strong>Hive Flow Route™</strong> — Capital movement logic across all transaction types</li>
-        <li><strong>Hive Shield Protection™</strong> — Comprehensive security framework and recovery procedures</li>
-        <li><strong>Hive Educational Whitepaper™</strong> — Master delivery framework governing all session structure</li>
-        <li><strong>HQEA™ (Hive Quantum Enhanced Algorithm™)</strong> — The proprietary central intelligence engine</li>
+        <li><strong>Uncrypto Access™</strong> — Highly limited system engagement. General market positioning context may be referenced during periodic catch-up sessions, without dedicated reports, signals, or personalised analytical deliverables.</li>
+        <li><strong>Uncrypto Insight™</strong> — Engaged across Hive Assessment Lab™ and Hive5 Dispatch Signals™ (standard outputs on a scheduled basis). Progress integration quarterly.</li>
+        <li><strong>Uncrypto Framework™</strong> — Engaged at standard capacity across Hive Assessment Lab™ (full), Hive Mechanics Guides™, Hive5 Dispatch Signals™, and Hive Strategy Layer™ (periodic wallet analysis on a scheduled basis). Progress integration monthly. Hive Core Admin™ not included.</li>
+        <li><strong>Uncrypto Pathway™</strong> — Full system capacity across all available instruments including dynamic wallet analysis (scheduled and on request), fully calibrated to the Client's individual targets. Progress integration fortnightly.</li>
       </ul>
-      <p>All frameworks are protected by intellectual property law and may not be reproduced, disclosed, or commercialised without explicit written authorisation from Borghi Consulting™.</p>
+      <h3>5.2 Nature of Outputs</h3>
+      <p>Outputs generated by the Hive Quantum Enhanced™ system are strictly educational and informational in nature. They represent the analytical intelligence of the system at a given moment and are subject to market conditions, data availability, and the inherent limitations of any analytical model. No output constitutes a guarantee of accuracy, completeness, or future applicability.</p>
+      <h3>5.3 No Financial Advice</h3>
+      <div class="warning"><strong>Hive Quantum Enhanced™ outputs do not constitute financial advice, investment recommendations, or any form of regulated financial service</strong> under the Corporations Act 2001 (Cth) or any other applicable legislation. All decisions made in connection with any analytical output remain the sole responsibility of the Client. Past analytical patterns do not guarantee future results.</div>
+      <h3>5.4 Proprietary Protection</h3>
+      <p>The Hive Quantum Enhanced™ system, including its algorithm, underlying logic, data processing methodology, self-updating mechanism, behavioural and structural analytical layers, output structure, quiz and market test architecture, wallet analysis framework, and all associated components, is the exclusive intellectual property of Borghi Consulting™. The Client is expressly prohibited from attempting to reverse-engineer, replicate, share, distribute, publish, claim ownership over, or commercialise any component of the system or its outputs.</p>
     </div>
 
-    <div class="doc-section" id="hqea">
-      <h2>HQEA™ system</h2>
-      <p>The Hive Quantum Enhanced Algorithm™ is the proprietary central intelligence engine powering the analytical, structural, and behavioural layers of the entire Uncrypto The Crypto™ ecosystem. It operates across two interconnected dimensions: structural analysis and behavioural analysis.</p>
-      <p>The HQEA™ is a self-updating system — continuously integrating new information from market tests, proprietary quizzes, session reports, and client target data to refine its outputs over time.</p>
-      <div class="warning">Outputs generated by the HQEA™ are strictly educational and informational. They do not constitute financial advice, investment recommendations, or any form of regulated financial service. The Client is solely responsible for any decision made in connection with such outputs.</div>
+    <div class="clause" id="s6">
+      <h2>6. NFT Distribution Lines</h2>
+      <h3>6.1 No Financial Instrument</h3>
+      <p>Receipt of any Borghi Consulting™ NFT does not constitute the receipt of a financial product, investment instrument, or security under the Corporations Act 2001 (Cth) or any other applicable legislation. NFTs distributed by the Company carry no guaranteed monetary value, no promised returns, and no investment expectation of any kind.</p>
+      <h3>6.2 Intellectual Property</h3>
+      <p>All intellectual property associated with Borghi Consulting™ NFT collections, including visual artwork, metadata, smart contract logic, and branding, remains exclusively owned by Borghi Consulting™. Distribution of an NFT to a Client does not transfer any underlying intellectual property rights.</p>
+      <h3>6.3 No Resale Without Authorisation</h3>
+      <p>The Client may not commercially exploit, resell, sublicense, or otherwise commercialise any NFT received from Borghi Consulting™ without prior written consent from the Company. Any such conduct constitutes a material breach of this Agreement.</p>
     </div>
 
-    <div class="doc-section" id="tiers">
-      <h2>Subscription tiers</h2>
-      <h3>Uncrypto Access™</h3>
-      <p>Entry-level monthly subscription. One periodic catch-up per month, Hive Assessment Lab™ at foundational level, and standard Hive Dispatch Chronicle Edition™.</p>
-      <h3>Uncrypto Insight™</h3>
-      <p>One 1:1 session per month, Hive Assessment Lab™ (Basic), Hive Mechanics Guides™ (Basic), Hive Dispatch Signals™ (Basic), Strategy Report, quarterly Progress Tracking, and 72-hour Sync Support.</p>
-      <h3>Uncrypto Framework™</h3>
-      <p>Two 1:1 sessions per month, full Hive Assessment Lab™, Hive Strategy Layer™ (periodic wallet analysis), Visual Deck, Visual Snapshot, monthly Progress Tracking, and 48-hour Sync Support.</p>
-      <h3>Uncrypto Pathway™</h3>
-      <p>Highest tier. Three 1:1 sessions per month, full HQEA™ system deployment, dynamic wallet analysis (scheduled and on request), full Hive Core Admin™, Session Replay, fortnightly Progress Tracking, and 48-hour full Sync Support.</p>
-      <p><strong>Minimum engagement period:</strong> All subscription plans carry a minimum of three (3) calendar months from the date of first session delivery.</p>
+    <div class="clause" id="s7">
+      <h2>7. Subscription Plans and Packages</h2>
+      <h3>7.1 Uncrypto Access™</h3>
+      <p>Entry-level monthly subscription providing one (1) periodic catch-up per month, access to the Hive Assessment Lab™ at foundational level (including base-tier quizzes), and standard Hive5 Dispatch™. Hive Quantum Enhanced™ system engagement at this tier is highly limited as defined in Section 5.1.</p>
+      <h3>7.2 Uncrypto Insight™</h3>
+      <p>Monthly subscription providing one (1) 1:1 session per month, Hive Assessment Lab™ (Basic), Hive Mechanics Guides™ (Basic), Hive5 Dispatch Signals™ (Basic), Strategy Report, quarterly Progress Tracking, and 72-hour Sync Support.</p>
+      <h3>7.3 Uncrypto Framework™</h3>
+      <p>Monthly subscription providing two (2) 1:1 sessions per month, full Hive Assessment Lab™, standard Hive Mechanics Guides™, standard Hive5 Dispatch Signals™, Hive Strategy Layer™ (standard — periodic wallet analysis on a scheduled basis), Strategy Report, Visual Deck, Visual Snapshot, monthly Progress Tracking, and 48-hour Sync Support. Hive Core Admin™ not included.</p>
+      <h3>7.4 Uncrypto Pathway™</h3>
+      <p>Highest tier monthly subscription providing three (3) 1:1 sessions per month, full Hive Assessment Lab™, full Hive Core Admin™, full Hive Mechanics Guides™ with support, full Hive5 Dispatch Signals™ with mapping, full Hive Strategy Layer™ system (dynamic — scheduled and on request), Strategy Report, Visual Deck, Visual Snapshot, Session Replay, fortnightly Progress Tracking, and 48-hour full Sync Support. This tier represents full operational access to all instruments within the Uncrypto The Crypto™ ecosystem.</p>
+      <h3>7.5 Minimum Engagement Period</h3>
+      <p>All subscription plans carry a minimum engagement period of three (3) calendar months from the date of first session delivery. Early termination prior to completion of this minimum period does not relieve the Client of financial obligations for the full minimum term.</p>
     </div>
 
-    <div class="doc-section" id="payments">
-      <h2>Payments & cancellation</h2>
-      <p>No services will be scheduled or delivered until full payment or an approved deposit has been received. Payment constitutes formal acceptance of the Service Proposal.</p>
-      <ul>
-        <li>Session cancellation requires a minimum of <strong>24 hours' written notice</strong>. Failure to provide notice results in the session being deemed forfeited and fully chargeable.</li>
-        <li>Contract termination requires a minimum of <strong>15 full business days' written notice</strong>.</li>
-        <li>Early termination before the three-month minimum engagement period does not relieve the Client of financial obligations for the full minimum term.</li>
-        <li>All confirmed payments are <strong>non-refundable</strong>, except where cancellation is initiated by the Company due to circumstances entirely beyond the Client's control.</li>
-      </ul>
+    <div class="clause" id="s8">
+      <h2>8. Booking Confirmation and Payments</h2>
+      <p>No services will be scheduled, delivered, or initiated until the Company has received full payment or an approved initial deposit as specified in the Service Proposal.</p>
+      <h3>8.1 Confirmation of Engagement</h3>
+      <p>Payment constitutes formal acceptance of the Service Proposal, deliverables, engagement scope, and timeline.</p>
+      <h3>8.2 Payment Methods</h3>
+      <p>Accepted payment methods include direct bank transfer, PayPal or other approved online payment processors, and cryptocurrency. For cryptocurrency payments: prices remain fixed in Australian Dollars (AUD) as quoted; the Client is responsible for all network and gas fees; any discrepancy between the invoiced AUD amount and the received value due to exchange rate variance must be promptly rectified by the Client.</p>
+      <h3>8.3 Late Payments</h3>
+      <p>Failure to complete payment according to agreed terms may result in delay or suspension of service delivery, application of additional late payment fees, and termination of the engagement at the Company's discretion. All accrued fees remain due regardless of suspension or termination.</p>
+      <h3>8.4 Non-Refundable Payments</h3>
+      <p>Payments made for confirmed sessions, packages, or subscriptions are non-refundable, except in cases where service cancellation is initiated by the Company due to circumstances entirely beyond the Client's control and not attributable to any breach by the Client.</p>
     </div>
 
-    <div class="doc-section" id="ip">
-      <h2>Intellectual property</h2>
-      <p>All intellectual property created, developed, or used by Borghi Consulting™ in connection with any service is the exclusive property of Borghi Consulting™. The Client is granted a strictly limited, non-exclusive, non-transferable, revocable licence to use materials solely for their own personal educational and professional development.</p>
-      <p>The Client expressly agrees not to copy, reproduce, modify, distribute, share, or commercialise any proprietary material in any format — and not to attempt to reverse-engineer any framework, algorithm, or system. These restrictions survive the termination of this Agreement indefinitely.</p>
+    <div class="clause" id="s9">
+      <h2>9. Pricing, Currency, and GST</h2>
+      <p>All service fees are expressed in Australian Dollars (AUD) unless otherwise expressly stated in the Service Proposal. All service fees are exclusive of Goods and Services Tax (GST) unless explicitly stated otherwise. Where GST is applicable, it will be clearly itemised on the issued invoice and is payable in addition to the agreed service fee.</p>
+      <p>Additional charges may apply for services requested outside the original scope, urgent or accelerated delivery, excessive post-session support beyond package inclusions, and travel, accommodation, or venue costs incurred for in-person service delivery subject to prior agreement.</p>
     </div>
 
-    <div class="doc-section" id="disclaimer">
-      <h2>No financial advice</h2>
-      <div class="warning">Borghi Consulting™ is not licensed or authorised to provide financial advice, investment advice, tax advice, or legal advice under the Corporations Act 2001 (Cth) or any equivalent legislation in any jurisdiction. Nothing delivered through Uncrypto The Crypto™ services constitutes a recommendation to buy, sell, hold, or transact in any financial product. The Client is strongly encouraged to seek independent financial, legal, and tax advice from appropriately licensed professionals before making any financial decision.</div>
+    <div class="clause" id="s10">
+      <h2>10. Cancellations, Rescheduling, and Contract Termination</h2>
+      <p>All cancellations, rescheduling requests, and contract terminations must be submitted in writing. Verbal or informal cancellations are not accepted.</p>
+      <h3>10.1 Session Cancellation</h3>
+      <p>The Client must provide a minimum of twenty-four (24) hours' written notice for cancellation or rescheduling of any session. Failure to provide adequate notice or non-attendance at a confirmed session will result in the session being deemed forfeited and fully chargeable.</p>
+      <h3>10.2 Contract Termination</h3>
+      <p>Termination of any subscription or package engagement requires a minimum of fifteen (15) full business days' written notice. The Client remains financially responsible for all services provided, scheduled, or committed during the notice period. Where termination occurs before the completion of the three-month minimum engagement period, Borghi Consulting™ reserves the right to charge the full balance due for the remaining portion of the minimum term.</p>
+      <h3>10.3 Rescheduling</h3>
+      <p>Rescheduling must be agreed upon by both Parties and is subject to availability. Multiple or repeated rescheduling requests may result in service suspension or session forfeiture at the Company's discretion.</p>
+      <h3>10.4 Company-Initiated Termination</h3>
+      <p>Borghi Consulting™ reserves the right to terminate this Agreement immediately and without refund if the Client is found in breach of any provision herein, fails to meet payment or communication obligations, engages in misconduct, or otherwise compromises the integrity of the engagement.</p>
+      <h3>10.5 Temporary Suspension</h3>
+      <p>For subscription-based services or prepaid packages, the Client may request a temporary suspension of a maximum of one (1) month per instance and no more than three (3) times within a single fiscal year. Written notice of at least fifteen (15) full calendar days is required prior to the requested suspension start date.</p>
     </div>
 
-    <div class="doc-section" id="governing">
-      <h2>Governing law</h2>
-      <p>This Agreement is governed by the laws of the State of Western Australia, Commonwealth of Australia. Any dispute arising out of or relating to this Agreement is subject to the exclusive jurisdiction of the courts of Western Australia.</p>
+    <div class="clause" id="s11">
+      <h2>11. Session Validity and Engagement Periods</h2>
+      <p>Single sessions must be scheduled and used within thirty (30) calendar days from the date of purchase. Packages of multiple sessions are valid for ninety (90) calendar days from the date of the first scheduled session. Subscription sessions do not carry over between billing cycles unless otherwise agreed in writing. Extension requests must be submitted in writing and are subject to Company approval at its sole discretion.</p>
     </div>
 
-    <div class="doc-section" id="privacy">
-      <h2>Part B — Privacy Policy</h2>
-      <p>Borghi Consulting™, through its Uncrypto The Crypto™ division, is committed to protecting the privacy and personal information of all Clients in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and where applicable, the GDPR and CCPA.</p>
+    <div class="clause" id="s12">
+      <h2>12. Client Responsibilities and Conduct</h2>
+      <p>The Client agrees to actively and respectfully participate in all services provided, including: providing accurate, timely, and complete information; attending sessions punctually and professionally; reviewing and completing assigned materials; communicating openly about challenges and evolving goals; ensuring access to appropriate digital tools; and maintaining respectful communication in all interactions.</p>
+      <p>The Client acknowledges that the effectiveness of the Services depends largely on their own effort, implementation, and proactive engagement. The Company reserves the right to suspend or terminate services without refund in the event of repeated unresponsiveness, disrespectful behaviour, or material failure to meet obligations.</p>
     </div>
 
-    <div class="doc-section" id="data-collection">
-      <h2>Data we collect</h2>
-      <ul>
-        <li><strong>Personal identification:</strong> Full name, email address, phone number, postal address, company name and role</li>
-        <li><strong>Technical and usage data:</strong> IP address, browser type, device information, pages visited</li>
-        <li><strong>Cryptocurrency and engagement data:</strong> Wallet addresses (where voluntarily shared for educational analysis), session records, communications, analytical assessments</li>
-        <li><strong>Transaction and billing data:</strong> Payment information, transaction details</li>
-      </ul>
+    <div class="clause" id="s13">
+      <h2>13. Intellectual Property and Strict Usage Rights</h2>
+      <p>All intellectual property created, developed, or used by Borghi Consulting™ in connection with any service — including the Uncrypto The Crypto™ ecosystem, The Hive Block Strategy™, The Hive Risk Ladder™, The Hive Flow Routes™, The Hive Shield Protocol™, The Hive Educational Whitepaper™, The Hive Quantum Enhanced™ system and its proprietary algorithm, The Hive Assessment Lab™, The Hive Strategy Layer™, The Hive Core Admin™, The Hive Mechanics Guides™, all Hive5 Dispatch Signals™, NFT Distribution Lines™, educational materials, session content, reports, templates, visual decks, frameworks, quiz architecture, market test methodology, and analytical models — is the exclusive property of Borghi Consulting™.</p>
+      <p>The Client is granted a strictly limited, non-exclusive, non-transferable, revocable licence to use materials solely for their own personal educational and professional development. The Client expressly agrees not to copy, reproduce, modify, publish, distribute, sell, share, claim authorship over, reverse-engineer, or use any material for commercial purposes. These restrictions survive termination of this Agreement indefinitely.</p>
+    </div>
+
+    <div class="clause" id="s14">
+      <h2>14. Prohibition on Disclosure and Distribution of Materials</h2>
+      <div class="warning"><strong>The Client is strictly and absolutely prohibited from sharing, distributing, republishing, forwarding, uploading, or otherwise disseminating any material, output, or information received from Borghi Consulting™ to any third party, in any medium, without explicit prior written authorisation signed by an authorised representative of Borghi Consulting™.</strong></div>
+      <p>This prohibition applies to all Hive Quantum Enhanced™ analytical outputs, Hive Assessment Lab™ results, Hive Strategy Layer™ reports, Hive Core Admin™ tools, Hive Mechanics Guides™ content, session content and replays, all framework documentation, Visual Decks, Strategy Reports, and all other deliverables.</p>
+      <p>Any unauthorised disclosure or distribution constitutes a material breach of this Agreement and may result in immediate termination without refund, legal action for breach of contract and misappropriation of intellectual property, claims for damages including compensatory, consequential, and injunctive relief, and recovery of legal costs incurred by Borghi Consulting™.</p>
+    </div>
+
+    <div class="clause" id="s15">
+      <h2>15. Subcontractors and Third Parties</h2>
+      <p>Borghi Consulting™ reserves the right to engage authorised subcontractors, collaborators, or third-party professionals to support service delivery. All such parties operate under strict confidentiality obligations. The Client agrees not to engage directly with any subcontractor introduced during the engagement without the Company's prior written consent. Borghi Consulting™ remains fully responsible for the delivery and coordination of all Services.</p>
+    </div>
+
+    <div class="clause" id="s16">
+      <h2>16. Performance, Attribution, and No-Guarantee Disclaimer</h2>
+      <p>Borghi Consulting™ commits to delivering all services with professionalism, integrity, and a focus on structured, measurable learning and strategic development. However, the Client acknowledges that educational and strategic outcomes are influenced by the Client's level of engagement, personal circumstances, market conditions, and external factors beyond the Company's control. No specific result — including financial performance, career advancement, or portfolio outcomes — is guaranteed unless explicitly stated in writing.</p>
+    </div>
+
+    <div class="clause" id="s17">
+      <h2>17. Disclaimer — No Financial Advice</h2>
+      <div class="warning"><strong>Borghi Consulting™ is not licensed or authorised to provide financial advice, investment advice, tax advice, or legal advice</strong> under the Corporations Act 2001 (Cth) or any equivalent legislation in any jurisdiction. Nothing delivered through Uncrypto The Crypto™ services constitutes a recommendation to buy, sell, hold, or transact in any financial product. The Client is strongly encouraged to seek independent financial, legal, and tax advice from appropriately licensed professionals before making any financial decision. All investment and financial decisions remain the sole responsibility of the Client.</div>
+    </div>
+
+    <div class="clause" id="s18">
+      <h2>18. Content Guidelines and No Endorsements</h2>
+      <p>Borghi Consulting™ may produce and distribute educational content through various platforms including written materials, videos, webinars, workshops, newsletters, and private member resources. All such content is strictly informational and educational. Publication or reference to specific projects, platforms, cryptocurrencies, or third parties does not imply endorsement, guarantee of quality, security, legality, or reliability, or a recommendation to invest, participate, or transact.</p>
+    </div>
+
+    <div class="clause" id="s19">
+      <h2>19. Acknowledgment and Media Usage</h2>
+      <p>By engaging with Uncrypto The Crypto™ services, and subject to the Client's separate written consent where required, the Client grants Borghi Consulting™ a non-exclusive, royalty-free, worldwide right to use their name, likeness, testimonial statements, and engagement summary for marketing, promotional, and educational purposes across online and offline channels. This permission is granted indefinitely unless revoked by written request to admin@borghiconsulting.com.</p>
+    </div>
+
+    <div class="clause" id="s20">
+      <h2>20. Exclusivity and Conflicts of Interest</h2>
+      <p>This Agreement does not grant the Client exclusivity over any specific methodology, framework, consultant, or service structure. Borghi Consulting™ may provide equivalent or similar services to other clients. Should the Client wish to establish exclusive access arrangements, these must be formally requested and agreed in writing, and additional fees or retainer agreements will apply.</p>
+    </div>
+
+    <div class="clause" id="s21">
+      <h2>21. Liability and Indemnity</h2>
+      <p>To the fullest extent permitted by law, Borghi Consulting™ shall not be held liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of income, missed opportunities, unrealised outcomes, or reputational impact. The Company's total cumulative liability for any claim shall be strictly limited to the amount actually paid by the Client for Services in the thirty (30) calendar days preceding the event giving rise to the claim.</p>
+      <p>The Client agrees to indemnify and hold harmless Borghi Consulting™, its founders, employees, agents, and subcontractors from and against any claims, liabilities, damages, costs, and expenses arising from breach of this Agreement, misuse of the Services or analytical outputs, unauthorised disclosure of proprietary materials, or negligent or unlawful actions by the Client. This indemnity survives termination of the Agreement.</p>
+    </div>
+
+    <div class="clause" id="s22">
+      <h2>22. Force Majeure</h2>
+      <p>Borghi Consulting™ shall not be liable for any failure or delay in performing obligations where such failure results from circumstances beyond its reasonable control, including natural disasters, public health emergencies, acts of war or terrorism, government actions, internet outages, cyberattacks, major technological disruptions, regulatory changes, or illness and unavailability of key personnel. If a Force Majeure event continues for more than thirty (30) consecutive calendar days, either Party may terminate the Agreement in writing without further liability, except in respect of services already delivered.</p>
+    </div>
+
+    <div class="clause" id="s23">
+      <h2>23. Digital Acceptance and Signature</h2>
+      <p>By submitting payment, confirming a proposal, participating in any session, or otherwise initiating use of Services, the Client agrees to be legally bound by this Agreement. Digital acceptance includes clicking "Accept", "Confirm", or "Agree" via any platform, providing written confirmation via email or messaging application, signing a digital version of the Agreement, or completing a financial transaction. Such digital acceptance holds full legal validity and enforceability equivalent to a handwritten signature under the Electronic Transactions Act 1999 (Cth).</p>
+    </div>
+
+    <div class="clause" id="s24">
+      <h2>24. Governing Law and Jurisdiction</h2>
+      <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Western Australia, Commonwealth of Australia. Any dispute, controversy, or claim arising out of or relating to this Agreement shall be subject to the exclusive jurisdiction of the courts of Western Australia. Before initiating formal legal proceedings, both Parties agree to make reasonable good faith efforts to resolve disputes through direct negotiation.</p>
+    </div>
+
+    <div class="clause" id="s25">
+      <h2>25. Amendments, Entire Agreement, and Severability</h2>
+      <p>This Agreement constitutes the entire agreement between the Parties and supersedes all prior proposals, communications, representations, and agreements, whether oral or written. No amendment, modification, or waiver shall be valid unless made in writing and accepted by both Parties. If any provision is found invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+    </div>
+
+    <div class="clause" id="s26">
+      <h2>26. Non-Assignment</h2>
+      <p>Neither Party may assign, transfer, delegate, or otherwise dispose of rights or obligations under this Agreement without the prior written consent of the other Party. Any attempted assignment without consent shall be null and void and constitute a material breach. Borghi Consulting™ may engage authorised subcontractors under its direct supervision without this constituting an assignment.</p>
+    </div>
+
+    <div class="clause" id="s27">
+      <h2>27. Governing Language</h2>
+      <p>This Agreement is drafted in English and shall be interpreted and enforced according to its English-language version. In the event of any discrepancy between this version and any translation, the English version shall prevail for all legal, interpretative, and procedural purposes.</p>
+    </div>
+
+    <hr class="part-divider">
+
+    <div class="part-header" id="part-b" style="scroll-margin-top:80px;">Part B — Privacy Policy</div>
+
+    <div class="clause" id="s28">
+      <h2>28. Introduction and Privacy Commitment</h2>
+      <p>Borghi Consulting™, through its Uncrypto The Crypto™ division, is committed to protecting the privacy and personal information of all Clients and individuals who interact with our services. This Privacy Policy sets out how we collect, hold, use, and disclose personal information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and where applicable, the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and other relevant international data protection laws.</p>
+      <p>We are committed to transparency, accountability, and responsible data handling. We implement policies and procedures to manage personal information responsibly, regularly review our practices, and maintain documentation of our data processing activities.</p>
+    </div>
+
+    <div class="clause" id="s29">
+      <h2>29. Information We Collect</h2>
+      <h3>29.1 Personal Identification Information</h3>
+      <p>Full name, email address, phone number, postal address, company name and role, and date of birth where necessary.</p>
+      <h3>29.2 Technical and Usage Data</h3>
+      <p>IP address, browser type and version, device information, referrer URL, date and time of access, pages visited, clickstream data, and error logs.</p>
+      <h3>29.3 Cryptocurrency and Engagement Data</h3>
+      <p>Wallet addresses (where voluntarily shared for educational analysis purposes), transaction references provided for analytical review, session records, communications, analytical assessments, and any other information voluntarily provided during the engagement. This information is used solely for service delivery and is treated with the highest level of confidentiality.</p>
+      <h3>29.4 Marketing and Communication Data</h3>
+      <p>Email addresses, names, and communication preferences collected for newsletters and marketing communications, records of communications sent and received, and participation in surveys or promotions.</p>
+      <h3>29.5 Transaction and Billing Data</h3>
+      <p>Billing and payment information, transaction details, and payment method information including masked card numbers or payment processor references.</p>
+      <h3>29.6 Social Media Information</h3>
+      <p>Public profile details, interactions, and engagement statistics where you interact with our official social media channels.</p>
+    </div>
+
+    <div class="clause" id="s30">
+      <h2>30. Purposes for Using Your Information</h2>
+      <p>We collect and use your personal information for the following purposes: Service Delivery; Communication; Analytical Service Delivery (personalising and calibrating Hive Quantum Enhanced™ outputs relevant to the Client's profile and engagement tier); Service Improvement; Marketing (where you have consented — you may opt out at any time); Legal Compliance; and Protection of Rights (to detect, prevent, and address fraud, security breaches, and other harmful activities).</p>
+    </div>
+
+    <div class="clause" id="s31">
+      <h2>31. Disclosure of Personal Information</h2>
+      <p>We may disclose your personal information only to: internal employees and authorised contractors bound by strict confidentiality obligations; trusted third-party service providers including hosting, CRM, payment processing, IT support, and analytics services; legal authorities when required by law, court order, or regulatory directive; potential buyers or investors in the event of a merger or acquisition under strict confidentiality conditions; and for any other purpose where you have provided explicit, informed consent.</p>
       <p>We do not sell, lease, or trade your personal information to third parties for commercial purposes.</p>
     </div>
 
-    <div class="doc-section" id="data-use">
-      <h2>How we use your data</h2>
-      <p>We use your information to deliver and maintain our services, communicate with you regarding your account, personalise and adapt service delivery, comply with applicable laws, and protect our intellectual property and your data security.</p>
-      <h3>Data retention</h3>
+    <div class="clause" id="s32">
+      <h2>32. Client Data Approval and Consent</h2>
+      <h3>32.1 Consent for Analytical Processing</h3>
+      <p>Where the Company uses information provided by the Client to calibrate Hive Quantum Enhanced™ outputs or other analytical services, such use is covered by the Client's acceptance of this Agreement. This data will not be used for any purpose beyond service delivery, will not be shared with third parties, and will be retained only for the minimum period necessary.</p>
+      <h3>32.2 Consent for Marketing and Media</h3>
+      <p>Your consent for marketing communications may be withdrawn at any time by contacting admin@borghiconsulting.com or following the unsubscribe instructions in any communication.</p>
+      <h3>32.3 Media and Testimonial Consent</h3>
+      <p>The use of your name, likeness, or testimonial for promotional purposes is subject to your separate written consent where required by applicable law. You may revoke consent for future use at any time by written request.</p>
+      <h3>32.4 Right to Withdraw Consent</h3>
+      <p>Where processing is based on consent, you may withdraw that consent at any time without affecting the lawfulness of any processing carried out before withdrawal. Contact admin@borghiconsulting.com with the subject line "Consent Withdrawal Request".</p>
+    </div>
+
+    <div class="clause" id="s33">
+      <h2>33. Data Security</h2>
+      <p>We implement a combination of technical, organisational, and procedural security measures including encryption of sensitive data in transit (SSL/TLS) and at rest, secure hosting environments with restricted access controls, strong authentication methods, firewalls and intrusion detection systems, mandatory staff training on privacy and cybersecurity, confidentiality agreements binding all personnel and contractors, and a comprehensive Data Breach Response Plan.</p>
+      <p>In the event of a suspected or confirmed data breach, we will identify and contain the breach, assess associated risks, notify affected individuals and regulatory authorities as required by law, and take corrective action to prevent recurrence.</p>
+    </div>
+
+    <div class="clause" id="s34">
+      <h2>34. Data Retention</h2>
       <ul>
-        <li>Client and service user data: retained for 7 years after completion of the client relationship</li>
-        <li>Marketing data: retained until consent is withdrawn or after 2 years of inactivity</li>
-        <li>Financial records: retained for a minimum of 7 years from transaction date (ATO requirements)</li>
+        <li><strong>Client and Service User Data:</strong> Retained for 7 years after completion of the client relationship for legal compliance and potential claims.</li>
+        <li><strong>Marketing Data:</strong> Retained until consent is withdrawn, opt-out, or after 2 years of inactivity.</li>
+        <li><strong>Website Technical Data:</strong> Retained for a maximum of 26 months unless aggregated and anonymised.</li>
+        <li><strong>Financial Records:</strong> Retained for a minimum of 7 years from the transaction date per ATO requirements.</li>
+        <li><strong>Analytical Engagement Data:</strong> Retained for the duration of the engagement and up to 2 years thereafter for quality assurance, then securely deleted or anonymised.</li>
       </ul>
     </div>
 
-    <div class="doc-section" id="your-rights">
-      <h2>Your rights</h2>
-      <p>Under the Privacy Act 1988 (Cth) and the Australian Privacy Principles, you have the right to:</p>
-      <ul>
-        <li>Access personal information we hold about you</li>
-        <li>Request correction of inaccurate, incomplete, or outdated information</li>
-        <li>Withdraw consent for processing where applicable</li>
-        <li>Lodge a complaint with the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" style="color:var(--blue-deeper);">oaic.gov.au</a></li>
-      </ul>
-      <p>To exercise any right, contact us at <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a> with subject line "Privacy Request".</p>
+    <div class="clause" id="s35">
+      <h2>35. Your Rights Under Australian Law</h2>
+      <p>Under the Privacy Act 1988 (Cth) and the Australian Privacy Principles, you have the right to: access personal information we hold about you; request correction of inaccurate, incomplete, or outdated information; withdraw consent for processing where applicable; lodge a complaint with us; and escalate complaints to the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" style="color:var(--blue-deeper);">oaic.gov.au</a>, phone 1300 363 992.</p>
+      <p>To exercise any right, contact us at <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a> with the subject line "Privacy Request". We will acknowledge within 5 business days and respond substantively within 30 calendar days.</p>
     </div>
 
-    <div class="doc-section" id="contact-privacy">
-      <h2>Contact & Data Protection Officer</h2>
-      <p><strong>Privacy Officer & Data Protection Officer</strong><br>
-      Borghi Consulting™ — Uncrypto The Crypto™<br>
-      Email: <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a><br>
-      Subject line: "Privacy Inquiry" or "Attention DPO"</p>
-      <p style="margin-top:1.5rem;">Full document: <a href="https://drive.google.com/file/d/1X4vIUwMjG2j_KdVIyzTZtBhfN_cpwmD4/view?usp=sharing" target="_blank" style="color:var(--blue-deeper);">View complete T&C and Privacy Policy on Google Drive →</a></p>
+    <div class="clause" id="s36">
+      <h2>36. Cookies and Tracking Technologies</h2>
+      <p>When you interact with our websites and digital services, we may use cookies and similar technologies including pixel tags, web beacons, and local storage objects. We use essential cookies (necessary for website operation, no consent required), performance and analytics cookies (require opt-in), functional cookies (require consent), and targeting and advertising cookies (require explicit opt-in).</p>
+      <p>You may manage or withdraw cookie consent by adjusting browser settings or using our Cookie Management Tool where implemented. Disabling certain cookies may affect website functionality.</p>
+    </div>
+
+    <div class="clause" id="s37">
+      <h2>37. International Data Transfers</h2>
+      <p>As part of delivering our services, we may transfer your personal information outside Australia to countries including the United States, European Economic Area, Singapore, and other jurisdictions where our technology providers operate. We take reasonable steps to ensure that all overseas recipients are bound by contractual obligations protecting your information to a standard comparable to the Australian Privacy Principles.</p>
+    </div>
+
+    <div class="clause" id="s38">
+      <h2>38. Children's Privacy</h2>
+      <p>Our services are not directed to individuals under 15 years of age in Australia (or 16 years in GDPR jurisdictions). We do not knowingly collect personal information from minors without verifiable parental or guardian consent. If we become aware of such collection, we will promptly delete the information. Parents or guardians who believe we may hold information about a minor may contact <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a>.</p>
+    </div>
+
+    <div class="clause" id="s39">
+      <h2>39. International Users</h2>
+      <p>We acknowledge that individuals outside Australia may have additional rights under local privacy laws including the GDPR (EEA/UK), CCPA/CPRA (California), PIPEDA (Canada), and LGPD (Brazil). We endeavour to honour all valid privacy rights requests to the fullest extent possible. International users wishing to exercise local privacy rights should contact <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a> with the subject line "International Privacy Request".</p>
+    </div>
+
+    <div class="clause" id="s40">
+      <h2>40. Changes to This Privacy Policy</h2>
+      <p>We review and update this Privacy Policy at least annually and immediately upon material changes to applicable laws or our data practices. Material changes will be notified via a prominent update notice on our website and the Effective Date will be updated. Where changes impact the legal basis of processing, we will seek renewed consent where required. Previous versions are archived and available upon request.</p>
+    </div>
+
+    <div class="clause" id="s41">
+      <h2>41. Contact and Data Protection Officer</h2>
+      <p>For any questions, concerns, or requests regarding this document, your personal information, or our data protection practices, please contact:</p>
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:1.25rem 1.5rem;margin-top:.75rem;font-size:.85rem;color:var(--black-soft);font-weight:300;line-height:1.8;">
+        <strong style="font-weight:500;color:var(--black);">Privacy Officer & Data Protection Officer</strong><br>
+        Borghi Consulting™ — Uncrypto The Crypto™<br>
+        Email: <a href="mailto:admin@borghiconsulting.com" style="color:var(--blue-deeper);">admin@borghiconsulting.com</a><br>
+        Subject line: "Privacy Inquiry" or "Attention DPO"
+      </div>
+    </div>
+
+    <div class="clause" id="s42">
+      <h2>42. Governing Law and Definitions</h2>
+      <p>This Privacy Policy is governed by the laws of the Commonwealth of Australia and the State of Western Australia. Any disputes arising in connection with it are subject to the exclusive jurisdiction of the courts of Western Australia.</p>
+      <h3>Key Definitions</h3>
+      <div class="definitions-grid">
+        <div class="def-item"><div class="def-term">Personal Information</div><div class="def-desc">Any information or opinion about an identified or reasonably identifiable individual, whether recorded in material form or not.</div></div>
+        <div class="def-item"><div class="def-term">Sensitive Information</div><div class="def-desc">A subset of personal information including racial or ethnic origin, health information, genetic or biometric data, sexual orientation, criminal record, and political, religious, or philosophical beliefs, requiring heightened protection.</div></div>
+        <div class="def-item"><div class="def-term">Processing</div><div class="def-desc">Any operation performed on personal information including collection, recording, storage, use, disclosure, and erasure.</div></div>
+        <div class="def-item"><div class="def-term">Consent</div><div class="def-desc">A freely given, specific, informed, and unambiguous indication of agreement to the processing of personal information, withdrawable at any time.</div></div>
+        <div class="def-item"><div class="def-term">Data Breach</div><div class="def-desc">Unauthorised access, disclosure, loss, or other incident compromising the confidentiality, integrity, or availability of personal information.</div></div>
+      </div>
+      <p style="margin-top:1.5rem;font-size:.8rem;color:var(--black-faint);">Document Reference: BC-UTC-TC-PP-V3 · Borghi Consulting™ | Uncrypto The Crypto™ · All rights reserved.</p>
     </div>
 
   </main>
@@ -224,7 +502,7 @@ footer p{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:4px}
   <div>
     <div class="footer-logo">Borghi Consulting™</div>
     <div class="footer-script">Alessandro & Giulia</div>
-    <p>© 2025 · Perth, WA · BC-UTC-TC-PP-V3</p>
+    <p>© 2025 · Perth, WA · BC-UTC-TC-PP-V3 · Not financial advice.</p>
   </div>
   <p style="font-family:var(--display);font-size:.82rem;color:rgba(168,216,234,.6);letter-spacing:.06em;">Uncrypto The Crypto™ · Structure before speculation.</p>
 </footer>
