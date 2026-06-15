@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions &amp; Privacy Policy | Managing The Management™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black:      #000000;
+            --white:      #FFFFFF;
+            --accent:     #8B1A2F;
+            --bg:         #F5F7FA;
+            --surface:    #FFFFFF;
+            --text-dark:  #111111;
+            --text-body:  #3A3A3A;
+            --text-muted: #888888;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-body); overflow-x: hidden; line-height: 1.8; font-size: 0.97rem; }
+
+        .hex-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .hex-bg svg { width: 100%; height: 100%; }
+        .wrap { position: relative; z-index: 1; }
+
+        /* HEADER */
+        header {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem 3.5rem;
+            border-bottom: 4px solid var(--accent);
+        }
+        .header-abn {
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.2rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+        header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.8rem, 8vw, 6rem);
+            letter-spacing: 0.06em;
+            line-height: 1;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        header h1 span { color: var(--accent); }
+        .header-script {
+            font-family: 'Dancing Script', cursive;
+            color: rgba(255,255,255,0.78);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            display: block;
+            margin-bottom: 2rem;
+        }
+        .header-meta {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.9;
+            letter-spacing: 0.02em;
+        }
+        .header-meta strong { color: rgba(255,255,255,0.75); }
+        .header-divider { width: 60px; height: 2px; background: var(--accent); margin: 2rem auto; }
+
+        /* LAYOUT */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        /* SIDEBAR TOC */
+        .toc-sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--black);
+            color: var(--white);
+            padding: 2.5rem 1.5rem 3rem;
+            border-right: 2px solid var(--accent);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) rgba(255,255,255,0.05);
+        }
+        .toc-sidebar::-webkit-scrollbar { width: 4px; }
+        .toc-sidebar::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+        .toc-sidebar::-webkit-scrollbar-thumb { background: var(--accent); }
+        .toc-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(139,26,47,0.25);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .toc-part {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.6rem;
+        }
+        .toc-sidebar ul { list-style: none; }
+        .toc-sidebar ul li { margin-bottom: 0.2rem; }
+        .toc-sidebar ul li a {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            padding: 0.28rem 0.5rem;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+        .toc-sidebar ul li a:hover {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            padding-left: 0.9rem;
+            background: rgba(139,26,47,0.06);
+        }
+        .toc-brand {
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            letter-spacing: 0.1em;
+            line-height: 1.7;
+        }
+
+        /* MAIN CONTENT */
+        .main-content { padding: 3rem 3.5rem 5rem 3.5rem; min-width: 0; }
+
+        .intro-paragraph {
+            background: var(--surface);
+            border: 1px solid rgba(139,26,47,0.3);
+            border-left: 4px solid var(--accent);
+            padding: 1.8rem 2rem;
+            margin-bottom: 3rem;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            line-height: 1.85;
+        }
+
+        /* PART HEADER */
+        .part-header {
+            background: var(--black);
+            color: var(--white);
+            padding: 2.5rem 2.5rem 2rem;
+            margin: 3rem 0 2.5rem;
+            border-left: 5px solid var(--accent);
+        }
+        .part-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 0.08em;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .part-header h2 span { color: var(--accent); }
+
+        /* SECTION */
+        .legal-section { margin-bottom: 3rem; scroll-margin-top: 20px; }
+        .legal-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.06em;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.4rem;
+            line-height: 1.1;
+        }
+        .legal-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+            color: var(--text-dark);
+            margin: 1.8rem 0 0.8rem;
+            padding-left: 0.8rem;
+            border-left: 3px solid rgba(0,0,0,0.2);
+        }
+        .legal-section p { margin-bottom: 1rem; line-height: 1.85; }
+        .legal-section ul, .legal-section ol { margin: 0.6rem 0 1.2rem 1.8rem; line-height: 1.85; }
+        .legal-section li { margin-bottom: 0.5rem; }
+
+        /* BOXES */
+        .disclaimer-box {
+            background: rgba(0,0,0,0.04);
+            border: 1.5px solid rgba(0,0,0,0.15);
+            padding: 1.6rem 2rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--text-dark);
+        }
+        .warning-box {
+            background: rgba(139,26,47,0.08);
+            border: 1.5px solid var(--accent);
+            padding: 1.6rem 2rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--text-dark);
+        }
+        .prohibition-box {
+            background: rgba(0,0,0,0.03);
+            border: 1.5px solid rgba(0,0,0,0.15);
+            padding: 1.6rem 2rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* SUBSECTION */
+        .subsection { margin: 1.6rem 0; }
+        .subsection-title {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.93rem;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(139,26,47,0.07);
+            border-left: 3px solid var(--accent);
+        }
+
+        /* TRACK HEADER */
+        .track-header {
+            background: rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.4rem;
+            margin: 2rem 0 1rem;
+        }
+        .track-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* PLAN BOX */
+        .plan-box {
+            border: 1px solid rgba(0,0,0,0.1);
+            border-top: 3px solid var(--accent);
+            padding: 1.4rem 1.6rem;
+            margin: 1.2rem 0;
+            background: var(--surface);
+        }
+        .plan-box .plan-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+            margin-bottom: 0.1rem;
+        }
+        .plan-box .plan-code {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .plan-box p { margin-bottom: 0.6rem; }
+        .plan-box ul { margin: 0.4rem 0 0 1.4rem; }
+
+        /* BACK TO TOP */
+        .back-to-top {
+            display: inline-block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            color: rgba(0,0,0,0.45);
+            text-decoration: none;
+            padding: 0.35rem 0.8rem;
+            border: 1px solid rgba(0,0,0,0.18);
+            margin-top: 1.5rem;
+            transition: all 0.2s;
+        }
+        .back-to-top:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+        .section-rule { border: none; border-top: 1px solid rgba(139,26,47,0.25); margin: 2.5rem 0; }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.55);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 4px solid var(--accent);
+        }
+        .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(--white); margin-bottom: 0.3rem; }
+        .footer-brand span { color: var(--accent); }
+        .footer-script { font-family: 'Dancing Script', cursive; color: rgba(255,255,255,0.7); font-size: 1.2rem; display: block; margin-bottom: 1.5rem; }
+        .footer-meta { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.2rem; }
+        .footer-disclaimer {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 0.67rem;
+            color: rgba(255,255,255,0.3);
+            line-height: 1.8;
+            padding: 1.2rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .page-layout { grid-template-columns: 1fr; }
+            .toc-sidebar { position: static; height: auto; overflow-y: visible; border-right: none; border-bottom: 2px solid var(--accent); }
+            .main-content { padding: 2rem 1.5rem 4rem; }
+        }
+        @media (max-width: 600px) {
+            header { padding: 3rem 1.5rem 2.5rem; }
+            .main-content { padding: 1.5rem 1rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hex-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                <stop offset="60%" stop-color="#eef2f7" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#dce4ef" stop-opacity="0.5"/>
+            </linearGradient>
+            <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#e8edf5" stop-opacity="0.5"/>
+            </linearGradient>
+            <linearGradient id="hg3" x1="30%" y1="0%" x2="70%" y2="100%">
+                <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#dde6f0" stop-opacity="0.55"/>
+            </linearGradient>
+            <filter id="hs" x="-15%" y="-15%" width="130%" height="130%">
+                <feDropShadow dx="6" dy="10" stdDeviation="8" flood-color="#b8c8d8" flood-opacity="0.18"/>
+            </filter>
+            <filter id="hss" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#b0c0d0" flood-opacity="0.12"/>
+            </filter>
+        </defs>
+        <polygon filter="url(#hs)" points="-240,0 -120,-208 120,-208 240,0 120,208 -120,208" fill="url(#hg1)" stroke="rgba(139,26,47,0.28)" stroke-width="1.5" transform="translate(200,240)"/>
+        <polygon filter="url(#hs)" points="-280,0 -140,-242 140,-242 280,0 140,242 -140,242" fill="url(#hg2)" stroke="rgba(139,26,47,0.22)" stroke-width="1.5" transform="translate(1300,680)"/>
+        <polygon filter="url(#hss)" points="-160,0 -80,-139 80,-139 160,0 80,139 -80,139" fill="url(#hg3)" stroke="rgba(139,26,47,0.30)" stroke-width="1.2" transform="translate(1080,280)"/>
+        <polygon filter="url(#hss)" points="-90,0 -45,-78 45,-78 90,0 45,78 -45,78" fill="url(#hg1)" stroke="rgba(139,26,47,0.20)" stroke-width="1" transform="translate(580,520)" opacity="0.65"/>
+    </svg>
+</div>
+
+<div class="wrap">
+
+    <header id="top">
+        <div class="header-abn">Borghi Consulting™ &nbsp;|&nbsp; ABN 77 502 124 916 &nbsp;|&nbsp; Managing The Management™</div>
+        <h1>Borghi <span>Consulting™</span></h1>
+        <span class="header-script">Managing The Management™</span>
+        <div class="header-divider"></div>
+        <h1 style="font-size: clamp(2rem,6vw,4rem); margin-bottom:1rem;">Terms &amp; Conditions <span>&amp;</span> Privacy Policy</h1>
+        <div class="header-meta">
+            <strong>Issued by:</strong> Borghi Consulting™ — Alessandro Borghi &amp; Giulia D'Agostino &nbsp;|&nbsp; <strong>ABN:</strong> 77 502 124 916<br>
+            <strong>Governing Law:</strong> State of Western Australia, Australia &nbsp;|&nbsp; <strong>Contact:</strong> admin@borghiconsulting.com<br><br>
+            <em>This document contains proprietary and confidential information of Borghi Consulting™. Unauthorised disclosure, reproduction, or distribution is strictly prohibited and may result in legal action. All intellectual property rights are reserved.</em>
+        </div>
+    </header>
+
+    <div class="page-layout">
+
+        <nav class="toc-sidebar" aria-label="Table of Contents">
+            <div class="toc-title">Table of Contents</div>
+
+            <div class="toc-part">Part A — Terms &amp; Conditions</div>
+            <ul>
+                <li><a href="#s1">1. Introduction and Scope</a></li>
+                <li><a href="#s2">2. Definitions</a></li>
+                <li><a href="#s3">3. Coaching and Consulting Services</a></li>
+                <li><a href="#s4">4. The M.A.N.A.G.E.™ Framework</a></li>
+                <li><a href="#s5">5. Subscription Plans and Packages</a></li>
+                <li><a href="#s6">6. Booking Confirmation and Payments</a></li>
+                <li><a href="#s7">7. Pricing, Currency, and GST</a></li>
+                <li><a href="#s8">8. Cancellations, Rescheduling, and Termination</a></li>
+                <li><a href="#s9">9. Session Validity and Engagement Periods</a></li>
+                <li><a href="#s10">10. Client Responsibilities and Conduct</a></li>
+                <li><a href="#s11">11. Intellectual Property and Strict Usage Rights</a></li>
+                <li><a href="#s12">12. Prohibition on Disclosure and Distribution</a></li>
+                <li><a href="#s12a">12A. Asynchronous Support Scope</a></li>
+                <li><a href="#s13">13. Confidentiality and Non-Disclosure</a></li>
+                <li><a href="#s14">14. Subcontractors and External Partners</a></li>
+                <li><a href="#s15">15. Performance and No-Guarantee Disclaimer</a></li>
+                <li><a href="#s16">16. Exclusivity and Conflicts of Interest</a></li>
+                <li><a href="#s17">17. Liability and Indemnity</a></li>
+                <li><a href="#s18">18. Force Majeure</a></li>
+                <li><a href="#s19">19. Digital Acceptance and Signature</a></li>
+                <li><a href="#s20">20. Governing Law and Jurisdiction</a></li>
+                <li><a href="#s21">21. Amendments, Entire Agreement, and Severability</a></li>
+                <li><a href="#s22">22. Non-Assignment</a></li>
+                <li><a href="#s23">23. Governing Language</a></li>
+            </ul>
+
+            <div class="toc-part">Part B — Privacy Policy</div>
+            <ul>
+                <li><a href="#s24">24. Introduction and Privacy Commitment</a></li>
+                <li><a href="#s25">25. Information We Collect</a></li>
+                <li><a href="#s26">26. Purposes for Using Your Information</a></li>
+                <li><a href="#s27">27. Disclosure of Personal Information</a></li>
+                <li><a href="#s28">28. Client Data Approval and Consent</a></li>
+                <li><a href="#s29">29. Data Security</a></li>
+                <li><a href="#s30">30. Data Retention</a></li>
+                <li><a href="#s31">31. Your Rights Under Australian Law</a></li>
+                <li><a href="#s32">32. Cookies and Tracking Technologies</a></li>
+                <li><a href="#s33">33. International Data Transfers</a></li>
+                <li><a href="#s34">34. Children's Privacy</a></li>
+                <li><a href="#s35">35. International Users</a></li>
+                <li><a href="#s36">36. Changes to This Privacy Policy</a></li>
+                <li><a href="#s37">37. Contact and Data Protection Officer</a></li>
+                <li><a href="#s38">38. Governing Law and Definitions</a></li>
+            </ul>
+
+            <div class="toc-brand">
+                Borghi Consulting™<br>
+                ABN 77 502 124 916<br>
+                Managing The Management™
+            </div>
+        </nav>
+
+        <main class="main-content">
+
+            <div class="intro-paragraph">
+                This document governs the entire relationship between you (the "Client") and Borghi Consulting™ operating through its Managing The Management™ division. It encompasses both the Terms &amp; Conditions of service and the Privacy Policy applicable to all information collected and processed in connection with your engagement. By confirming a service plan, submitting payment, or engaging in any session or activity with Managing The Management™, you agree to be bound by all provisions set out herein.
+            </div>
+
+            <div class="part-header" id="part-a">
+                <h2>Part A — <span>Terms &amp; Conditions</span></h2>
+            </div>
+
+            <!-- S1 -->
+            <section class="legal-section" id="s1">
+                <h2>1. Introduction and Scope</h2>
+                <p>This document constitutes the legally binding agreement ("Agreement") between Borghi Consulting™ (ABN 77 502 124 916), operating through its Managing The Management™ division ("the Company", "we", "us", or "our"), and the Client who engages the Company for the provision of coaching, consulting, transformation, performance development, and leadership advisory services.</p>
+                <p>These Terms &amp; Conditions apply to all services, deliverables, materials, frameworks, methodologies, and tools offered by the Managing The Management™ division in any format, including but not limited to live sessions, digital communications, subscription plans, documented outputs, and proprietary frameworks.</p>
+                <p>By confirming a service plan, submitting payment, engaging in a session, or otherwise initiating a working relationship with the Company, the Client agrees to be fully and irrevocably bound by this Agreement and any supporting proposals, schedules, or annexes issued by Borghi Consulting™.</p>
+                <p>This Agreement complies with the Electronic Transactions Act 1999 (Cth), the Australian Consumer Law, the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and all other applicable legal standards. It supersedes all prior informal agreements, verbal representations, and prior versions of any agreement unless otherwise explicitly confirmed in writing by both Parties.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S2 -->
+            <section class="legal-section" id="s2">
+                <h2>2. Definitions</h2>
+                <p>For the purposes of this Agreement, the following definitions shall apply:</p>
+                <ul>
+                    <li><strong>Agreement:</strong> These Terms &amp; Conditions and Privacy Policy, including any annexes, service proposals, schedules, or other documents formally issued by Borghi Consulting™.</li>
+                    <li><strong>Client:</strong> The individual or organisation engaging the Company for services provided under the Managing The Management™ division.</li>
+                    <li><strong>Company:</strong> Borghi Consulting™, including its founders Alessandro Borghi and Giulia D'Agostino, employees, authorised collaborators, and approved third-party service providers acting on its behalf.</li>
+                    <li><strong>Services:</strong> All coaching, consulting, transformation, performance optimisation, communication development, leadership training, and strategic advisory activities offered under the Managing The Management™ division.</li>
+                    <li><strong>Session:</strong> A scheduled unit of engagement, whether delivered in person or via digital platforms, including coaching, consulting, mentoring, or progress review meetings.</li>
+                    <li><strong>Package:</strong> A defined set of sessions or services grouped under one-time or fixed-term pricing.</li>
+                    <li><strong>Subscription:</strong> A recurring agreement for ongoing support over a set term, billed on a monthly basis.</li>
+                    <li><strong>M.A.N.A.G.E.™ Framework:</strong> The proprietary coaching and transformation methodology developed and owned exclusively by Borghi Consulting™, comprising six pillars that guide all service delivery under the Managing The Management™ division.</li>
+                    <li><strong>Asynchronous Support:</strong> Written support provided outside of scheduled Sessions via email or agreed messaging channels, subject to the tier-specific scope and communication standards set out in Clause 12A of this Agreement.</li>
+                    <li><strong>Response Window:</strong> The maximum period within which Borghi Consulting™ will acknowledge and respond to Asynchronous Support communications, as defined per subscription tier in Clause 12A.</li>
+                    <li><strong>Materials:</strong> All content, documents, guides, assessments, reports, templates, session summaries, frameworks, tools, exercises, and any other deliverable produced by the Company in connection with the Services.</li>
+                    <li><strong>Digital Consent:</strong> Client acceptance of the Agreement through electronic means including payment confirmation, email, digital signatures, or affirmative written response.</li>
+                    <li><strong>Engagement Period:</strong> The timeframe agreed for the delivery of Services, as defined in the Service Proposal.</li>
+                    <li><strong>Proprietary Materials:</strong> All frameworks, methodologies, tools, exercises, assessments, templates, and content created by or exclusively belonging to Borghi Consulting™ and used in the delivery of Services.</li>
+                </ul>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S3 -->
+            <section class="legal-section" id="s3">
+                <h2>3. Coaching and Consulting Services</h2>
+                <p>Borghi Consulting™, through its Managing The Management™ division, provides customised coaching and consulting services focused on enhancing professional performance, communication effectiveness, emotional intelligence, self-leadership, and leadership capacity for individuals, executives, teams, and organisations.</p>
+
+                <h3>3.1 Scope of Services</h3>
+                <p>Services may include, but are not limited to:</p>
+                <ul>
+                    <li>One-on-one transformation coaching and mentoring for professional and personal development</li>
+                    <li>Executive consulting on communication, influence, decision-making, and leadership presence</li>
+                    <li>Career development coaching including direction clarity, transition support, and strategic growth planning</li>
+                    <li>Communication, sales, negotiation, and conflict resolution training</li>
+                    <li>Mindset development, goal alignment, and self-management strategy</li>
+                    <li>Leadership and team dynamics development for managers and executives</li>
+                    <li>Resume, professional profile, and personal brand consulting</li>
+                    <li>Support in building high-performance habits and productive routines</li>
+                    <li>Strategic consulting for business growth, operational effectiveness, and organisational performance</li>
+                    <li>Tailored subscription packages or bundled session programmes as defined in the Service Proposal</li>
+                </ul>
+
+                <h3>3.2 Delivery Formats</h3>
+                <p>Services are delivered through a combination of:</p>
+                <ul>
+                    <li>Live coaching and consulting sessions delivered in person or online via agreed digital platforms</li>
+                    <li>Progress tracking tools, structured assessments, and documented engagement summaries</li>
+                    <li>Written feedback, session notes, and operational summaries retained by the Client</li>
+                    <li>Asynchronous support where included in the confirmed package or subscription, subject to Clause 12A</li>
+                </ul>
+
+                <h3>3.3 Outcomes and Acknowledgment</h3>
+                <p>All services are defined within the Service Proposal reviewed and accepted by the Client prior to engagement. The Client acknowledges that outcomes depend on their personal commitment, level of engagement, team dynamics, organisational context, and external factors. Borghi Consulting™ does not guarantee specific results unless explicitly stated in writing in the Service Proposal.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S4 -->
+            <section class="legal-section" id="s4">
+                <h2>4. The M.A.N.A.G.E.™ Framework</h2>
+                <p>Borghi Consulting™ applies the proprietary M.A.N.A.G.E.™ Framework to guide the delivery of all high-impact coaching and consulting services for professionals, leaders, and entrepreneurs. This model provides a structured, modular pathway to personal clarity, behavioural evolution, and operational effectiveness.</p>
+                <p>The M.A.N.A.G.E.™ Framework is applied progressively across live sessions, reflective tools, and action-based exercises, tailored to each Client's specific goals, stage, and engagement structure. The acronym stands for:</p>
+                <ul>
+                    <li><strong>M — Mindset Alignment:</strong> Identifying and aligning the internal drivers, values, and belief systems that shape behaviour, communication, and professional presence.</li>
+                    <li><strong>A — Awareness Expansion:</strong> Enhancing self-perception, emotional intelligence, and contextual awareness to unlock authentic leadership and interpersonal effectiveness.</li>
+                    <li><strong>N — Navigation Skills:</strong> Strengthening decision-making capabilities, boundary-setting, prioritisation, and strategic focus in complex and dynamic environments.</li>
+                    <li><strong>A — Accountability Structures:</strong> Creating personalised systems of self-leadership, responsibility, and disciplined follow-through to sustain transformation over time.</li>
+                    <li><strong>G — Growth Feedback Loops:</strong> Integrating continuous feedback, iterative improvement, and coaching intelligence for sustained professional evolution and performance.</li>
+                    <li><strong>E — Execution Dynamics:</strong> Optimising time management, operational routines, and interpersonal dynamics to drive consistent execution without compromising wellbeing.</li>
+                </ul>
+                <p>Depending on the engagement package, Clients may work through one or all pillars in a non-linear, personalised sequence designed to maximise impact at each stage.</p>
+                <div class="disclaimer-box">
+                    The M.A.N.A.G.E.™ Framework, including all associated tools, exercises, assessments, and delivery methodologies, is the exclusive intellectual property of Borghi Consulting™ and is protected accordingly. It may not be reproduced, distributed, taught, or commercially exploited without prior written authorisation.
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S5 -->
+            <section class="legal-section" id="s5">
+                <h2>5. Subscription Plans and Packages</h2>
+                <p>Managing The Management™ services are structured across two specialist coaching Tracks, each offering flexible subscription and package options with a defined scope of sessions, deliverables, and Asynchronous Support. The applicable plan is confirmed in the Service Proposal accepted by the Client.</p>
+
+                <div class="track-header">
+                    <h3>Track 1 — Leadership &amp; Performance Coaching</h3>
+                </div>
+
+                <h3>One-Off Packages</h3>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM SPRINT</div>
+                    <div class="plan-code">(MTM-SPRINT-3S)</div>
+                    <p>Three focused sessions designed to develop key management skills and generate targeted performance improvement in a short-sprint format. Ideal for professionals preparing for performance reviews, navigating career changes, or addressing specific skill gaps.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>3 × 60-minute coaching sessions</li>
+                        <li>Leadership and personal development roadmap</li>
+                        <li>Actionable tools and follow-up recommendations</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM MOMENTUM</div>
+                    <div class="plan-code">(MTM-MOMENTUM-5S)</div>
+                    <p>A strategic coaching pack designed to develop executive performance, emotional intelligence, and structured decision-making frameworks. Best suited for professionals in transition or seeking to scale their leadership impact in a high-impact, focused engagement.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>5 × 60-minute coaching sessions</li>
+                        <li>Personalised development plan and progress review</li>
+                        <li>Mindset recalibration and performance check-ins</li>
+                        <li>Strategic thinking and applied soft skill development</li>
+                    </ul>
+                </div>
+
+                <h3>Monthly Subscriptions — Track 1</h3>
+                <p>All subscriptions require a minimum 3-month commitment for meaningful results. Asynchronous Support is included as specified per tier and is governed by Clause 12A of this Agreement.</p>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM FOUNDATION</div>
+                    <div class="plan-code">(MTM-FOUNDATION-1M)</div>
+                    <p>A structured coaching plan for professionals seeking foundational management growth, mindset development, and career direction clarity. This tier provides focused monthly session support with Asynchronous Support for between-session continuity.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>1 × 60-minute coaching session per month</li>
+                        <li>Management and decision-making coaching</li>
+                        <li>Career growth support: positioning, mindset development, communication skills</li>
+                        <li>Essential tools and career navigation resources</li>
+                        <li>Asynchronous Support: up to 4 messages or emails per monthly cycle, 48-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM ELEVATE</div>
+                    <div class="plan-code">(MTM-ELEVATE-2M)</div>
+                    <p>Advanced coaching and mentorship designed to scale management effectiveness and business performance. Built for entrepreneurs and senior professionals under operational pressure who require a higher cadence of strategic support and guidance.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>2 × 60-minute coaching sessions per month</li>
+                        <li>Strategy, decision-making, and performance coaching</li>
+                        <li>Career positioning and personal brand alignment</li>
+                        <li>Access to premium management frameworks</li>
+                        <li>Asynchronous Support: up to 6 messages or emails per monthly cycle, 24–48-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM MASTERY</div>
+                    <div class="plan-code">(MTM-MASTERY-3M)</div>
+                    <p>Elite coaching for executives and entrepreneurs ready to elevate performance and strategic clarity at scale. This tier provides comprehensive session access, executive mentoring, and priority Asynchronous Support to sustain high-stakes leadership and decision-making.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>3 × 60-minute coaching sessions per month</li>
+                        <li>Executive mentoring in management, team leadership, and business growth</li>
+                        <li>Career acceleration coaching for top-tier professional opportunities</li>
+                        <li>Access to exclusive tools and frameworks for scaling and high performance</li>
+                        <li>Asynchronous Support: up to 8 priority messages or emails per monthly cycle, 24-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="track-header">
+                    <h3>Track 2 — MTM EDGE™ | Sales &amp; Communication Coaching</h3>
+                </div>
+
+                <p>The MTM EDGE™ track is dedicated to developing persuasive communication, ethical sales skills, and strategic influence — equipping professionals to convert, negotiate, and lead with confidence in high-stakes conversations. All MTM EDGE™ subscriptions require a minimum 3-month commitment.</p>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM EDGE ESSENTIAL</div>
+                    <div class="plan-code">(MTM-EDGE-ESSENTIAL-1M)</div>
+                    <p>A foundational coaching programme to build core persuasive communication and ethical sales skills for professionals and consultants beginning their journey in complex selling environments.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>1 × 60-minute coaching session per month</li>
+                        <li>Fundamentals of ethical and consultative selling</li>
+                        <li>Assertive communication and introductory public speaking</li>
+                        <li>Basic pitch and sales script development</li>
+                        <li>Essential templates and tools for communication and sales</li>
+                        <li>Asynchronous Support: up to 4 messages or emails per monthly cycle, 48-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM EDGE ADVANCE</div>
+                    <div class="plan-code">(MTM-EDGE-ADVANCE-2M)</div>
+                    <p>An in-depth coaching programme to refine persuasive techniques, increase conversion rates, and master strategic sales conversations. Designed for growing consultants, entrepreneurs, and service providers seeking to close higher-value engagements with clarity and confidence.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>2 × 60-minute coaching sessions per month</li>
+                        <li>Advanced relational selling and closing strategies</li>
+                        <li>Strategic storytelling and impactful communication</li>
+                        <li>Support for high-stakes sales calls and objection handling</li>
+                        <li>Customised sales scripts and persuasion frameworks</li>
+                        <li>Asynchronous Support: up to 6 messages or emails per monthly cycle, 24–48-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <div class="plan-name">MTM EDGE ELITE</div>
+                    <div class="plan-code">(MTM-EDGE-ELITE-3M)</div>
+                    <p>A premier coaching programme for executives and high-performers aiming to master influence, secure premium deals, and lead with strategic communication authority. Tailored for founders and top-tier professionals operating in high-stakes scenarios across all interaction types.</p>
+                    <p><strong>Inclusions:</strong></p>
+                    <ul>
+                        <li>3 × 60-minute coaching sessions per month</li>
+                        <li>Mentoring in executive presence, high-level negotiation, and persuasive leadership</li>
+                        <li>Support for strategic presentations, keynote speeches, demo calls, and investor pitches</li>
+                        <li>Exclusive tools for high-performance communication and influence</li>
+                        <li>Asynchronous Support: up to 8 priority messages or emails per monthly cycle, 24-hour response window</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">5.1 Individual Sessions</div>
+                    <p>Single coaching or consulting sessions available as standalone engagements, subject to prepayment. Single sessions must be scheduled and used within thirty (30) calendar days of purchase.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">5.2 Session Packages</div>
+                    <p>Bundled packages (e.g., MTM SPRINT — 3 sessions; MTM MOMENTUM — 5 sessions) offering a defined number of sessions at agreed pricing. Packages are valid for ninety (90) calendar days from the date of the first scheduled session, unless otherwise agreed in writing.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">5.3 Monthly Subscriptions</div>
+                    <p>Recurring monthly engagements offering ongoing coaching, consulting, and support as defined in the Service Proposal. Subscriptions renew automatically unless cancelled with the required notice as stated in Section 8. Unused sessions within a billing cycle do not carry over to subsequent cycles unless explicitly agreed in writing. Unused Asynchronous Support allowance does not roll over between monthly cycles.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">5.4 Minimum Engagement Period</div>
+                    <p>All subscription plans carry a minimum engagement period of three (3) calendar months from the date of the first session delivery. Early termination prior to completion of the minimum engagement period does not relieve the Client of financial obligations for the full minimum term.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">5.5 Custom Engagements</div>
+                    <p>For corporate clients or specialised engagements, bespoke programme structures may be agreed in writing and will be governed by these Terms &amp; Conditions in addition to any specific terms set out in the applicable Service Proposal.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S6 -->
+            <section class="legal-section" id="s6">
+                <h2>6. Booking Confirmation and Payments</h2>
+                <p>No services will be scheduled, delivered, or initiated until the Company has received full payment or an approved initial deposit as specified in the Service Proposal. Payment constitutes formal acceptance of the Service Proposal, deliverables, engagement scope, and timeline.</p>
+                <div class="subsection">
+                    <div class="subsection-title">6.1 Accepted Payment Methods</div>
+                    <p>Accepted methods of payment include:</p>
+                    <ul>
+                        <li>Direct bank transfer</li>
+                        <li>PayPal or other approved online payment processors</li>
+                        <li>Cryptocurrency transfers, subject to prior written agreement and compliance with applicable legal and tax standards</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">6.2 Cryptocurrency Payments</div>
+                    <p>Where cryptocurrency is accepted as a payment method: prices remain fixed in Australian Dollars (AUD) as quoted; the Client is responsible for all network and gas fees; any shortfall due to exchange rate variance or transaction fees must be promptly rectified by the Client. Borghi Consulting™ bears no responsibility for transaction failures, delays, or underpayments resulting from third-party platforms or conversion processes.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">6.3 Subscription Billing</div>
+                    <p>For subscription-based engagements, the Client agrees to respect all scheduled payment dates. Failure to meet payment obligations on time may result in service suspension, application of late payment fees, or termination of the engagement. All accrued fees remain due regardless of service suspension or termination.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">6.4 Non-Refundable Payments</div>
+                    <p>Payments made for confirmed sessions, packages, or subscriptions are non-refundable, except in cases where service cancellation is initiated by the Company due to circumstances entirely beyond the Client's control and not attributable to any breach or failure by the Client.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S7 -->
+            <section class="legal-section" id="s7">
+                <h2>7. Pricing, Currency, and GST</h2>
+                <p>All service fees are expressed in Australian Dollars (AUD) unless otherwise stated in the Service Proposal. Fees outlined in proposals, published pricing plans, or written communications are considered accepted by the Client upon engagement confirmation.</p>
+                <p>All service fees are exclusive of Goods and Services Tax (GST) unless explicitly stated otherwise. Where GST is applicable under Australian tax regulations, it will be clearly itemised on the issued invoice and is payable in addition to the agreed service fee.</p>
+                <p>Additional charges may apply in the following circumstances:</p>
+                <ul>
+                    <li>Services requested outside the original scope of work defined in the Service Proposal</li>
+                    <li>Urgent delivery timelines or intensive support schedules outside standard engagement structure</li>
+                    <li>Extended feedback summaries, additional Asynchronous Support, or supplementary resources beyond package inclusions</li>
+                    <li>Integration of custom assessments, tools, or third-party platforms agreed at the Client's request</li>
+                    <li>Travel, accommodation, or venue costs incurred for in-person service delivery, subject to prior agreement</li>
+                </ul>
+                <div class="subsection">
+                    <div class="subsection-title">7.1 Additional Time and Out-of-Scope Support</div>
+                    <p>Each session is allocated a defined duration and each engagement package includes a specified scope of deliverables and support, as outlined in the applicable Service Proposal. The Company commits to delivering services within the agreed timeframe and scope. Where either Party identifies that the volume or complexity of work is exceeding the original scope, both Parties agree to address this promptly and in good faith.</p>
+                    <p>Where sessions extend beyond their scheduled duration, or where Asynchronous Support — including but not limited to email correspondence, messaging, document review, and written feedback — exceeds the scope defined in the confirmed package and Clause 12A of this Agreement, Borghi Consulting™ reserves the right to charge for additional time at the applicable hourly rate communicated in writing at the time of engagement or as otherwise agreed.</p>
+                    <p>Where Borghi Consulting™ anticipates or identifies that additional time will be required beyond the agreed scope, the Company will notify the Client in writing prior to incurring such additional work wherever reasonably practicable. Continued engagement following such notification constitutes the Client's acceptance of the applicable additional charge.</p>
+                    <p>All additional charges will be invoiced separately and are due within fourteen (14) calendar days of the invoice date. Failure to settle additional invoices may result in suspension of services in accordance with Section 6.3 of this Agreement.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S8 -->
+            <section class="legal-section" id="s8">
+                <h2>8. Cancellations, Rescheduling, and Contract Termination</h2>
+                <p>All cancellations, rescheduling requests, and contract terminations must be submitted in writing. Verbal or informal cancellations are not accepted and do not carry legal effect under this Agreement.</p>
+                <div class="subsection">
+                    <div class="subsection-title">8.1 Session Cancellation</div>
+                    <p>The Client must provide a minimum of twenty-four (24) hours' written notice for the cancellation or rescheduling of any coaching or consulting session. Failure to provide adequate notice or non-attendance at a confirmed session without prior notice will result in the session being deemed forfeited and fully chargeable. All sessions must be prepaid and are non-refundable once confirmed.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">8.2 Subscription Cancellation</div>
+                    <p>To cancel a monthly subscription, a written notice must be submitted at least 15 (fifteen) working days before the upcoming billing cycle begins. Cancellations submitted within this period will be applied to the following billing cycle, not the current one. The minimum three-month engagement period must be satisfied before any cancellation takes effect.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">8.3 Consumer Cooling-Off Right</div>
+                    <p>Where the Client is a consumer within the meaning of the Australian Consumer Law (Schedule 2, Competition and Consumer Act 2010 (Cth)), the Client has the right to withdraw from this Agreement within ten (10) business days from the date of contract formation without penalty, provided that no services have been delivered or commenced at the Client's request within that period. To exercise this right, the Client must notify Borghi Consulting™ in writing at admin@borghiconsulting.com within the cooling-off period. Where services have commenced at the Client's request during the cooling-off period, a proportionate charge for services delivered may apply. This clause does not limit any additional cooling-off rights that may apply under applicable legislation.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">8.4 Termination by the Company</div>
+                    <p>Borghi Consulting™ may terminate this Agreement with written notice in the following objectively defined circumstances:</p>
+                    <ul>
+                        <li>The Client has failed to make payment within ten (10) business days of a formal payment reminder following a missed payment date;</li>
+                        <li>The Client has engaged in conduct during sessions or communications that is abusive, threatening, or constitutes harassment;</li>
+                        <li>The Client has materially breached a clause of this Agreement and has failed to remedy that breach within fourteen (14) calendar days of written notice specifying the breach;</li>
+                        <li>A Force Majeure event has continued for more than thirty (30) consecutive calendar days with no reasonable prospect of resolution.</li>
+                    </ul>
+                    <p>In all other circumstances, the Company will provide fourteen (14) calendar days' written notice and a reasonable opportunity to cure prior to exercising any termination right.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">8.5 Termination by the Client</div>
+                    <p>The Client may terminate this Agreement in the following circumstances:</p>
+                    <ul>
+                        <li>Borghi Consulting™ has materially failed to deliver the contracted services and has not remedied the failure within 15 (fifteen) working days of written notice from the Client specifying the failure;</li>
+                        <li>A Force Majeure event has rendered service delivery impracticable for more than thirty (30) consecutive calendar days.</li>
+                    </ul>
+                    <p>Termination of the Agreement does not affect any accrued payment obligations or any provision of this Agreement that, by its nature, is intended to survive termination.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">8.6 Non-Circumvention</div>
+                    <p>The Client agrees not to directly or indirectly engage, retain, or contract with any individual introduced or referred by Borghi Consulting™ in the context of the Services — including coaches, collaborators, or specialist partners — for a period of eighteen (18) months following the termination or expiration of this Agreement, without the prior written consent of Borghi Consulting™.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S9 -->
+            <section class="legal-section" id="s9">
+                <h2>9. Session Validity and Engagement Periods</h2>
+                <p>All sessions within a confirmed package or subscription must be scheduled and delivered within the applicable validity period. Session credits are non-transferable and may not be assigned to another individual or organisation without prior written consent from Borghi Consulting™.</p>
+                <ul>
+                    <li>Individual sessions: valid for thirty (30) calendar days from purchase;</li>
+                    <li>Session packages (MTM SPRINT and MTM MOMENTUM): valid for ninety (90) calendar days from the date of the first scheduled session;</li>
+                    <li>Monthly subscription sessions: valid within the billing month in which they accrue and do not carry over to subsequent cycles unless agreed in writing.</li>
+                </ul>
+                <p>If the Client does not schedule or attend sessions within the applicable validity period, those sessions will be considered forfeited and are non-refundable. Borghi Consulting™ is not obligated to extend or reschedule sessions that have expired due to inactivity or unresponsiveness. Extension requests must be submitted in writing and are subject to Company approval at its sole discretion, and may incur additional administrative fees.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S10 -->
+            <section class="legal-section" id="s10">
+                <h2>10. Client Responsibilities and Conduct</h2>
+                <p>The Client agrees to maintain an active, respectful, and engaged role throughout the engagement to maximise the effectiveness of the coaching or consulting relationship.</p>
+                <div class="subsection">
+                    <div class="subsection-title">10.1 Client Responsibilities</div>
+                    <p>The Client agrees to:</p>
+                    <ul>
+                        <li>Provide accurate, timely, and complete information necessary for service delivery</li>
+                        <li>Attend scheduled sessions on time, prepared, and with a professional and open mindset</li>
+                        <li>Review and implement strategies, tools, and exercises discussed during sessions to the best of their ability</li>
+                        <li>Respond promptly to communications from Borghi Consulting™ when feedback, scheduling, or approvals are required</li>
+                        <li>Maintain respectful, professional communication in all interactions with the Company and its representatives</li>
+                        <li>Ensure access to appropriate digital tools or platforms required for online session delivery</li>
+                        <li>Use the Asynchronous Support channel in accordance with the standards and scope defined in Clause 12A of this Agreement</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">10.2 Conduct Expectations</div>
+                    <p>The Client agrees to avoid abusive, defamatory, disruptive, or inappropriate behaviour during any session or communication. Engagement with the coaching process must be conducted with integrity, openness, and a genuine commitment to growth and implementation.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">10.3 Consequences of Non-Compliance</div>
+                    <p>The Client acknowledges that the quality and impact of the Services depends heavily on their level of engagement, openness, and follow-through. Borghi Consulting™ reserves the right to suspend or terminate services without refund in the event of repeated unresponsiveness or non-cooperation, disrespectful or obstructive behaviour, or failure to meet obligations agreed in the Service Proposal. Any outstanding fees incurred prior to such suspension or termination remain due in full.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S11 -->
+            <section class="legal-section" id="s11">
+                <h2>11. Intellectual Property and Strict Usage Rights</h2>
+                <p>All intellectual property created, developed, or used by Borghi Consulting™ in connection with Managing The Management™ services, including but not limited to the M.A.N.A.G.E.™ Framework, all associated exercises, assessments, diagnostic tools, session templates, written materials, frameworks, methodologies, progress tracking systems, and any content delivered in any format, is the exclusive intellectual property of Borghi Consulting™.</p>
+                <p>Upon confirmation of engagement, the Client is granted a strictly limited, non-exclusive, non-transferable, revocable licence to use materials solely for their own personal or organisational development within the scope of the engaged services. This licence does not extend to any third party under any circumstances.</p>
+                <p>The Client expressly agrees not to:</p>
+                <ul>
+                    <li>Copy, reproduce, modify, publish, transmit, distribute, perform, display, or sell any proprietary material in any format</li>
+                    <li>Share, sublicense, or disclose any material to third parties without prior explicit written authorisation from Borghi Consulting™</li>
+                    <li>Claim authorship, co-authorship, or any intellectual property rights over any content, methodology, or framework</li>
+                    <li>Attempt to reverse-engineer, replicate, teach, or commercialise any proprietary framework or system</li>
+                    <li>Use any material for commercial purposes including training of others, development of competing products, or resale</li>
+                    <li>Present any material or method from sessions as their own intellectual property in any context</li>
+                </ul>
+                <p>These restrictions survive the termination or expiration of this Agreement indefinitely and apply to all formats including digital, printed, audio, video, and all derivative works.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S12 -->
+            <section class="legal-section" id="s12">
+                <h2>12. Prohibition on Disclosure and Distribution of Materials</h2>
+                <p>The Client acknowledges that all materials, frameworks, methodologies, session content, assessments, and information received in connection with Managing The Management™ services constitute highly proprietary and confidential information of Borghi Consulting™.</p>
+                <div class="prohibition-box">
+                    The Client is strictly and absolutely prohibited from sharing, distributing, republishing, forwarding, uploading, or otherwise disseminating any material or information received from Borghi Consulting™ to any third party, in any medium or format, without explicit prior written authorisation signed by an authorised representative of Borghi Consulting™.
+                </div>
+                <p>This prohibition applies to but is not limited to:</p>
+                <ul>
+                    <li>The M.A.N.A.G.E.™ Framework documentation and all associated exercises and tools</li>
+                    <li>Session notes, summaries, feedback documents, and written materials produced during sessions</li>
+                    <li>Assessment tools, diagnostic instruments, and progress tracking materials</li>
+                    <li>Any templates, guides, or resources provided during the engagement</li>
+                    <li>Recordings, transcripts, or any reproduction of session content in any format</li>
+                </ul>
+                <p>Any unauthorised disclosure or distribution constitutes a material breach of this Agreement and may result in:</p>
+                <ul>
+                    <li>Immediate termination of the engagement without refund</li>
+                    <li>Legal action for breach of contract, breach of confidence, and/or misappropriation of intellectual property</li>
+                    <li>Claims for compensatory, consequential, and injunctive relief</li>
+                </ul>
+                <p>The Client agrees that monetary damages alone may be an inadequate remedy for breach of this clause and expressly consents to the Company seeking injunctive or other equitable relief in addition to any other remedy available at law or in equity.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S12A -->
+            <section class="legal-section" id="s12a">
+                <h2>12A. Asynchronous Support Scope and Communication Standards</h2>
+                <div class="subsection">
+                    <div class="subsection-title">12A.1 Purpose and Scope</div>
+                    <p>This clause defines the quantitative and qualitative scope of the Asynchronous Support service included within each Managing The Management™ subscription tier. The parameters set out herein are intrinsic characteristics of the contracted service — not penalties — and are disclosed in advance as part of the material terms of this Agreement.</p>
+                    <p>Asynchronous Support is the written, non-real-time channel available to Clients between scheduled sessions. It is designed to provide targeted continuity, brief directional guidance, and practical clarification that supports — but does not substitute — the depth and structure of live coaching and consulting sessions. The scope of Asynchronous Support is calibrated per subscription tier to reflect the finite operational capacity of Borghi Consulting™ to deliver services at the standard of care required by the Australian Consumer Law (Schedule 2, Competition and Consumer Act 2010 (Cth)) ("ACL") across all active engagements.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">12A.2 Tier-Specific Asynchronous Support Entitlements</div>
+                    <p>The following entitlements form part of the contracted service for each subscription tier. The Asynchronous Support allowance is a per-monthly-cycle entitlement and does not accumulate or carry forward between billing cycles.</p>
+
+                    <div class="plan-box">
+                        <div class="plan-name">MTM FOUNDATION (MTM-FOUNDATION-1M)</div>
+                        <p>Asynchronous Support: up to 4 messages or emails per monthly cycle | Response window: 48 hours</p>
+                        <p>Appropriate use of this entitlement includes:</p>
+                        <ul>
+                            <li>Brief questions arising directly from the monthly session, requiring short directional answers</li>
+                            <li>Scheduling or administrative matters related to the engagement</li>
+                            <li>Sharing a concise update or reflection on a task or objective discussed in session</li>
+                            <li>Seeking a brief reframe or motivational cue on a matter previously addressed in session</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-box">
+                        <div class="plan-name">MTM ELEVATE (MTM-ELEVATE-2M)</div>
+                        <p>Asynchronous Support: up to 6 messages or emails per monthly cycle | Response window: 24–48 hours</p>
+                        <p>Appropriate use of this entitlement includes:</p>
+                        <ul>
+                            <li>Follow-up questions on strategic or communication insights covered across either monthly session</li>
+                            <li>Sharing progress updates, observations, or interim reflections on applied frameworks</li>
+                            <li>Brief requests for resource references, tool recommendations, or reading suggestions</li>
+                            <li>Practical questions arising from client interactions, management situations, or professional challenges discussed in session</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-box">
+                        <div class="plan-name">MTM MASTERY (MTM-MASTERY-3M)</div>
+                        <p>Asynchronous Support: up to 8 priority messages or emails per monthly cycle | Response window: 24 hours</p>
+                        <p>Appropriate use of this entitlement includes:</p>
+                        <ul>
+                            <li>Priority support for high-stakes situations requiring timely written input between sessions</li>
+                            <li>Sharing strategic reflections, leadership challenges, or performance data for brief written feedback</li>
+                            <li>Requesting a concise written perspective on a decision, communication, or leadership scenario</li>
+                            <li>Coordinating preparation materials, pre-session agendas, or resource review ahead of scheduled sessions</li>
+                        </ul>
+                    </div>
+
+                    <div class="plan-box">
+                        <div class="plan-name">MTM EDGE™ Track — Asynchronous Support</div>
+                        <p>MTM EDGE ESSENTIAL and MTM EDGE ADVANCE follow the same Asynchronous Support entitlements as MTM FOUNDATION and MTM ELEVATE respectively. MTM EDGE ELITE follows the same entitlement as MTM MASTERY. All usage within the MTM EDGE™ track must remain within the communication and sales coaching scope of the engaged programme.</p>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">12A.3 The Professional Engagement Standard</div>
+                    <p>All written communications submitted through the Asynchronous Support channel must comply with the Professional Engagement Standard. A communication meets the Professional Engagement Standard if it is:</p>
+                    <ul>
+                        <li>directly and specifically connected to the Client's active programme content, coaching objectives, current deliverables, or a matter arising from a scheduled session;</li>
+                        <li>proportionate in volume and length to the nature of the query and the Client's subscription tier;</li>
+                        <li>consolidated into a single, complete communication rather than submitted as a series of fragmented or sequential messages on the same subject matter within the same response window; and</li>
+                        <li>not duplicative of content already addressed in a prior session, a prior written response, or programme materials already delivered to the Client.</li>
+                    </ul>
+                    <p>The Asynchronous Support channel is designed for targeted written continuity — it is not a substitute for a live coaching or consulting session, and communications that, by their scope or depth, require session-quality engagement will be redirected accordingly.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">12A.4 Indicative Scope Thresholds</div>
+                    <p>The following thresholds provide practical guidance on the scope of communications that fall within the Professional Engagement Standard. They are not absolute numerical caps but represent the range within which communications are presumed to be appropriate to the contracted service.</p>
+                    <p>Communications that are consistently indicative of use beyond the contracted service scope include:</p>
+                    <ul>
+                        <li>Submission of messages that individually exceed 500 characters in length where a live session would be the appropriate format for the matter in question;</li>
+                        <li>Submission of multiple extended messages within the same response window that, in aggregate, constitute a session-level engagement;</li>
+                        <li>Submission of fragmented sequential messages on a single topic that, if addressed in their entirety, would require the dedicated attention of a scheduled session;</li>
+                        <li>Requests for comprehensive strategic analysis, multi-layered coaching walkthroughs, or detailed programme planning that by their nature require the structure and depth of a live session; and</li>
+                        <li>Repetitive queries on matters previously addressed in a session or prior written response, where no materially new information or development has been provided by the Client.</li>
+                    </ul>
+                    <p>Where a longer communication is genuinely necessary — for example, to provide contextual background that cannot otherwise be communicated concisely — the Client is encouraged to flag this at the outset and to consolidate all relevant context into a single communication.</p>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">12A.5 Graduated Response Mechanism</div>
+                    <p>Where Borghi Consulting™ determines, acting reasonably and in good faith, that a Client's Asynchronous Support usage in a given cycle falls outside the Professional Engagement Standard, the following graduated response mechanism applies:</p>
+                    <ul>
+                        <li><strong>Redirect Notice.</strong> Borghi Consulting™ will notify the Client in writing that their Asynchronous Support usage in the relevant period exceeds the scope of the contracted service. The notice will identify the nature of the excess and invite the Client to consolidate any outstanding matters for discussion at their next scheduled session.</li>
+                        <li><strong>Consolidation and Deferral.</strong> Where usage continues beyond the Professional Engagement Standard following a Redirect Notice, Borghi Consulting™ may consolidate outstanding Asynchronous Support queries and defer them to the Client's next scheduled session. This does not constitute a failure to respond within the applicable response window and does not affect the Client's entitlement to their scheduled sessions, which remain unaltered.</li>
+                        <li><strong>Tier Review and Upgrade Recommendation.</strong> Where the pattern of Asynchronous Support usage indicates that the Client's actual support requirements materially and consistently exceed those of their current subscription tier, Borghi Consulting™ will, in good faith, recommend an upgrade to a higher tier better aligned to the Client's engagement needs. No financial penalty, suspension, or termination of the Agreement shall be imposed solely on the basis of Asynchronous Support over-use without prior written notice and a reasonable opportunity for the Client to adjust usage or elect an appropriate tier upgrade.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">12A.6 Preservation of Statutory Rights</div>
+                    <p>Nothing in this Clause 12A shall be construed to limit or restrict the Client's right to communicate with Borghi Consulting™ for the following purposes, which are expressly preserved regardless of tier entitlements or usage patterns:</p>
+                    <ul>
+                        <li>lodging a formal complaint or invoking the dispute resolution procedure under Clause 20 of this Agreement;</li>
+                        <li>exercising any right or remedy available under the Australian Consumer Law, including the right to seek redress for a failure to comply with a consumer guarantee under Part 3-2 of the ACL;</li>
+                        <li>submitting a request to access or correct personal information held by Borghi Consulting™ in accordance with the Privacy Act 1988 (Cth) and the Privacy Policy set out in Part B of this document; and</li>
+                        <li>notifying Borghi Consulting™ of any urgent matter bearing on the safety, wellbeing, or professional circumstances of the Client where immediate written notification is reasonably necessary.</li>
+                    </ul>
+                    <p>Communications submitted for any purpose listed in Clause 12A.6 do not count toward the monthly Asynchronous Support allowance and will be addressed promptly irrespective of the applicable response window.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S13 -->
+            <section class="legal-section" id="s13">
+                <h2>13. Confidentiality and Non-Disclosure</h2>
+                <p>Borghi Consulting™ acknowledges that all information shared by the Client during the engagement, whether written, spoken, or shared digitally, is treated as strictly confidential. This includes but is not limited to personal or professional background, performance data, life goals, strategic business plans, internal team dynamics, and any materials generated during sessions.</p>
+                <div class="subsection">
+                    <div class="subsection-title">13.1 Company Obligations</div>
+                    <p>Borghi Consulting™ agrees to:</p>
+                    <ul>
+                        <li>Use confidential information solely for the delivery of Services under this Agreement</li>
+                        <li>Protect all Client information from unauthorised access, use, or disclosure</li>
+                        <li>Not share or disclose any Client-related data to third parties without prior written consent, unless required by law</li>
+                    </ul>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">13.2 Client Obligations</div>
+                    <p>The Client equally agrees to treat all proprietary materials, frameworks, methodologies, tools, and content provided by Borghi Consulting™ as strictly confidential and to refrain from reproducing, distributing, or using any such content outside the scope of the agreed Services without prior written permission.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">13.3 Duration</div>
+                    <p>This mutual confidentiality obligation remains valid during the engagement and for a period of two (2) years following its termination or expiration. Obligations regarding intellectual property and proprietary materials survive indefinitely.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">13.4 Exceptions</div>
+                    <p>Confidentiality obligations do not apply to information that: is already publicly available through no breach of this Agreement; is lawfully obtained from a third party without breach of confidentiality; or is independently developed without reference to the confidential information of the disclosing Party.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">13.5 Notification of Breach</div>
+                    <p>Each Party agrees to promptly notify the other in writing upon becoming aware of any actual or suspected breach of confidentiality obligations.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S14 -->
+            <section class="legal-section" id="s14">
+                <h2>14. Subcontractors and External Partners</h2>
+                <p>Borghi Consulting™ reserves the right to engage authorised subcontractors, collaborators, or third-party professionals to support service delivery under the Managing The Management™ division. All such parties operate under the supervision and responsibility of Borghi Consulting™ and are bound by confidentiality obligations and professional standards equivalent to those in this Agreement.</p>
+                <p>The Client agrees not to engage directly with any collaborator introduced during the engagement for independent services without the Company's prior written consent, and not to circumvent Borghi Consulting™ to establish independent commercial relationships with any subcontractor involved in the engagement.</p>
+                <p>Unauthorised engagement of Company collaborators outside the scope of this Agreement may result in immediate termination and may lead to legal or financial consequences. Borghi Consulting™ retains full discretion in selecting or replacing collaborators based on availability, expertise, or service continuity.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S15 -->
+            <section class="legal-section" id="s15">
+                <h2>15. Performance, Attribution, and No-Guarantee Disclaimer</h2>
+                <p>Borghi Consulting™ commits to delivering all coaching and consulting services with professionalism, integrity, and a genuine focus on measurable personal and professional development. However, the Client acknowledges that:</p>
+                <ul>
+                    <li>Coaching and consulting outcomes are influenced by the Client's level of engagement, personal readiness, operating environment, and consistent implementation of strategies</li>
+                    <li>No specific result — including but not limited to promotions, career changes, revenue increases, team performance outcomes, or behavioural transformation — is guaranteed unless explicitly stated in writing</li>
+                    <li>All goals, metrics, or key performance indicators discussed during the engagement are directional and developmental, not enforceable contractual outcomes</li>
+                </ul>
+                <p>Borghi Consulting™ may request the Client's consent to use anonymised excerpts, testimonials, or narrative summaries of engagement progress for educational or promotional purposes. No confidential or identifying details will be shared without prior written approval from the Client.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S16 -->
+            <section class="legal-section" id="s16">
+                <h2>16. Exclusivity and Conflicts of Interest</h2>
+                <p>Unless otherwise agreed in writing, this Agreement does not grant the Client exclusivity over any specific methodology, framework, consultant, or service structure within Borghi Consulting™. The Company may provide equivalent or similar coaching and consulting services to other individuals or organisations, including those in comparable industries or roles.</p>
+                <p>Borghi Consulting™ commits to maintaining strict professional boundaries and confidentiality across all client engagements to prevent any conflict of interest. Should the Client wish to establish exclusive access to a specific consultant, time allocation, or service structure, this must be formally requested and agreed in writing. Additional fees or retainer arrangements will apply.</p>
+                <p>If a potential conflict of interest is identified by either Party, both Parties agree to disclose it promptly and seek a mutually acceptable resolution in good faith.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S17 -->
+            <section class="legal-section" id="s17">
+                <h2>17. Liability and Indemnity</h2>
+                <p>To the fullest extent permitted by law, Borghi Consulting™ shall not be held liable for any indirect, incidental, special, consequential, or punitive damages — including but not limited to loss of income, missed opportunities, psychological distress, reputational impact, or unrealised outcomes — arising from the use of its coaching or consulting services.</p>
+                <p>The Company's total cumulative liability under this Agreement shall be strictly limited to the total amount paid by the Client for Services in the thirty (30) calendar days preceding the event giving rise to the claim.</p>
+                <p>The Client agrees to indemnify and hold harmless Borghi Consulting™, including its founders, consultants, employees, agents, and subcontractors, from any claims, damages, losses, costs, or legal fees resulting from:</p>
+                <ul>
+                    <li>Misuse or misinterpretation of advice, tools, or materials provided</li>
+                    <li>Breach of this Agreement by the Client</li>
+                    <li>Unauthorised use, disclosure, or distribution of proprietary materials</li>
+                    <li>Negligent, unlawful, or unauthorised actions undertaken by the Client in connection with the Services</li>
+                </ul>
+                <p>This indemnity clause remains enforceable beyond the termination or expiration of this Agreement.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S18 -->
+            <section class="legal-section" id="s18">
+                <h2>18. Force Majeure</h2>
+                <p>Borghi Consulting™ shall not be liable for any failure or delay in performing its obligations where such failure or delay results from circumstances beyond its reasonable control, including but not limited to natural disasters, fires, floods, or extreme weather; epidemics, pandemics, or public health emergencies; government actions, restrictions, or legal directives; internet outages, cyberattacks, or technical failures; acts of war, terrorism, or civil unrest; or illness, injury, or unavailability of key personnel.</p>
+                <p>In the event of Force Majeure, the affected Party shall promptly notify the other in writing. Obligations shall be suspended for the duration of the Force Majeure period, and both Parties shall cooperate in good faith to reschedule or modify services where feasible.</p>
+                <p>If a Force Majeure event continues for more than thirty (30) consecutive calendar days, either Party may terminate this Agreement in writing without further liability, except in respect of services already delivered or committed.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S19 -->
+            <section class="legal-section" id="s19">
+                <h2>19. Digital Acceptance and Signature</h2>
+                <p>By confirming a Service Proposal, submitting payment, or participating in any session or engagement activity, the Client acknowledges and agrees to be legally bound by the terms of this Agreement.</p>
+                <p>Digital acceptance includes but is not limited to: a signed digital or scanned copy of the Agreement or Proposal; written confirmation via email or secure messaging platform; affirmative responses using symbols or confirmatory language such as "Confirmed", "Agreed", or "Accepted"; or completion of payment or booking of a session.</p>
+                <p>Such digital acceptance holds full legal validity and enforceability equivalent to a handwritten signature under the Electronic Transactions Act 2011 (WA) and the Electronic Transactions Act 1999 (Cth). The Client is responsible for ensuring that acceptance is executed by an authorised representative where acting on behalf of an organisation. Ongoing use of Borghi Consulting™'s services constitutes continued agreement to the most recent version of these Terms.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S20 -->
+            <section class="legal-section" id="s20">
+                <h2>20. Governing Law and Jurisdiction</h2>
+                <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Western Australia, Commonwealth of Australia, without regard to conflict of law principles. Any dispute, controversy, or claim arising out of or relating to this Agreement — including its interpretation, enforcement, performance, or alleged breach — shall be subject to the exclusive jurisdiction of the courts of Western Australia.</p>
+                <p>Both Parties agree to submit to the personal jurisdiction of these courts and waive any objection based on venue or forum non conveniens. Before initiating formal legal proceedings, the Parties agree to make reasonable good faith efforts to resolve disputes through direct negotiation and discussion. This clause does not prevent either Party from seeking urgent interim or injunctive relief in any court of competent jurisdiction.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S21 -->
+            <section class="legal-section" id="s21">
+                <h2>21. Amendments, Entire Agreement, and Severability</h2>
+                <p>This Agreement constitutes the entire agreement between the Parties regarding the subject matter and supersedes all prior proposals, discussions, understandings, representations, and agreements, whether oral or written. No verbal statements, informal exchanges, or external communications shall modify or alter the terms of this Agreement unless explicitly incorporated in a written amendment accepted by both Parties.</p>
+                <p>No amendment, modification, or waiver shall be valid unless made in writing and signed or digitally accepted by both Parties. Changes to session frequency, content scope, pricing, or engagement duration must be documented through an updated Service Proposal or formal written addendum.</p>
+                <p>If any provision of this Agreement is found invalid, unlawful, or unenforceable by a court of competent jurisdiction, it shall be modified to the minimum extent necessary to render it enforceable. If modification is not possible, the invalid provision shall be severed and the remaining provisions shall continue in full force and effect. Both Parties agree to negotiate in good faith to replace any severed provision with a valid alternative that reflects the original intent.</p>
+                <p>Nothing in this Agreement excludes, restricts, or modifies any right or remedy available to a consumer under the Australian Consumer Law (Schedule 2, Competition and Consumer Act 2010 (Cth)) to the extent that such exclusion, restriction, or modification would be unlawful.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S22 -->
+            <section class="legal-section" id="s22">
+                <h2>22. Non-Assignment</h2>
+                <p>Neither Party may assign, transfer, delegate, subcontract, or otherwise dispose of its rights or obligations under this Agreement, in whole or in part, without the prior written consent of the other Party. Any attempted assignment without such consent shall be null and void and shall constitute a material breach of this Agreement.</p>
+                <p>This restriction includes transfers resulting from merger, acquisition, internal restructuring, or outsourcing. Borghi Consulting™ reserves the right to engage authorised internal or external collaborators under its direct supervision without this constituting an assignment. This clause survives the termination of the Agreement.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S23 -->
+            <section class="legal-section" id="s23">
+                <h2>23. Governing Language</h2>
+                <p>This Agreement is drafted in English and shall be interpreted and enforced according to its English-language version. In the event of any discrepancy or conflict between this version and any translation provided for informational purposes, the English version shall prevail for all legal, interpretative, and procedural purposes. Any translation carries no legal weight unless expressly approved in writing by both Parties.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+
+            <!-- PART B -->
+            <div class="part-header" id="part-b">
+                <h2>Part B — <span>Privacy Policy</span></h2>
+            </div>
+
+            <!-- S24 -->
+            <section class="legal-section" id="s24">
+                <h2>24. Introduction and Privacy Commitment</h2>
+                <p>Borghi Consulting™, through its Managing The Management™ division ("we", "us", "our"), is committed to protecting the privacy and personal information of all Clients and individuals who interact with our services. This Privacy Policy sets out how we collect, hold, use, and disclose personal information in accordance with the Privacy Act 1988 (Cth), the Australian Privacy Principles (APPs), and where applicable, the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and other relevant international data protection laws.</p>
+                <p>By accessing or using our services, you acknowledge that you have read and understood this Privacy Policy and agree to the practices described herein. If you do not agree, please do not use our services or provide us with your personal information.</p>
+                <p>We are committed to transparency, accountability, and responsible data handling. We implement policies and procedures to manage personal information responsibly, regularly review our practices, and maintain documentation of our data processing activities as required by applicable laws.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S25 -->
+            <section class="legal-section" id="s25">
+                <h2>25. Information We Collect</h2>
+                <div class="subsection">
+                    <div class="subsection-title">25.1 Personal Identification Information</div>
+                    <p>We may collect full name, email address, phone number, postal address, company name and role, and date of birth where necessary for service delivery.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">25.2 Engagement and Session Data</div>
+                    <p>In connection with coaching and consulting services, we may collect and retain session notes, coaching summaries, personal and professional background information shared voluntarily, goal-setting documentation, assessment results, progress records, and communications exchanged during the engagement. This information is used solely for service delivery and is treated with the highest level of confidentiality.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">25.3 Technical and Usage Data</div>
+                    <p>When you visit our digital platforms, we may collect IP address, browser type and version, device information, referrer URL, date and time of access, pages visited, and clickstream data.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">25.4 Marketing and Communication Data</div>
+                    <p>Email addresses, names, and communication preferences collected for newsletters and marketing, records of communications sent and received, and participation in surveys or promotions.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">25.5 Transaction and Billing Data</div>
+                    <p>Billing and payment information, transaction details, and payment method references including masked card numbers or payment processor information.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">25.6 Social Media Information</div>
+                    <p>Public profile details, interactions, and engagement data where you interact with our official social media channels.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S26 -->
+            <section class="legal-section" id="s26">
+                <h2>26. Purposes for Using Your Information</h2>
+                <p>We collect and use your personal information for the following purposes, each based on a lawful ground under applicable privacy law:</p>
+                <ul>
+                    <li><strong>Service Delivery and Administration:</strong> To provide, operate, and maintain our coaching, consulting, and advisory services; to manage client accounts; to process payments; to respond to inquiries; and to deliver all materials, resources, and session outputs.</li>
+                    <li><strong>Coaching Continuity:</strong> To maintain session notes, assessments, and engagement records that support the continuity and progressive development of the coaching relationship across sessions.</li>
+                    <li><strong>Communication:</strong> To contact you regarding service updates, account status, changes to terms and policies, and to respond to your inquiries and requests.</li>
+                    <li><strong>Service Improvement:</strong> To analyse usage patterns, perform quality assessments, and improve the quality and functionality of our services.</li>
+                    <li><strong>Marketing:</strong> To send newsletters, event invitations, and updates about services where you have provided consent. You may opt out at any time.</li>
+                    <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, tax obligations, reporting requirements, and government directives.</li>
+                    <li><strong>Protection of Rights:</strong> To detect, prevent, and address fraud, security incidents, and harmful activities, and to enforce our contractual and intellectual property rights.</li>
+                </ul>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S27 -->
+            <section class="legal-section" id="s27">
+                <h2>27. Disclosure of Personal Information</h2>
+                <p>We may disclose your personal information only in the following circumstances:</p>
+                <ul>
+                    <li><strong>Internal Disclosure:</strong> To employees and authorised contractors who require information to perform their duties, bound by strict confidentiality obligations.</li>
+                    <li><strong>External Service Providers:</strong> To trusted third-party providers including hosting, CRM, payment processing, IT support, and analytics services, contractually bound to maintain confidentiality and security.</li>
+                    <li><strong>Legal Authorities:</strong> To government agencies, regulatory bodies, or law enforcement when required by law, court order, or regulatory directive.</li>
+                    <li><strong>Business Transactions:</strong> To potential buyers or investors in the event of a merger, acquisition, or sale of assets, under strict confidentiality conditions.</li>
+                    <li><strong>With Consent:</strong> For any other purpose where explicit, informed consent has been provided.</li>
+                </ul>
+                <p>We do not sell, lease, or trade your personal information to third parties for commercial purposes.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S28 -->
+            <section class="legal-section" id="s28">
+                <h2>28. Client Data Approval and Consent</h2>
+                <p>Borghi Consulting™ handles all Client data with the utmost care and transparency. Certain uses of personal information require specific Client approval.</p>
+                <div class="subsection">
+                    <div class="subsection-title">28.1 Consent for Coaching Data Processing</div>
+                    <p>By engaging with Managing The Management™ services and accepting this Agreement, the Client consents to the collection, storage, and use of personal and professional information shared during the engagement for the exclusive purpose of delivering the coaching and consulting services. This includes session notes, assessments, progress records, and engagement summaries. This data will not be used for any purpose beyond service delivery, will not be shared with third parties without consent, and will be retained only for the minimum period necessary.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">28.2 Consent for Marketing Communications</div>
+                    <p>Your consent for marketing communications may be provided at subscription or onboarding and may be withdrawn at any time by contacting admin@borghiconsulting.com or following unsubscribe instructions in any communication. Withdrawal does not affect processing carried out prior to withdrawal.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">28.3 Media and Testimonial Consent</div>
+                    <p>Use of your name, likeness, or testimonial for promotional purposes is subject to your separate written consent where required by applicable law. You may revoke consent for future use of Media Materials at any time by written request.</p>
+                </div>
+                <div class="subsection">
+                    <div class="subsection-title">28.4 Right to Withdraw Consent</div>
+                    <p>Where processing is based on consent, you may withdraw that consent at any time by contacting admin@borghiconsulting.com with the subject line "Consent Withdrawal Request". Withdrawal does not affect the lawfulness of processing carried out before withdrawal.</p>
+                </div>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S29 -->
+            <section class="legal-section" id="s29">
+                <h2>29. Data Security</h2>
+                <p>We implement a combination of technical, organisational, and procedural security measures to protect your personal information from misuse, interference, loss, unauthorised access, modification, or disclosure, including:</p>
+                <ul>
+                    <li>Encryption of sensitive data in transit (SSL/TLS) and at rest where applicable</li>
+                    <li>Secure hosting environments with restricted access controls</li>
+                    <li>Strong authentication methods and least-privilege access principles</li>
+                    <li>Firewalls, intrusion detection systems, and regular security testing</li>
+                    <li>Mandatory staff and contractor training on privacy and cybersecurity</li>
+                    <li>Confidentiality agreements binding all personnel with data access</li>
+                    <li>A comprehensive Data Breach Response Plan to promptly detect, manage, and mitigate security incidents</li>
+                </ul>
+                <p>In the event of a confirmed data breach, we will identify and contain the breach, assess associated risks, notify affected individuals and regulatory authorities as required by law, and take corrective action. While we implement robust security measures, no internet transmission can be guaranteed as 100% secure.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S30 -->
+            <section class="legal-section" id="s30">
+                <h2>30. Data Retention</h2>
+                <p>We retain personal information only for as long as necessary to fulfil the purposes for which it was collected, or as required by legal, regulatory, or contractual obligations. Our retention policies are:</p>
+                <ul>
+                    <li><strong>Client and Service User Data:</strong> Retained for 7 years after completion of the client relationship to comply with legal obligations and respond to potential claims.</li>
+                    <li><strong>Coaching Session Data:</strong> Session notes, assessments, and engagement records retained for the duration of the engagement and up to 2 years thereafter for quality assurance and continuity, then securely deleted or anonymised.</li>
+                    <li><strong>Marketing and Communication Data:</strong> Retained until consent is withdrawn or opt-out is received, or after 2 years of inactivity.</li>
+                    <li><strong>Financial and Contractual Records:</strong> Retained for a minimum of 7 years from the transaction or contract end date per ATO requirements.</li>
+                    <li><strong>Website Technical Data:</strong> Retained for a maximum of 26 months unless aggregated and anonymised.</li>
+                </ul>
+                <p>When personal information is no longer required, we securely destroy or de-identify it using industry-standard methods ensuring it cannot be reconstructed or retrieved.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S31 -->
+            <section class="legal-section" id="s31">
+                <h2>31. Your Rights Under Australian Law</h2>
+                <p>Under the Privacy Act 1988 (Cth) and the Australian Privacy Principles, you have the right to:</p>
+                <ul>
+                    <li>Request confirmation of whether we hold personal information about you and access that information</li>
+                    <li>Request correction of inaccurate, out-of-date, incomplete, irrelevant, or misleading information</li>
+                    <li>Withdraw consent for processing where applicable</li>
+                    <li>Lodge a complaint with us if you believe we have breached your privacy rights</li>
+                    <li>Escalate unresolved complaints to the Office of the Australian Information Commissioner (OAIC) at www.oaic.gov.au, phone 1300 363 992</li>
+                </ul>
+                <p>To exercise any right, contact us at admin@borghiconsulting.com with the subject line "Privacy Request". We will acknowledge within 5 business days and respond substantively within 30 calendar days. There is no fee for making a request, though a reasonable administrative fee may apply for provision of large volumes of information.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S32 -->
+            <section class="legal-section" id="s32">
+                <h2>32. Cookies and Tracking Technologies</h2>
+                <p>When you interact with our websites and digital services, we may use cookies and similar technologies including pixel tags, web beacons, and local storage objects. Categories include essential cookies (necessary for website operation, no consent required), performance and analytics cookies (require opt-in), functional cookies (require consent), and targeting and advertising cookies (require explicit opt-in).</p>
+                <p>You may manage or withdraw cookie consent by adjusting browser settings, using our Cookie Management Tool where implemented, or opting out of specific third-party providers. Disabling certain cookies may affect website functionality. Third-party cookies placed by integrated services are subject to those parties' own privacy policies.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S33 -->
+            <section class="legal-section" id="s33">
+                <h2>33. International Data Transfers</h2>
+                <p>As part of delivering our services, we may transfer your personal information outside Australia to countries where our technology providers operate, including the United States, the European Economic Area, and Singapore. We take reasonable steps to ensure that all overseas recipients are bound by contractual obligations protecting your information to a standard comparable to the Australian Privacy Principles. In cases where no other safeguard is available, transfers occur based on your explicit, informed consent following full disclosure of associated risks.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S34 -->
+            <section class="legal-section" id="s34">
+                <h2>34. Children's Privacy</h2>
+                <p>Our services are not directed to individuals under 15 years of age in Australia (or 16 years in GDPR jurisdictions). We do not knowingly collect personal information from minors without verifiable parental or guardian consent. If we become aware of such collection, we will promptly delete the information and notify relevant authorities where required. Parents or guardians who believe we may hold information about a minor should contact admin@borghiconsulting.com.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S35 -->
+            <section class="legal-section" id="s35">
+                <h2>35. International Users</h2>
+                <p>We recognise that individuals outside Australia may have additional rights under local privacy legislation including the GDPR (EEA/UK), CCPA/CPRA (California), PIPEDA (Canada), and LGPD (Brazil). We endeavour to honour all valid privacy rights requests to the fullest extent permissible. International users may contact admin@borghiconsulting.com with the subject line "International Privacy Request" and we will respond in accordance with applicable laws within the legally required timeframe.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S36 -->
+            <section class="legal-section" id="s36">
+                <h2>36. Changes to This Privacy Policy</h2>
+                <p>We review and update this Privacy Policy at least annually and immediately upon material changes to applicable laws or our data practices. Material changes will be communicated via a prominent notice on our website, and the Effective Date will be updated accordingly. Where changes impact the legal basis of processing, we will seek renewed consent where required by law. Minor amendments may be made without direct notification but will be incorporated into the latest published version. Previous versions are archived and available upon request.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S37 -->
+            <section class="legal-section" id="s37">
+                <h2>37. Contact and Data Protection Officer</h2>
+                <p>For any questions, concerns, or requests regarding this document, your personal information, or our data protection practices, please contact:</p>
+                <div class="disclaimer-box" style="font-style:normal;">
+                    <strong>Privacy Officer &amp; Data Protection Officer</strong><br>
+                    Borghi Consulting™ — Managing The Management™<br>
+                    Email: <a href="mailto:admin@borghiconsulting.com" style="color:var(--text-dark);">admin@borghiconsulting.com</a><br>
+                    (Subject line: "Privacy Inquiry" or "Attention DPO")
+                </div>
+                <p>We will acknowledge receipt of your inquiry within 5 business days and aim to respond substantively within 30 calendar days unless the matter requires additional investigation, in which case we will notify you of the extended timeframe.</p>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+            <hr class="section-rule">
+
+            <!-- S38 -->
+            <section class="legal-section" id="s38">
+                <h2>38. Governing Law and Definitions</h2>
+                <p>This Privacy Policy is governed by the laws of the Commonwealth of Australia and the State of Western Australia. Any disputes arising in connection with this Privacy Policy are subject to the exclusive jurisdiction of the courts of Western Australia.</p>
+                <h3>Key Definitions</h3>
+                <ul>
+                    <li><strong>Personal Information:</strong> Any information or opinion about an identified or reasonably identifiable individual, whether recorded in material form or not, including name, contact details, and session-related data.</li>
+                    <li><strong>Sensitive Information:</strong> A subset of personal information attracting heightened protection, including health information, genetic or biometric data, racial or ethnic origin, sexual orientation, criminal record, and political, religious, or philosophical beliefs.</li>
+                    <li><strong>Processing:</strong> Any operation performed on personal information including collection, recording, storage, use, disclosure, and erasure.</li>
+                    <li><strong>Consent:</strong> A freely given, specific, informed, and unambiguous indication of agreement to the processing of personal information, withdrawable at any time without penalty.</li>
+                    <li><strong>Data Breach:</strong> Unauthorised access, disclosure, loss, or other incident compromising the confidentiality, integrity, or availability of personal information, requiring assessment and notification where applicable under law.</li>
+                </ul>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-brand">Borghi <span>Consulting™</span></div>
+        <span class="footer-script">Managing The Management™</span>
+        <div class="footer-meta">ABN 77 502 124 916 &nbsp;|&nbsp; State of Western Australia, Australia</div>
+        <div class="footer-disclaimer">
+            This document contains proprietary and confidential information of Borghi Consulting™. All intellectual property rights are reserved. Unauthorised disclosure, reproduction, or distribution is strictly prohibited and may result in legal action.<br><br>
+            Borghi Consulting™ (ABN 77 502 124 916) — Managing The Management™ &nbsp;|&nbsp; T&amp;C &amp; Privacy Policy &nbsp;|&nbsp; Confidential
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
