@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Borghi Consulting™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black:      #000000;
+            --white:      #FFFFFF;
+            --yellow:     #FFD100;
+            --azure:      #00A3E0;
+            --azure-soft: #A8D8EA;
+            --bg:         #F5F7FA;
+            --surface:    #FFFFFF;
+            --text-dark:  #111111;
+            --text-body:  #3A3A3A;
+            --text-muted: #888888;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-body); overflow-x: hidden; line-height: 1.75; }
+
+        /* HEX BACKGROUND */
+        .hex-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .hex-bg svg { width: 100%; height: 100%; }
+
+        .wrap { position: relative; z-index: 1; }
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
+
+        h1,h2,h3,h4,h5 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; color: var(--text-dark); line-height: 1.05; }
+        .script { font-family: 'Dancing Script', cursive; color: var(--azure); font-size: 2.4rem; line-height: 1.2; }
+        p { margin-bottom: 1.1rem; }
+        p:last-child { margin-bottom: 0; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.2rem 2.5rem; background: rgba(245,247,250,0.90); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,209,0,0.22); }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: 0.12em; color: var(--text-dark); text-decoration: none; }
+        .nav-logo span { color: var(--azure); }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; }
+        .hero-eyebrow { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .hero h1 { font-size: clamp(3.5rem,10vw,8rem); margin-bottom: 0.3rem; }
+        .hero .script { display: block; margin-bottom: 3rem; font-size: clamp(1.8rem,4vw,2.8rem); }
+        .hero-divider { width: 60px; height: 2px; background: var(--yellow); margin: 0 auto 3rem; }
+        .hero-tagline { max-width: 620px; font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.3rem,3vw,1.9rem); letter-spacing: 0.06em; line-height: 1.3; color: var(--text-dark); margin-bottom: 2.5rem; }
+        .hero-tagline span { color: var(--azure); }
+        .hero-body { max-width: 640px; font-size: 1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 2.5rem; }
+        .hero-body strong { color: var(--text-dark); font-weight: 600; }
+
+        .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .btn { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.12em; padding: 1rem 2.8rem; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--black); color: var(--white); border: 2px solid var(--black); }
+        .btn-primary:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+        .btn-outline { background: transparent; color: var(--black); border: 2px solid var(--black); }
+        .btn-outline:hover { background: var(--azure); color: var(--white); border-color: var(--azure); }
+
+        /* SECTIONS */
+        .section { padding: 6rem 0; }
+        .divider { width: 48px; height: 2px; background: var(--yellow); margin: 2rem 0; }
+        .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
+
+        /* HOW WE WORK */
+        .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .how-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.06); padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .how-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(0,0,0,0.06); line-height: 1; margin-bottom: 0.75rem; }
+        .how-card h4 { font-size: 1.4rem; color: var(--azure); margin-bottom: 0.75rem; }
+        .how-card p { font-size: 0.9rem; line-height: 1.75; color: var(--text-body); }
+
+        /* HIVE BLOCK STRATEGY */
+        .strategy-section { background: var(--black); color: var(--white); padding: 6rem 0; }
+        .strategy-section h2 { color: var(--white); font-size: clamp(2.5rem,5vw,4rem); margin-bottom: 0.5rem; }
+        .strategy-subtitle { font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--yellow); margin-bottom: 1.5rem; display: block; }
+        .strategy-lead { max-width: 700px; color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; margin-bottom: 3rem; }
+        .strategy-lead strong { color: var(--white); }
+
+        .blocks-list { display: flex; flex-direction: column; gap: 2px; }
+        .block-row { display: flex; align-items: stretch; gap: 2px; }
+        .block-tag { min-width: 200px; padding: 1.5rem 2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+        .block-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 0.08em; line-height: 1; }
+        .block-sublabel { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+        .block-content { flex: 1; padding: 1.5rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-left: none; }
+        .block-content p { font-size: 0.9rem; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0; }
+        .block-content p strong { color: var(--white); font-weight: 500; }
+
+        .block-seed .block-label   { color: var(--azure-soft); }
+        .block-core .block-label   { color: var(--azure); }
+        .block-flow .block-label   { color: var(--yellow); }
+        .block-innov .block-label  { color: #FF9F43; }
+        .block-yield .block-label  { color: #A8E6CF; }
+
+        .blocks-callout { margin-top: 2.5rem; border: 1px solid rgba(255,209,0,0.2); padding: 2rem 2.5rem; background: rgba(255,209,0,0.03); }
+        .blocks-callout p { font-size: 0.92rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; }
+        .blocks-callout p:last-child { margin-bottom: 0; }
+        .blocks-callout strong { color: var(--yellow); font-weight: 500; }
+
+        /* SPLIT — FLOW & SHIELD */
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+        .split-card { padding: 4rem 3rem; }
+        .split-card.dark { background: var(--black); color: var(--white); }
+        .split-card.light { background: var(--surface); }
+        .split-bar { width: 36px; height: 2px; margin-bottom: 2rem; }
+        .split-card.dark .split-bar { background: var(--azure); }
+        .split-card.light .split-bar { background: var(--yellow); }
+        .split-eyebrow { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+        .split-card.dark .split-eyebrow { color: rgba(255,255,255,0.35); }
+        .split-card.light .split-eyebrow { color: var(--text-muted); }
+        .split-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em; line-height: 1.1; margin-bottom: 1.5rem; }
+        .split-card.dark .split-title { color: var(--azure); }
+        .split-card.light .split-title { color: var(--yellow); }
+        .split-card.dark p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+        .split-card.light p { font-size: 0.9rem; line-height: 1.8; color: var(--text-body); margin-bottom: 1rem; }
+        .split-card p strong { color: inherit; font-weight: 600; }
+        .split-card.dark p strong { color: var(--white); }
+        .split-card.light p strong { color: var(--text-dark); }
+
+        /* HQEA */
+        .hqea-section { background: var(--black); color: var(--white); padding: 6rem 0; }
+        .hqea-badge { display: inline-block; background: var(--azure); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.2em; padding: 5px 14px; margin-bottom: 1.5rem; }
+        .hqea-section h2 { color: var(--white); font-size: clamp(2.5rem,5vw,4rem); margin-bottom: 0.3rem; }
+        .hqea-section h2 em { font-style: normal; color: var(--azure); }
+        .hqea-tagline { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: rgba(255,255,255,0.35); display: block; margin-bottom: 3rem; }
+        .hqea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .hqea-grid p { font-size: 0.92rem; line-height: 1.85; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+        .hqea-grid p strong { color: var(--white); font-weight: 500; }
+        .hqea-grid h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.08em; color: var(--azure); margin-bottom: 0.75rem; margin-top: 2rem; }
+        .hqea-grid h3:first-child { margin-top: 0; }
+
+        /* HQEA Principles */
+        .hqea-principles-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+        .principle-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+        .principle-item { display: flex; gap: 0; }
+        .principle-marker { background: rgba(255,255,255,0.04); min-width: 56px; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--yellow); padding: 1.2rem; border: 1px solid rgba(255,255,255,0.06); }
+        .principle-body { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-left: none; padding: 1.2rem 1.8rem; }
+        .principle-body strong { display: block; font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 3px; letter-spacing: 0.03em; }
+        .principle-body span { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+        /* COACHING */
+        .coaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+        .coaching-body p { font-size: 0.95rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1.1rem; }
+        .coaching-body p strong { color: var(--text-dark); font-weight: 600; }
+        .coaching-callout { border-left: 3px solid var(--azure); padding: 1.2rem 1.5rem; background: rgba(0,163,224,0.04); margin-top: 1.5rem; font-size: 0.88rem; line-height: 1.75; color: var(--text-body); }
+        .coaching-callout strong { color: var(--text-dark); font-weight: 600; }
+
+        /* Ecosystem table */
+        .eco-table { width: 100%; border-collapse: separate; border-spacing: 0 2px; }
+        .eco-table th { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); padding: 0 1.2rem 1rem; text-align: left; }
+        .eco-table tbody tr { background: var(--surface); }
+        .eco-table tbody tr:hover { background: rgba(0,163,224,0.04); }
+        .eco-table td { padding: 1.1rem 1.2rem; font-size: 0.85rem; line-height: 1.65; color: var(--text-body); border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .eco-table td:first-child { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.06em; color: var(--azure); white-space: nowrap; width: 230px; }
+
+        /* PROGRAMMES */
+        .programmes-section { background: var(--bg); padding: 6rem 0; }
+        .programmes-section h2 { font-size: clamp(2.5rem,5vw,4rem); margin-bottom: 0.5rem; }
+        .programmes-lead { max-width: 680px; font-size: 1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 3rem; }
+        .programmes-lead strong { color: var(--text-dark); font-weight: 600; }
+
+        .plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(0,0,0,0.06); margin-bottom: 3.5rem; }
+        .plan-card { background: var(--surface); padding: 2.2rem 1.8rem; display: flex; flex-direction: column; }
+        .plan-card.featured { background: var(--black); border-top: 2px solid var(--yellow); }
+        .plan-tier { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .plan-card.featured .plan-tier { color: var(--yellow); }
+        .plan-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.06em; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.1; }
+        .plan-card.featured .plan-name { color: var(--white); }
+        .plan-divider { width: 24px; height: 1px; background: rgba(0,0,0,0.12); margin-bottom: 1rem; }
+        .plan-card.featured .plan-divider { background: var(--yellow); }
+        .plan-desc { font-size: 0.82rem; font-weight: 300; line-height: 1.75; color: var(--text-body); flex: 1; margin-bottom: 1.5rem; }
+        .plan-card.featured .plan-desc { color: rgba(255,255,255,0.6); }
+        .plan-format-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--azure); display: block; margin-bottom: 4px; }
+        .plan-cadence { font-size: 0.82rem; color: var(--text-muted); }
+        .plan-card.featured .plan-cadence { color: rgba(255,255,255,0.45); }
+
+        /* Price & CTA additions */
+        .plan-price-wrap { margin: 1.2rem 0 1rem; }
+        .plan-price { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.02em; color: var(--text-dark); line-height: 1; }
+        .plan-card.featured .plan-price { color: var(--yellow); }
+        .plan-currency { font-size: 1.1rem; vertical-align: super; }
+        .plan-price-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 3px; }
+        .plan-card.featured .plan-price-sub { color: rgba(255,255,255,0.35); }
+        .plan-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; background: var(--yellow); color: var(--black); padding: 3px 10px; margin-bottom: 0.75rem; }
+        .plan-cta {
+            display: block; width: 100%; margin-top: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em;
+            padding: 0.85rem 1.2rem; text-align: center; text-decoration: none;
+            border: 2px solid var(--black); background: transparent; color: var(--black);
+            transition: all 0.2s; cursor: pointer;
+        }
+        .plan-cta:hover { background: var(--black); color: var(--white); }
+        .plan-card.featured .plan-cta { border-color: var(--yellow); color: var(--yellow); }
+        .plan-card.featured .plan-cta:hover { background: var(--yellow); color: var(--black); }
+
+        /* Comparison table */
+        .comparison-wrap { overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 700px; }
+        .comparison-table th { padding: 0.9rem 1.2rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; background: var(--black); color: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.07); }
+        .comparison-table th:first-child { text-align: left; }
+        .comparison-table th.hl { color: var(--yellow); }
+        .comparison-table .cat-row td { background: rgba(0,0,0,0.03); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); padding: 1rem 1.2rem 0.5rem; border-top: 1px solid rgba(0,0,0,0.06); }
+        .comparison-table tbody tr:not(.cat-row) td { background: var(--surface); padding: 0.9rem 1.2rem; font-size: 0.82rem; color: var(--text-body); border-bottom: 1px solid rgba(0,0,0,0.04); text-align: center; }
+        .comparison-table tbody tr:not(.cat-row) td:first-child { text-align: left; color: var(--text-dark); font-weight: 400; }
+        .comparison-table .hl-col { background: rgba(255,209,0,0.05) !important; }
+        .ck { color: var(--azure); font-weight: 600; }
+        .cky { color: #c8980a; font-weight: 600; }
+        .dash { color: rgba(0,0,0,0.18); }
+
+        /* IMPORTANT NOTICE */
+        .notice-section { padding: 5rem 0; background: var(--surface); }
+        .notice-box { border: 1px solid rgba(0,0,0,0.08); padding: 3rem; max-width: 820px; background: #fafafa; }
+        .notice-box p { font-size: 0.92rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1rem; }
+        .notice-box p:last-child { margin-bottom: 0; }
+        .notice-box strong { color: var(--text-dark); font-weight: 600; }
+
+        /* ENTER THE HIVE */
+        #start-path { padding: 6rem 0; }
+        .funnel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .funnel-card { background: var(--surface); border: 1px solid rgba(0,0,0,0.06); padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
+        .funnel-card h4 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .card-sub { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 2rem; font-style: italic; }
+        .cta-link { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 1.5rem; border: 1px solid rgba(0,0,0,0.08); background: #f9fafb; text-decoration: none; color: var(--text-dark); margin-bottom: 0.75rem; transition: all 0.2s; }
+        .cta-link:hover { border-color: var(--yellow); background: rgba(255,209,0,0.04); }
+        .cta-link-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.05em; color: var(--text-dark); margin-bottom: 0.2rem; }
+        .cta-link-sub { font-size: 0.72rem; color: var(--text-muted); }
+        .cta-arrow { font-size: 1.1rem; color: var(--text-muted); flex-shrink: 0; margin-left: 1rem; }
+        .channel-link { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.2rem; border: 1px solid rgba(0,0,0,0.07); background: var(--surface); text-decoration: none; color: var(--text-dark); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.6rem; transition: all 0.2s; }
+        .channel-link:hover { border-color: var(--azure); }
+        .newsletter-btn { display: block; width: 100%; text-align: center; margin-bottom: 1.5rem; }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; font-weight: 600; }
+        .private-note { font-size: 0.78rem; color: var(--text-muted); font-style: italic; line-height: 1.6; padding: 1rem 1.2rem; background: #f9fafb; border: 1px solid rgba(0,0,0,0.05); margin-top: 1rem; }
+
+        /* FOOTER */
+        footer { padding: 5rem 0 3rem; text-align: center; background: var(--surface); border-top: 1px solid rgba(255,209,0,0.2); }
+        footer h2 { font-size: clamp(4rem,12vw,8rem); margin-bottom: 0.3rem; }
+        footer .script { display: block; margin-bottom: 2.5rem; }
+        .footer-brand { font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .footer-disclaimer { max-width: 760px; margin: 0 auto; font-size: 0.67rem; color: var(--text-muted); line-height: 1.75; padding: 1.2rem 1.5rem; border-top: 1px solid rgba(0,0,0,0.06); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .how-grid { grid-template-columns: 1fr; }
+            .split-grid { grid-template-columns: 1fr; }
+            .split-card { padding: 3rem 2rem; }
+            .hqea-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .coaching-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .plans-grid { grid-template-columns: 1fr 1fr; }
+            .funnel-grid { grid-template-columns: 1fr; }
+            .block-tag { min-width: 140px; }
+            .section { padding: 4rem 0; }
+            .strategy-section, .hqea-section, .programmes-section { padding: 4rem 0; }
+        }
+        @media (max-width: 480px) {
+            .plans-grid { grid-template-columns: 1fr; }
+            .block-row { flex-direction: column; }
+            .block-tag { min-width: unset; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEX BACKGROUND -->
+<div class="hex-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+                <stop offset="60%" stop-color="#eef2f7" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#dce4ef" stop-opacity="0.5"/>
+            </linearGradient>
+            <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#e8edf5" stop-opacity="0.5"/>
+            </linearGradient>
+            <linearGradient id="hg3" x1="30%" y1="0%" x2="70%" y2="100%">
+                <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#dde6f0" stop-opacity="0.55"/>
+            </linearGradient>
+            <filter id="hs" x="-15%" y="-15%" width="130%" height="130%">
+                <feDropShadow dx="6" dy="10" stdDeviation="8" flood-color="#b8c8d8" flood-opacity="0.18"/>
+            </filter>
+            <filter id="hss" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#b0c0d0" flood-opacity="0.12"/>
+            </filter>
+        </defs>
+        <polygon filter="url(#hs)" points="-240,0 -120,-208 120,-208 240,0 120,208 -120,208" fill="url(#hg1)" stroke="rgba(255,209,0,0.28)" stroke-width="1.5" transform="translate(200,240)"/>
+        <polygon filter="url(#hs)" points="-280,0 -140,-242 140,-242 280,0 140,242 -140,242" fill="url(#hg2)" stroke="rgba(255,209,0,0.22)" stroke-width="1.5" transform="translate(1300,680)"/>
+        <polygon filter="url(#hss)" points="-160,0 -80,-139 80,-139 160,0 80,139 -80,139" fill="url(#hg3)" stroke="rgba(255,209,0,0.30)" stroke-width="1.2" transform="translate(1080,280)"/>
+        <polygon filter="url(#hss)" points="-90,0 -45,-78 45,-78 90,0 45,78 -45,78" fill="url(#hg1)" stroke="rgba(255,209,0,0.20)" stroke-width="1" transform="translate(580,520)" opacity="0.65"/>
+        <polygon filter="url(#hs)" points="-200,0 -100,-173 100,-173 200,0 100,173 -100,173" fill="url(#hg2)" stroke="rgba(255,209,0,0.18)" stroke-width="1.2" transform="translate(180,820)" opacity="0.55"/>
+        <polygon points="-60,0 -30,-52 30,-52 60,0 30,52 -30,52" fill="none" stroke="rgba(255,209,0,0.40)" stroke-width="1.5" transform="translate(820,120)"/>
+        <polygon filter="url(#hss)" points="-120,0 -60,-104 60,-104 120,0 60,104 -60,104" fill="url(#hg3)" stroke="rgba(255,209,0,0.22)" stroke-width="1" transform="translate(700,60)" opacity="0.5"/>
+        <polygon points="-100,0 -50,-87 50,-87 100,0 50,87 -50,87" fill="none" stroke="rgba(255,209,0,0.35)" stroke-width="1.5" transform="translate(1380,430)"/>
+    </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+    <span class="nav-logo">BORGHI <span>CONSULTING™</span></span>
+</nav>
+
+<div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+        <p class="hero-eyebrow">UNCRYPTO THE CRYPTO™ — <em style="font-style:italic; color:var(--azure); text-transform:none; letter-spacing:0.05em; font-family:'Dancing Script', cursive; font-size:1.4em; font-weight:600; vertical-align:middle;">Services</em></p>
+        <h1>BORGHI CONSULTING™</h1>
+        <span class="script">Alessandro &amp; Giulia</span>
+        <div class="hero-divider"></div>
+        <p class="hero-tagline">
+            STRUCTURE BEFORE SPECULATION.<br>
+            THAT'S THE PRINCIPLE.<br>
+            <span>EVERYTHING ELSE FOLLOWS.</span>
+        </p>
+        <p class="hero-body">
+            The market has tools. It has platforms. It has communities. But almost nothing that combines
+            <strong>analysis, practical application, and education</strong> into a single coherent system —
+            one built around you, scalable to your goals, and designed to hold up over time
+            regardless of what the market does. That is the gap Borghi Consulting™ exists to fill.
+        </p>
+        <div class="btn-row">
+            <a href="#programmes" class="btn btn-primary">VIEW PROGRAMMES</a>
+            <a href="#start-path" class="btn btn-outline">ENTER THE HIVE</a>
+        </div>
+    </header>
+
+    <!-- HOW WE WORK -->
+    <section class="section" id="how-we-work">
+        <div class="container">
+            <span class="section-eyebrow">The Format</span>
+            <h2>HOW WE WORK</h2>
+            <div class="divider"></div>
+            <p style="max-width:680px;font-size:1rem;line-height:1.8;color:var(--text-body);margin-bottom:0;">
+                Every client works directly with <strong>Alessandro and Giulia</strong>. No middlemen, no automation.
+                Every session is personal, prepared in advance, and followed by documented materials that you keep.
+            </p>
+            <div class="how-grid">
+                <div class="how-card">
+                    <div class="how-card-num">01</div>
+                    <h4>Coaching Sessions</h4>
+                    <p>Personal and documented. Every session is preceded by preparation and followed by structured materials — Strategy Reports, Visual Decks, Session Replays — that accumulate over time. The continuity between sessions is where the real value is built.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-card-num">02</div>
+                    <h4>Group Sessions</h4>
+                    <p>Included across programmes (scheduled at our discretion). Broader market discussion, shared learning, and the experience of working through frameworks alongside other members at a similar stage.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-card-num">03</div>
+                    <h4>Hive Risk Profile™</h4>
+                    <p>Every client engagement begins here — no exceptions. Before any session, any analysis, any framework application, we establish your structural baseline. Everything that follows is calibrated to that profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIVE BLOCK STRATEGY -->
+    <section class="strategy-section" id="hive-block-strategy">
+        <div class="container">
+            <span class="strategy-subtitle">Portfolio Architecture</span>
+            <h2>THE HIVE BLOCK STRATEGY™</h2>
+            <div class="divider" style="background:var(--yellow);margin:1.5rem 0 1.5rem;"></div>
+            <p class="strategy-lead">
+                Most people in crypto are not operating with a clear structure — whether they are just starting out or already holding assets.
+                Using the <strong>Hive Block Strategy™</strong>, you learn how to organise your holdings across five functional blocks, each with a distinct purpose and logic.
+                <strong>Without it, the market dictates your actions before you have decided them.</strong>
+            </p>
+
+            <div class="blocks-list">
+                <div class="block-row block-seed">
+                    <div class="block-tag">
+                        <span class="block-label">SEED Block™</span>
+                        <span class="block-sublabel">Foundation Layer</span>
+                    </div>
+                    <div class="block-content">
+                        <p>Stable assets and custody security that <strong>everything else is built on</strong>. The structural anchor — activated first, never bypassed.</p>
+                    </div>
+                </div>
+                <div class="block-row block-core">
+                    <div class="block-tag">
+                        <span class="block-label">CORE Block™</span>
+                        <span class="block-sublabel">Network Health Layer</span>
+                    </div>
+                    <div class="block-content">
+                        <p><strong>Long-term foundation</strong> — key assets and their role. On-chain fundamentals and network utility with demonstrated structural depth.</p>
+                    </div>
+                </div>
+                <div class="block-row block-flow">
+                    <div class="block-tag">
+                        <span class="block-label">FLOW Block™</span>
+                        <span class="block-sublabel">Technical Structure Layer</span>
+                    </div>
+                    <div class="block-content">
+                        <p>Liquidity and rotation — <strong>act without reacting</strong>. Price structure and momentum coherence with confirmed higher-timeframe market structure.</p>
+                    </div>
+                </div>
+                <div class="block-row block-innov">
+                    <div class="block-tag">
+                        <span class="block-label">INNOVATION Block™</span>
+                        <span class="block-sublabel">Narrative Expansion Layer</span>
+                    </div>
+                    <div class="block-content">
+                        <p>Emerging, <strong>thesis-driven positions</strong> — evaluate without overexposure. The highest-risk layer, accessible only once foundational structure is confirmed.</p>
+                    </div>
+                </div>
+                <div class="block-row block-yield">
+                    <div class="block-tag">
+                        <span class="block-label">YIELD Block™</span>
+                        <span class="block-sublabel">Income &amp; Compounding Layer</span>
+                    </div>
+                    <div class="block-content">
+                        <p>Staking and income — <strong>how it works and when it fits</strong>. Activated only when market coherence and client readiness both meet defined thresholds.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blocks-callout">
+                <p>Each block follows clear rules, timeframes, and monitoring logic. <strong>Nothing is random. Every position has a reason.</strong></p>
+                <p>Knowing the zone defines key decisions: allocation, review frequency, and action triggers. You learn to apply this framework consistently — with decisions set in advance, not during market pressure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITAL + SHIELD SPLIT -->
+    <div class="split-grid">
+        <div class="split-card dark" id="capital-movement">
+            <div class="split-bar"></div>
+            <span class="split-eyebrow">Understanding How Capital Moves</span>
+            <div class="split-title">Hive Flow Routes™</div>
+            <p>Every time you buy or sell, a second question follows: what happens to the funds? Most people never answer this in advance.</p>
+            <p>The <strong>Hive Flow Routes™</strong> framework helps you define capital movement before acting — where funds come from, where they go, and why. This applies to any transaction: entering, adding, taking profits, or stepping back.</p>
+            <p>The goal is not automation. It is removing reactive thinking. When your routing logic is clear beforehand, you stop improvising and follow a structure you built, with a reason behind every step.</p>
+            <p>The same logic applies when receiving cryptocurrency as payment. Getting paid in crypto is simple. <strong>Knowing what to do with it is where the work begins.</strong></p>
+        </div>
+        <div class="split-card light" id="protection">
+            <div class="split-bar"></div>
+            <span class="split-eyebrow">Protecting What You Have Built</span>
+            <div class="split-title">Hive Shield Protocol™</div>
+            <p>A well-organised approach to crypto still needs a security layer — and most people only think about this after something goes wrong.</p>
+            <p>The <strong>Hive Shield Protocol™</strong> equips you to protect your holdings before a crisis arrives. We cover the full security picture: the preventive habits that reduce your exposure day to day, how to recognise and respond to wallet compromise, exchange issues, and phishing attempts.</p>
+            <p>Security in crypto is not a one-time checklist. It is a mindset and a set of ongoing practices. <strong>We help you build both — so that your protection posture is in place before you ever need it.</strong></p>
+        </div>
+    </div>
+
+    <!-- HQEA -->
+    <section class="hqea-section" id="hqea">
+        <div class="container">
+            <div class="hqea-badge">HQEA™ — The System</div>
+            <h2>HIVE QUANTUM ENHANCED <em>ALGORITHM™</em></h2>
+            <span class="hqea-tagline">The architecture of personalised crypto strategy</span>
+
+            <div class="hqea-grid">
+                <div>
+                    <p>The crypto market produces an extraordinary volume of analysis — on-chain platforms, technical tools, sentiment trackers. And yet the gap between data and decision remains as wide as ever for most people navigating this space.</p>
+                    <p>The reason is structural. Market analysis is produced <strong>without a subject</strong>. It describes what the market is doing, but cannot answer the only question that actually matters: <strong>what does this mean for me, specifically?</strong></p>
+                    <p>That question has no generic answer. It requires a system that holds both layers simultaneously — the market and the person — and produces output at their intersection.</p>
+
+                    <h3>Layer One — The Market Map</h3>
+                    <p>A quantitative market engine ingesting signals across four analytical pillars, applying dynamic weighting based on conditions, and producing a composite structural score with an associated uncertainty measure. The system produces a <strong>structural map with a measured confidence level</strong> — not a directional call.</p>
+
+                    <h3>Layer Two — The Client Profile</h3>
+                    <p>A structured profile built from verified data: a scored risk index, a knowledge index, and a strategy readiness index. Critically, this profile is <strong>not static</strong> — client readiness scores are functions of time and engagement, not permanent labels.</p>
+                </div>
+                <div>
+                    <p>The HQEA™ is the native analysis system of Uncrypto The Crypto™, operated by Borghi Consulting™. It is powered by a proprietary rules-based algorithm that processes market signals and client data simultaneously to produce personalised structural guidance.</p>
+                    <p>The system is built as rigorously around <strong>what it will not produce</strong> as around what it will. These constraints are the structural expression of a philosophy about what responsible guidance in this space looks like.</p>
+
+                    <div style="margin-top:2.5rem;">
+                        <div class="hqea-principles-title">What the System Will Never Do</div>
+                        <ul class="principle-list">
+                            <li class="principle-item">
+                                <div class="principle-marker">I</div>
+                                <div class="principle-body">
+                                    <strong>It does not predict</strong>
+                                    <span>Every output is framed as a structural map — a reading of current conditions and their probable trajectories. The system never issues price targets, directional calls, or forecasts.</span>
+                                </div>
+                            </li>
+                            <li class="principle-item">
+                                <div class="principle-marker">II</div>
+                                <div class="principle-body">
+                                    <strong>It does not advise</strong>
+                                    <span>The system educates. It maps structural conditions and provides the framework for informed decision-making. The decision always belongs to the client.</span>
+                                </div>
+                            </li>
+                            <li class="principle-item">
+                                <div class="principle-marker">III</div>
+                                <div class="principle-body">
+                                    <strong>It does not stop at a wall</strong>
+                                    <span>When a structural constraint exists, the system navigates forward. It quantifies the gap, identifies what is available now, and builds the path to what is not yet reachable.</span>
+                                </div>
+                            </li>
+                            <li class="principle-item">
+                                <div class="principle-marker">IV</div>
+                                <div class="principle-body">
+                                    <strong>It does not assume the profile is static</strong>
+                                    <span>Client readiness changes over time in both directions. Engagement deepens it; absence erodes it. The system tracks this dynamically and adjusts its outputs accordingly.</span>
+                                </div>
+                            </li>
+                            <li class="principle-item">
+                                <div class="principle-marker">V</div>
+                                <div class="principle-body">
+                                    <strong>It does not obscure its confidence level</strong>
+                                    <span>Every output carries an explicit statement of how reliable its inputs are. When data is missing, it says so. When signals conflict, it says so.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COACHING & ECOSYSTEM -->
+    <section class="section" id="coaching" style="background:var(--surface);">
+        <div class="container">
+            <span class="section-eyebrow">Education at the Core</span>
+            <h2>COACHING &amp; STRUCTURED LEARNING</h2>
+            <div class="divider"></div>
+            <div class="coaching-grid">
+                <div class="coaching-body">
+                    <p>Every service we offer is grounded in education — because <strong>a framework you do not understand is a framework you will not follow when the market puts it under pressure.</strong></p>
+                    <p>We work through concepts in plain language. We connect theory to your actual situation. Every session produces documented notes, and your understanding builds progressively — at a pace that suits your experience level and the complexity of what you hold.</p>
+                    <p>Sessions are not standalone events. Every session is preceded by preparation and followed by documented materials that you keep. The continuity between sessions is where the real value of a subscription is built.</p>
+                    <div class="coaching-callout">
+                        The <strong>Hive Educational Whitepaper™</strong> is the knowledge system that makes all of this coherent and transferable. It is not a course you complete — it is the structured delivery framework through which every tool, concept, and session comes together, ensuring that complexity never becomes a barrier to understanding or action.
+                    </div>
+                </div>
+                <div>
+                    <table class="eco-table">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>What It Builds</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hive Block Strategy™</td>
+                                <td>How to organise holdings across five functional blocks — SEED™, CORE™, FLOW™, INNOVATION™, YIELD™ — each with its own purpose and logic</td>
+                            </tr>
+                            <tr>
+                                <td>Hive Risk Ladder™</td>
+                                <td>How to classify the risk profile of any asset across five zones — Green, Lime, Amber, Orange, and Red Hive Zone™ — and what that means for sizing and monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Hive Flow Routes™</td>
+                                <td>How to think about capital movement across every type of transaction, including receiving crypto as payment, so decisions are never made reactively</td>
+                            </tr>
+                            <tr>
+                                <td>Hive Shield Protocol™</td>
+                                <td>How to protect holdings, respond to security incidents, and build an ongoing security posture before a crisis occurs</td>
+                            </tr>
+                            <tr>
+                                <td>Hive Educational Whitepaper™</td>
+                                <td>The delivery layer — the structured knowledge framework that makes every concept above understandable, applicable, and repeatable for each client</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMMES -->
+    <section class="programmes-section" id="programmes">
+        <div class="container">
+            <span class="section-eyebrow">Work With Us</span>
+            <h2>WHAT EACH PLAN INCLUDES</h2>
+            <div class="divider"></div>
+            <p class="programmes-lead">
+                <strong>Every programme begins with the Hive Risk Profile™ — no exceptions.</strong>
+                Across all tiers the underlying commitment is the same: to take each client by the hand through complexity that is real, that matters, and that most available tools either oversimplify or ignore entirely.
+            </p>
+
+            <div class="plans-grid">
+                <!-- ACCESS -->
+                <div class="plan-card">
+                    <div class="plan-tier">Entry · Monthly Subscription</div>
+                    <div class="plan-name">Uncrypto Access™</div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-price-wrap">
+                        <div class="plan-price"><span class="plan-currency">$</span>253</div>
+                        <div class="plan-price-sub">AUD / month</div>
+                    </div>
+                    <div class="plan-desc">Entry-level monthly engagement. One periodic catch-up per month, access to the Hive Assessment Lab™ at standard level, and the Hive Dispatch Chronicle Edition™. For those ready to start building structure from scratch.</div>
+                    <div>
+                        <span class="plan-format-label">Format</span>
+                        <div class="plan-cadence">Catch-up · 1/month</div>
+                    </div>
+                    <a href="https://buy.stripe.com/9B600igQwekF99hcA7dIA1z" target="_blank" rel="noopener" class="plan-cta">START HERE →</a>
+                </div>
+                <!-- INSIGHT -->
+                <div class="plan-card">
+                    <div class="plan-tier">1-on-1 · Monthly Subscription</div>
+                    <div class="plan-name">Uncrypto Insight™</div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-price-wrap">
+                        <div class="plan-price"><span class="plan-currency">$</span>503</div>
+                        <div class="plan-price-sub">AUD / month</div>
+                    </div>
+                    <div class="plan-desc">One full session per month with Hive Assessment Lab™, Hive Mechanics Guides™, Hive Dispatch Signals™, Strategy Report, Session Replay, and quarterly Progress Tracking. For clients building their understanding and strategy with ongoing support.</div>
+                    <div>
+                        <span class="plan-format-label">Format</span>
+                        <div class="plan-cadence">1:1 · 1/month · Group included</div>
+                    </div>
+                    <a href="https://buy.stripe.com/00g03A2Ht02E7jWdS4" target="_blank" rel="noopener" class="plan-cta">GET STARTED →</a>
+                </div>
+                <!-- FRAMEWORK -->
+                <div class="plan-card">
+                    <div class="plan-tier">1-on-1 · Monthly Subscription</div>
+                    <div class="plan-name">Uncrypto Framework™</div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-price-wrap">
+                        <div class="plan-price"><span class="plan-currency">$</span>897</div>
+                        <div class="plan-price-sub">AUD / month</div>
+                    </div>
+                    <div class="plan-desc">Two sessions per month with full Hive Assessment Lab™, Hive Strategy Layer™ with periodic wallet analysis, Visual Deck, Visual Snapshot, and monthly Progress Tracking. For clients ready for deeper structural work and portfolio mapping.</div>
+                    <div>
+                        <span class="plan-format-label">Format</span>
+                        <div class="plan-cadence">1:1 · 2/month · Group included</div>
+                    </div>
+                    <a href="https://buy.stripe.com/cN2g2yfuf16I9s49BP" target="_blank" rel="noopener" class="plan-cta">GET STARTED →</a>
+                </div>
+                <!-- PATHWAY -->
+                <div class="plan-card featured">
+                    <div class="plan-tier">1-on-1 · Monthly Subscription</div>
+                    <div class="plan-name">Uncrypto Pathway™</div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-price-wrap">
+                        <div class="plan-price"><span class="plan-currency">$</span>1,191</div>
+                        <div class="plan-price-sub">AUD / month</div>
+                    </div>
+                    <div class="plan-desc">Full operational access. Three sessions per month, full HQEA™ system deployment, Hive Core Admin™, full Mechanics Guides with mapping support, full Strategy Layer, Session Replay, and fortnightly Progress Tracking. The complete Uncrypto The Crypto™ experience.</div>
+                    <div>
+                        <span class="plan-format-label">Format</span>
+                        <div class="plan-cadence">1:1 · 3/month · Group included</div>
+                    </div>
+                    <a href="https://buy.stripe.com/9AQ4jQ3Lx4iU7jW7tI" target="_blank" rel="noopener" class="plan-cta">GET STARTED →</a>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Uncrypto Access™</th>
+                            <th>Uncrypto Insight™</th>
+                            <th>Uncrypto Framework™</th>
+                            <th class="hl">Uncrypto Pathway™</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cat-row"><td colspan="5">Model Architecture</td></tr>
+                        <tr>
+                            <td>Model</td>
+                            <td>Monthly Subscription</td>
+                            <td>Monthly Subscription</td>
+                            <td>Monthly Subscription</td>
+                            <td class="hl-col">Monthly Subscription</td>
+                        </tr>
+                        <tr>
+                            <td>Format</td>
+                            <td>Catch-up</td>
+                            <td>1:1</td>
+                            <td>1:1</td>
+                            <td class="hl-col">1:1</td>
+                        </tr>
+                        <tr>
+                            <td>Group Sessions</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td class="hl-col"><span class="cky">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cadence</td>
+                            <td>1/month</td>
+                            <td>1/month</td>
+                            <td>2/month</td>
+                            <td class="hl-col">3/month</td>
+                        </tr>
+                        <tr>
+                            <td>Hive Assessment™</td>
+                            <td>One-off payment</td>
+                            <td>One-off payment</td>
+                            <td>Included</td>
+                            <td class="hl-col">Included</td>
+                        </tr>
+
+                        <tr class="cat-row"><td colspan="5">Core Access</td></tr>
+                        <tr>
+                            <td>Hive Assessment Lab™</td>
+                            <td>Standard</td>
+                            <td>Basic</td>
+                            <td>Full</td>
+                            <td class="hl-col">Full</td>
+                        </tr>
+                        <tr>
+                            <td>Hive Core Admin™</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td class="hl-col">Full</td>
+                        </tr>
+                        <tr>
+                            <td>Hive Mechanics Guides™</td>
+                            <td><span class="dash">—</span></td>
+                            <td>Basic</td>
+                            <td>Standard</td>
+                            <td class="hl-col">Full + support</td>
+                        </tr>
+                        <tr>
+                            <td>Hive Dispatch Signals™</td>
+                            <td><span class="dash">—</span></td>
+                            <td>Basic</td>
+                            <td>Standard</td>
+                            <td class="hl-col">Full + mapping</td>
+                        </tr>
+                        <tr>
+                            <td>Hive Strategy Layer™</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td>Basic</td>
+                            <td class="hl-col">Full system</td>
+                        </tr>
+
+                        <tr class="cat-row"><td colspan="5">Deliverables</td></tr>
+                        <tr>
+                            <td>Strategy Report</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td class="hl-col"><span class="cky">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Visual Deck</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td class="hl-col"><span class="cky">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Visual Snapshot</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td class="hl-col"><span class="cky">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Session Replay</td>
+                            <td><span class="dash">—</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td class="hl-col"><span class="cky">✓</span></td>
+                        </tr>
+
+                        <tr class="cat-row"><td colspan="5">Support &amp; Intelligence</td></tr>
+                        <tr>
+                            <td>Hive Dispatch Chronicle Edition™</td>
+                            <td>Standard</td>
+                            <td>Standard</td>
+                            <td>Standard</td>
+                            <td class="hl-col">Standard</td>
+                        </tr>
+                        <tr>
+                            <td>Progress Tracking</td>
+                            <td><span class="dash">—</span></td>
+                            <td>Quarterly</td>
+                            <td>Monthly</td>
+                            <td class="hl-col">Fortnightly</td>
+                        </tr>
+                        <tr>
+                            <td>Sync Support <span style="font-size:0.7rem;color:var(--text-muted);font-weight:300;">· fair use applies</span></td>
+                            <td><span class="dash">—</span></td>
+                            <td>72h</td>
+                            <td>48h</td>
+                            <td class="hl-col">24h</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPORTANT NOTICE -->
+    <section class="notice-section">
+        <div class="container">
+            <span class="section-eyebrow">Important Notice</span>
+            <h2 style="margin-bottom:2rem;">BEFORE YOU PROCEED</h2>
+            <div class="notice-box">
+                <p><strong>Borghi Consulting™</strong> provides cryptocurrency education and coaching services only. Nothing on these pages, in any session, or in any document we produce constitutes financial advice, investment advice, or a recommendation to buy, sell, or hold any asset.</p>
+                <p>Our work is <strong>educational in nature</strong>: we teach frameworks, explain concepts, and help clients build their own decision-making systems.</p>
+                <p>All decisions regarding the purchase, sale, or management of cryptocurrency assets remain <strong>entirely your own</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTER THE HIVE -->
+    <section id="start-path" class="section" style="background:var(--bg);">
+        <div class="container">
+            <h2>ENTER THE HIVE</h2>
+            <p class="funnel-subtitle" style="font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4rem;">Choose Your Path</p>
+            <div class="funnel-grid">
+                <div class="funnel-card">
+                    <h4>STRATEGY &amp; ANALYSIS</h4>
+                    <p class="card-sub">For Founders, Families, and Individuals seeking immediate structural foundation.</p>
+                    <a href="https://forms.gle/EdtVTVutX6EJcTwe7" target="_blank" rel="noopener" class="cta-link">
+                        <div>
+                            <div class="cta-link-title">1. MAKE CRYPTO MAKE SENSE — START HERE</div>
+                            <div class="cta-link-sub">Define your situation to build conviction.</div>
+                        </div>
+                        <span class="cta-arrow">→</span>
+                    </a>
+                    <a href="https://calendar.app.google/3esCHEhRyxo4A9hN7" target="_blank" rel="noopener" class="cta-link">
+                        <div>
+                            <div class="cta-link-title">2. UNLOCK WHAT'S NEXT — FREE 30 MIN CHECK</div>
+                            <div class="cta-link-sub">Personal strategic framework discussion.</div>
+                        </div>
+                        <span class="cta-arrow">→</span>
+                    </a>
+                </div>
+                <div class="funnel-card">
+                    <h4>JOIN THE COMMUNITY</h4>
+                    <p class="card-sub">Subscribe, connect, and access the Hive ecosystem.</p>
+                    <p class="section-label">Subscribe to our Newsletter</p>
+                    <a href="https://thehive5dispatch.beehiiv.com" target="_blank" rel="noopener" class="btn btn-primary newsletter-btn">
+                        HIVE DISPATCH CHRONICLE EDITION™
+                    </a>
+                    <p class="section-label">Official Channels</p>
+                    <a href="https://t.me/uncryptothecrypto" target="_blank" rel="noopener" class="channel-link">Telegram Channel <span>→</span></a>
+                    <a href="https://www.facebook.com/share/g/14QjBqbLdYQ/" target="_blank" rel="noopener" class="channel-link">Facebook Group <span>→</span></a>
+                    <a href="https://whatsapp.com/channel/0029VbBU2QfHbFV6K93Rki3Y" target="_blank" rel="noopener" class="channel-link">WhatsApp Updates <span>→</span></a>
+                    <div class="private-note">
+                        * To access the private <strong>Hive Community</strong> (Telegram discussion group) and interact with us directly, please subscribe to our newsletter where you will find the access link.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>THANK YOU</h2>
+        <span class="script">Alessandro &amp; Giulia</span>
+        <p class="footer-brand">Borghi Consulting™ — Structure Before Speculation</p>
+        <div class="footer-disclaimer">
+            All information provided by Borghi Consulting™ and its representatives is for informational and educational purposes only and should not be interpreted as investment, financial, tax, or legal advice. You are solely responsible for your decisions. Cryptocurrency and digital assets are volatile and involve risk, including total loss. Borghi Consulting™ and its representatives assume no liability for any reliance placed on the information provided.
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
