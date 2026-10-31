@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms &amp; Conditions &amp; Privacy Policy | Borghi Consulting™</title>
+    <title>Terms &amp; Conditions &amp; Privacy Policy | Uncrypto The Crypto™ by Borghi Consulting™</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -360,6 +360,21 @@
             header { padding: 3rem 1.5rem 2.5rem; }
             .main-content { padding: 1.5rem 1rem 3rem; }
         }
+    
+        /* SITE MENU (fixed bar + floating button) */
+        :root { --navh: 60px; }
+        .topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 2rem; background: rgba(245,247,250,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .topnav .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.1em; color: #111; line-height: 1; text-decoration: none; }
+        .topnav .logo span { color: #00A3E0; }
+        .topnav .logo small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: #6f6f6f; margin-top: 4px; }
+        .topnav .nav-menu { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: #111; border: 1.5px solid #111; padding: 0.5rem 1rem; white-space: nowrap; }
+        .topnav .nav-menu:hover { background: #00A3E0; border-color: #00A3E0; color: #fff; }
+        header { padding-top: calc(4rem + var(--navh)) !important; }
+        .toc-sidebar { top: var(--navh) !important; height: calc(100vh - var(--navh)) !important; }
+        .legal-section, .part-header { scroll-margin-top: 80px !important; }
+        #toc { scroll-margin-top: 60px; }
+        @media (max-width: 900px) { .toc-sidebar { height: auto !important; } }
+        @media (max-width: 600px) { .topnav { padding: 0.6rem 1rem; } .topnav .logo { font-size: 1.15rem; } header { padding-top: calc(3rem + var(--navh)) !important; } header h1:first-of-type { font-size: clamp(1.6rem, 8.5vw, 2.6rem) !important; letter-spacing: 0.03em; } }
     </style>
 </head>
 <body>
@@ -395,13 +410,14 @@
     </svg>
 </div>
 
+<nav class="topnav" aria-label="Main"><a class="logo" href="#top">UNCRYPTO <span>THE CRYPTO™</span><small>by Borghi Consulting™</small></a><a class="nav-menu" href="#toc">&#9776; Menu</a></nav>
 <div class="wrap">
 
     <!-- HEADER -->
     <header id="top">
-        <div class="header-abn">Borghi Consulting™ &nbsp;|&nbsp; ABN 77 502 124 916 &nbsp;|&nbsp; Uncrypto The Crypto™</div>
-        <h1>Borghi <span>Consulting™</span></h1>
-        <span class="header-script">Uncrypto The Crypto™</span>
+        <div class="header-abn">Uncrypto The Crypto™ by Borghi Consulting™ &nbsp;|&nbsp; ABN 77 502 124 916</div>
+        <h1>UNCRYPTO THE CRYPTO<span>™</span></h1>
+        <span class="header-script"><strong style="font-weight:700">by Borghi Consulting™</strong></span>
         <div class="header-divider"></div>
         <h1 style="font-size: clamp(2rem,6vw,4rem); margin-bottom:1rem;">Terms &amp; Conditions <span>&amp;</span> Privacy Policy</h1>
         <div class="header-meta">
@@ -420,7 +436,7 @@
     <div class="page-layout">
 
         <!-- SIDEBAR TOC -->
-        <nav class="toc-sidebar" aria-label="Table of Contents">
+        <nav class="toc-sidebar" id="toc" aria-label="Table of Contents">
             <div class="toc-title">Table of Contents</div>
 
             <div class="toc-part">Part A — Terms &amp; Conditions</div>
@@ -475,9 +491,7 @@
             </ul>
 
             <div class="toc-brand">
-                Borghi Consulting™<br>
-                ABN 77 502 124 916<br>
-                Uncrypto The Crypto™
+                Uncrypto The Crypto™<br>by Borghi Consulting™<br>ABN 77 502 124 916
             </div>
         </nav>
 
@@ -1271,8 +1285,8 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-brand">Borghi <span>Consulting™</span></div>
-        <span class="footer-script">Uncrypto The Crypto™</span>
+        <div class="footer-brand">UNCRYPTO THE CRYPTO<span>™</span></div>
+        <span class="footer-script"><strong>by Borghi Consulting™</strong></span>
         <div class="footer-meta">ABN 77 502 124 916 &nbsp;|&nbsp; Perth, Western Australia &nbsp;|&nbsp; admin@borghiconsulting.com</div>
         <div class="footer-disclaimer">
             Borghi Consulting™ (ABN 77 502 124 916) — Uncrypto The Crypto™ &nbsp;|&nbsp; Terms &amp; Conditions &amp; Privacy Policy<br>
