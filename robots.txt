@@ -1,0 +1,5 @@
+# Search engines and AI assistants are welcome on every public page.
+User-agent: *
+Allow: /
+
+Sitemap: https://borghi-consulting.github.io/sitemap.xml

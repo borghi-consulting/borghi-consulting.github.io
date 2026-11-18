@@ -1,0 +1,26 @@
+# Uncrypto The Crypto™ by Borghi Consulting™
+
+> Crypto education and portfolio structuring for individuals, families and founders, run by Alessandro and Giulia from Perth, Western Australia. The principle: structure before speculation. Everything on this site is educational information only, not financial, investment, tax or legal advice. We do not manage money, hold your crypto, trade for you or tell you what to buy or sell.
+
+## What we offer
+- Four monthly programmes, each a complete subscription on its own: Uncrypto Access™ (shared session), Uncrypto Insight™ (1 one-to-one session a month), Uncrypto Framework™ (2 one-to-one sessions a month, periodic wallet analysis) and Uncrypto Pathway™ (3 one-to-one sessions a month, full HQEA™ deployment on your own portfolio). Every programme begins with the Hive Risk Profile™. Subscriptions run month to month.
+- The Hive Block Strategy™: five blocks (SEED, CORE, FLOW, INNOVATION, YIELD) that organise a portfolio. Blocks are structural containers, not funds and not recommendations.
+- We help with: understanding what you hold (portfolio and wallet analysis), organising it with a clear structure, reading the market without the noise, the rules for adding, reducing and rebalancing, security and scam awareness, and bringing order for families and founders.
+- Free first steps: a 2-minute Quick Check (Make Crypto Make Sense™) and a free 30-minute call.
+
+## Pages
+- [Home](https://borghi-consulting.github.io/): what we do and where to start
+- [Services and programmes](https://borghi-consulting.github.io/services.html): how we work, the Hive system, what each programme includes
+- [Plans and prices](https://borghi-consulting.github.io/services_pricing.html): the four programmes with monthly prices in AUD
+- [About](https://borghi-consulting.github.io/about.html): why we exist and who we are
+- [Live converter and price history](https://borghi-consulting.github.io/uncrypto_live_and_history.html): free tool
+- [Gain / Loss Symmetry Calculator](https://borghi-consulting.github.io/gain_loss_calculator.html): free tool
+- [Crypto glossary](https://borghi-consulting.github.io/glossary.html): plain-language definitions
+- [Terms and privacy, Uncrypto The Crypto™](https://borghi-consulting.github.io/terms_UtC.html)
+- [Terms and privacy, Managing The Management™](https://borghi-consulting.github.io/terms_MtM.html)
+
+## Contact and community
+- Quick Check: https://forms.gle/SapWaQJCXMnXCYEQA
+- Free 30-minute call: https://calendar.app.google/3esCHEhRyxo4A9hN7
+- Newsletter (Hive5 Dispatch): https://thehive5dispatch.beehiiv.com
+- Telegram channel: https://t.me/uncryptothecrypto
