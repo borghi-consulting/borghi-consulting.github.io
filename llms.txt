@@ -1,6 +1,6 @@
 # Uncrypto The Crypto™ by Borghi Consulting™
 
-> Crypto education and portfolio structuring for individuals, families and founders, run by Alessandro and Giulia from Perth, Western Australia. The principle: structure before speculation. Everything on this site is educational information only, not financial, investment, tax or legal advice. We do not manage money, hold your crypto, trade for you or tell you what to buy or sell.
+> Crypto education and portfolio structuring for individuals, families and founders, run by Alessandro and Giulia from Perth, Western Australia. The principle: structure before speculation. Everything on this site is educational information only, not financial, investment, tax or legal advice. We do not manage money, hold your crypto, trade for you or recommend specific assets.
 
 ## What we offer
 - Four monthly programmes, each a complete subscription on its own: Uncrypto Access™ (shared session), Uncrypto Insight™ (1 one-to-one session a month), Uncrypto Framework™ (2 one-to-one sessions a month, periodic wallet analysis) and Uncrypto Pathway™ (3 one-to-one sessions a month, full HQEA™ deployment on your own portfolio). Every programme begins with the Hive Risk Profile™. Subscriptions run month to month.
@@ -11,8 +11,10 @@
 ## Pages
 - [Home](https://borghi-consulting.github.io/): what we do and where to start
 - [Services and programmes](https://borghi-consulting.github.io/services.html): how we work, the Hive system, what each programme includes
-- [Plans and prices](https://borghi-consulting.github.io/services_pricing.html): the four programmes with monthly prices in AUD
 - [About](https://borghi-consulting.github.io/about.html): why we exist and who we are
+- [Insights](https://borghi-consulting.github.io/insights.html): plain-language guides, each with a short answer and its sources
+- [What does diversification mean in crypto?](https://borghi-consulting.github.io/what-does-diversification-mean-in-crypto.html): why spreading risk is harder in crypto, and how the five-block structure organises it
+- [Free tools](https://borghi-consulting.github.io/tools.html): the three free tools
 - [Live converter and price history](https://borghi-consulting.github.io/uncrypto_live_and_history.html): free tool
 - [Gain / Loss Symmetry Calculator](https://borghi-consulting.github.io/gain_loss_calculator.html): free tool
 - [Crypto glossary](https://borghi-consulting.github.io/glossary.html): plain-language definitions

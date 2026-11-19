@@ -360,7 +360,49 @@
         #toc { scroll-margin-top: 60px; }
         @media (max-width: 900px) { .toc-sidebar { height: auto !important; } }
         @media (max-width: 600px) { .topnav { padding: 0.6rem 1rem; } .topnav .logo { font-size: 1.15rem; } header { padding-top: calc(3rem + var(--navh)) !important; } header h1:first-of-type { font-size: clamp(1.6rem, 8.5vw, 2.6rem) !important; letter-spacing: 0.03em; } }
-    </style>
+    
+/* ===== global navigation: the same on every page ===== */
+.gnav,.gnav *{box-sizing:border-box}
+.gnav{--g-ink:#111;--g-muted:#6f6f6f;--g-line:rgba(0,0,0,.1);--g-accent:#00A3E0;--g-yellow:#FFD100;position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,247,250,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--g-line);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.4}
+.gnav-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px;padding:.55rem 2rem;max-width:1400px;margin:0 auto}
+.gnav ul{list-style:none;margin:0;padding:0}
+.gnav-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--g-ink);line-height:1;text-decoration:none;white-space:nowrap}
+.gnav-logo span{color:var(--g-accent)}
+.gnav-logo small{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--g-muted);margin-top:4px}
+.gnav-links ul{display:flex;align-items:center;gap:1.6rem}
+.gnav-links a{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--g-ink);border-bottom:2px solid transparent;padding:.3rem 0}
+.gnav-links a:hover,.gnav-links a[aria-current="page"]{border-bottom-color:var(--g-yellow)}
+.gnav-links a.gnav-cta{background:var(--g-ink);color:#fff;padding:.6rem 1rem;border:2px solid var(--g-ink)}
+.gnav-links a.gnav-cta:hover{background:var(--g-yellow);border-color:var(--g-yellow);color:#111}
+.gnav-check{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.gnav-burger{display:none;cursor:pointer;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g-ink);border:1.5px solid var(--g-ink);padding:.5rem .9rem;white-space:nowrap}
+.gnav a:focus-visible,.gnav-check:focus-visible+.gnav-burger{outline:3px solid #00A3E0;outline-offset:3px}
+@media(min-width:900px) and (max-width:1199px){.gnav-links ul{gap:1.2rem}.gnav-in{padding-left:1.25rem;padding-right:1.25rem}}
+@media(max-width:1023px){
+ .gnav-in{padding:.5rem 1rem}
+ .gnav-burger{display:inline-block;padding:.45rem .7rem;letter-spacing:.14em}
+ .gnav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--g-line);box-shadow:0 14px 28px rgba(0,0,0,.1);padding:.4rem 1rem 1.1rem}
+ .gnav-check:checked~.gnav-links{display:block}
+ .gnav-links ul{display:grid;gap:0}
+ .gnav-links a{display:block;padding:.95rem .2rem;border-bottom:1px solid var(--g-line)}
+ .gnav-links a[aria-current="page"]{border-bottom-color:var(--g-yellow)}
+ .gnav-links li:last-child a.gnav-cta{margin-top:.9rem;text-align:center;border-bottom:2px solid var(--g-ink)}
+}
+@media(max-width:899px){
+ .gnav-logo{font-size:1rem;letter-spacing:.06em}
+ .gnav-logo small{font-size:.55rem;letter-spacing:.16em}
+}
+@media(max-width:420px){.gnav-logo{font-size:.82rem;letter-spacing:.03em}.gnav-logo small{letter-spacing:.1em}.gnav-burger{padding:.4rem .6rem}}
+@media(max-width:340px){.gnav-logo{font-size:.7rem}.gnav-logo small{display:none}.gnav-in{gap:.5rem}}
+.crumbs{font-size:.8rem;letter-spacing:.04em;color:inherit;opacity:.85;margin:0 0 1rem}
+.crumbs a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.crumbs span[aria-current]{font-weight:700}
+.gfoot{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.6rem;margin:1.5rem auto 2rem;padding:0;max-width:900px}
+.gfoot a{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:inherit;border-bottom:2px solid #FFD100;padding-bottom:.15rem}
+.gfoot a:hover{opacity:.7}
+.onpage{margin-top:1.6rem;font-size:.85rem;color:inherit;opacity:.9}
+.onpage a{font-weight:700;color:inherit;margin:0 .35rem}
+</style>
 </head>
 <body>
 
@@ -394,10 +436,10 @@
     </svg>
 </div>
 
-<nav class="topnav" aria-label="Main"><a class="logo" href="#top">MANAGING <span>THE MANAGEMENT™</span><small>by Borghi Consulting™</small></a><a class="nav-menu" href="#toc">&#9776; Menu</a></nav>
+<div class="gnav" role="banner" style="--g-accent:#8B1A2F"><div class="gnav-in"><a class="gnav-logo" href="index.html" aria-label="Home">MANAGING <span>THE MANAGEMENT™</span><small>by Borghi Consulting™</small></a><input type="checkbox" id="gnav-toggle" class="gnav-check" aria-label="Open the menu"><label for="gnav-toggle" class="gnav-burger">&#9776; Menu</label><div class="gnav-links" role="navigation" aria-label="Main"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="insights.html">Insights</a></li><li><a href="tools.html">Free tools</a></li><li><a href="about.html">About</a></li><li><a class="gnav-cta" href="https://forms.gle/SapWaQJCXMnXCYEQA" target="_blank" rel="noopener">Quick Check</a></li></ul></div></div></div>
 <div class="wrap">
 
-    <header id="top">
+    <header id="top"><p class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span aria-current="page">Terms: Managing The Management™</span></p>
         <div class="header-abn">Managing The Management™ by Borghi Consulting™ &nbsp;|&nbsp; ABN 77 502 124 916</div>
         <h1>MANAGING THE MANAGEMENT<span>™</span></h1>
         <span class="header-script"><strong style="font-weight:700">by Borghi Consulting™</strong></span>
@@ -1388,7 +1430,7 @@
             This document contains proprietary and confidential information of Borghi Consulting™. All intellectual property rights are reserved. Unauthorised disclosure, reproduction, or distribution is strictly prohibited and may result in legal action.<br><br>
             Borghi Consulting™ (ABN 77 502 124 916) — Managing The Management™ &nbsp;|&nbsp; T&amp;C &amp; Privacy Policy &nbsp;|&nbsp; Confidential
         </div>
-    </footer>
+    <div class="gfoot" role="navigation" aria-label="Footer"><a href="index.html">Home</a><a href="services.html">Services</a><a href="insights.html">Insights</a><a href="tools.html">Free tools</a><a href="about.html">About</a><a href="terms_UtC.html">Terms: Uncrypto</a><a href="terms_MtM.html">Terms: Managing The Management</a><a href="https://forms.gle/SapWaQJCXMnXCYEQA" target="_blank" rel="noopener">Quick Check</a></div></footer>
 
 </div>
 </body>
