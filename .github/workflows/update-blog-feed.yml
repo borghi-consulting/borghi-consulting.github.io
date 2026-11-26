@@ -1,0 +1,125 @@
+name: Update blog feed
+
+# Copies the latest beehiiv posts (title, short description, date, cover, link) into blog-feed.json.
+# The RSS URL lives in the BEEHIIV_RSS_URL repository secret. It is never written in this repo.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" site
+
+      - name: Build blog-feed.json from the beehiiv RSS feed
+        working-directory: site
+        env:
+          BEEHIIV_RSS_URL: ${{ secrets.BEEHIIV_RSS_URL }}
+        run: |
+          node --input-type=module - <<'NODE_SCRIPT'
+            // Builds blog-feed.json from the public beehiiv RSS feed.
+            // Runs inside GitHub Actions. The feed URL comes from the BEEHIIV_RSS_URL secret and is never logged.
+            // Only public card fields are kept (title, short description, date, cover image, post link).
+            // The post body (content:encoded) is discarded before parsing.
+            import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+
+            const MAX_POSTS = 12;
+            const OUT_FILE = process.env.OUT_FILE || 'blog-feed.json';
+            const FEED_FILE = process.env.FEED_FILE || '';          // local test input
+            const FEED_URL = process.env.BEEHIIV_RSS_URL || '';
+            const COMPLIANCE_RE = /\b(invest\w*|buy\w*|sell\w*|predict\w*)\b/i;
+
+            function decode(s) {
+              return s
+                .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+                .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+                .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&');
+            }
+            function clean(s, max) {
+              s = decode(String(s || '').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+              return s.length > max ? s.slice(0, max - 1).trim() + '\u2026' : s;
+            }
+            function tag(block, name) {
+              const m = block.match(new RegExp('<' + name + '(?:\\s[^>]*)?>([\\s\\S]*?)</' + name + '>'));
+              return m ? m[1] : '';
+            }
+            function https(u) { u = decode(String(u || '')).trim(); return u.startsWith('https://') ? u : ''; }
+
+            function parseFeed(xml) {
+              if (!/<rss[\s>]/.test(xml)) throw new Error('Not an RSS document');
+              xml = xml.replace(/<content:encoded>[\s\S]*?<\/content:encoded>/g, '');   // never keep post bodies
+              const firstItem = xml.indexOf('<item>');
+              const channelTitle = clean(tag(firstItem > -1 ? xml.slice(0, firstItem) : xml, 'title'), 200);
+              const posts = [];
+              for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
+                const b = m[1];
+                const title = clean(tag(b, 'title'), 160);
+                const url = https(clean(tag(b, 'link'), 500));
+                const time = Date.parse(tag(b, 'pubDate').trim());
+                if (!title || !url || Number.isNaN(time)) continue;
+                let description = clean(tag(b, 'description'), 220);
+                // Placeholder subtitles that just repeat the newsletter name are not shown.
+                if (channelTitle && description.toLowerCase().startsWith(channelTitle.toLowerCase())) description = '';
+                let thumb = '';
+                const enc = b.match(/<enclosure\s+([^>]*?)\/?>/);
+                if (enc) {
+                  const attrs = Object.fromEntries([...enc[1].matchAll(/(\w+)="([^"]*)"/g)].map(a => [a[1], a[2]]));
+                  if (/^image\//.test(attrs.type || '')) thumb = https(attrs.url);
+                }
+                posts.push({ title, description, date: Math.floor(time / 1000), thumb, url });
+              }
+              posts.sort((a, b) => b.date - a.date);
+              return posts.slice(0, MAX_POSTS);
+            }
+
+            async function load() {
+              if (FEED_FILE) return readFileSync(FEED_FILE, 'utf8');
+              if (!FEED_URL) throw new Error('BEEHIIV_RSS_URL secret is missing');
+              const res = await fetch(FEED_URL, { headers: { 'User-Agent': 'hive5-blog-feed' }, signal: AbortSignal.timeout(20000) });
+              if (!res.ok) throw new Error('Feed request failed: HTTP ' + res.status);
+              return await res.text();
+            }
+
+            async function main() {
+              const posts = parseFeed(await load());
+              if (!posts.length) throw new Error('Feed parsed but no valid posts found; keeping the existing file');
+              for (const p of posts) {
+                if (COMPLIANCE_RE.test(p.title + ' ' + p.description)) console.log('::warning::Compliance language in title/description: ' + p.title);
+              }
+              let previous = null;
+              if (existsSync(OUT_FILE)) { try { previous = JSON.parse(readFileSync(OUT_FILE, 'utf8')).posts; } catch { /* rewrite */ } }
+              if (previous && JSON.stringify(previous) === JSON.stringify(posts)) { console.log('No change (' + posts.length + ' posts)'); return; }
+              writeFileSync(OUT_FILE, JSON.stringify({ updated: new Date().toISOString(), posts }, null, 2) + '\n');
+              console.log('Wrote ' + posts.length + ' posts to ' + OUT_FILE);
+            }
+
+            main().catch(e => { console.error('ERROR: ' + e.message); process.exit(1); });
+          NODE_SCRIPT
+
+      - name: Commit if it changed
+        working-directory: site
+        run: |
+          if [ -n "$(git status --porcelain blog-feed.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add blog-feed.json
+            git commit -m "Update blog feed"
+            git push origin HEAD
+          else
+            echo "blog-feed.json unchanged"
+          fi
