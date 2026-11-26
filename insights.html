@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://borghi-consulting.github.io/insights.html">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://borghi-consulting.github.io/insights.html#page", "url": "https://borghi-consulting.github.io/insights.html", "name": "Insights", "description": "Plain-language answers to the questions people ask about crypto, written as education and never as advice. Diversification, structure, risk and security.", "isPartOf": {"@id": "https://borghi-consulting.github.io/#website"}, "inLanguage": "en", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://borghi-consulting.github.io/what-does-diversification-mean-in-crypto.html", "name": "What does diversification mean in crypto?"}]}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://borghi-consulting.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://borghi-consulting.github.io/insights.html"}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://borghi-consulting.github.io/insights.html#page", "url": "https://borghi-consulting.github.io/insights.html", "name": "Insights", "description": "Plain-language answers to the questions people ask about crypto, written as education and never as advice. Diversification, structure, risk and security.", "isPartOf": {"@id": "https://borghi-consulting.github.io/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://borghi-consulting.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://borghi-consulting.github.io/insights.html"}]}]}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -404,6 +404,21 @@ a:focus-visible,.btn:focus-visible,.cta-big:focus-visible{outline:3px solid var(
 .gfoot a:hover{opacity:.7}
 .onpage{margin-top:1.6rem;font-size:.85rem;color:inherit;opacity:.9}
 .onpage a{font-weight:700;color:inherit;margin:0 .35rem}
+.blog-grid{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0;padding:0}
+.blog-card{height:100%;display:flex;flex-direction:column;background:var(--bg);border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.blog-img{aspect-ratio:1200/630;overflow:hidden;background:var(--line);border-bottom:1.5px solid var(--ink)}
+.blog-img img{display:block;width:100%;height:100%;object-fit:cover}
+.blog-body{display:flex;flex-direction:column;gap:.4rem;padding:1rem 1.1rem 1.1rem;flex:1}
+.blog-date{margin:0;font-size:var(--fs-label);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.blog-title{margin:0;font-family:var(--f-display);font-weight:400;font-size:1.4rem;letter-spacing:.05em;line-height:1.15}
+.blog-desc{margin:0;font-size:var(--fs-small);line-height:1.45;color:var(--body)}
+.blog-go{margin:auto 0 0;padding-top:.6rem;font-family:var(--f-display);font-size:1.1rem;letter-spacing:.12em}
+.blog-card:hover,.blog-card:focus-visible{background:var(--ink);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.blog-card:hover .blog-desc,.blog-card:focus-visible .blog-desc,.blog-card:hover .blog-date,.blog-card:focus-visible .blog-date{color:rgba(255,255,255,.75)}
+.blog-card:hover .blog-go,.blog-card:focus-visible .blog-go{color:var(--yellow)}
+.blog-more{margin-top:1.8rem}
+@media(max-width:960px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.blog-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -417,7 +432,7 @@ a:focus-visible,.btn:focus-visible,.cta-big:focus-visible{outline:3px solid var(
   <div class="rule"></div>
   <p class="hero-body">Plain-language answers to the questions people ask about crypto. Every guide leads with the short answer, names its sources and is written as education, never as advice.</p>
 </header>
-<section class="menu" id="guides" aria-labelledby="guides-t"><div class="container"><div class="menu-box"><span class="eyebrow">Guides</span><h2 id="guides-t">LATEST GUIDES</h2><div class="rule"></div><ol class="menu-list"><li><a href="what-does-diversification-mean-in-crypto.html"><span class="menu-t"><b>What does diversification mean in crypto?</b><i>Spreading risk is harder in crypto: the market is concentrated and most assets react to the same shifts. How a five-block structure organises it.</i><i>Diversification · 19 November 2026 · 7 min read</i></span><span class="menu-go" aria-hidden="true">&rarr;</span></a></li></ol></div></div></section>
+<section class="menu" id="blog" aria-labelledby="blog-t"><div class="container"><div class="menu-box"><span class="eyebrow">Newsletter</span><h2 id="blog-t">THE HIVE5 DISPATCH CHRONICLE EDITION™</h2><div class="rule"></div><p class="menu-hint">Latest posts from our newsletter. Open one to read it on the newsletter site. Subscribers get the full post.</p><ul class="blog-grid" id="blog-list"><li><a class="blog-card" href="https://thehive5dispatch.beehiiv.com/p/can-you-get-it-back-and-how-fast" target="_blank" rel="noopener"><div class="blog-img"><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/4ec4455f-1f88-4e51-9576-be69b4480c8c/Can_You_Get_It_Back__and_How_Fast_.png" alt="" width="1200" height="630" loading="lazy"></div><div class="blog-body"><p class="blog-date">24 November 2026</p><h3 class="blog-title">Can You Get It Back, and How Fast?</h3><p class="blog-desc">Switching on "earn" takes one tap. Getting your money back can take days. Four questions to ask first.</p><p class="blog-go" aria-hidden="true">READ THE POST →</p></div></a></li><li><a class="blog-card" href="https://thehive5dispatch.beehiiv.com/p/write-your-exit-rule-before-the-market-does" target="_blank" rel="noopener"><div class="blog-img"><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/bec684aa-418b-4f49-8535-f0c73f7f3997/BC___Covers.png" alt="" width="1200" height="630" loading="lazy"></div><div class="blog-body"><p class="blog-date">19 November 2026</p><h3 class="blog-title">Write Your Exit Rule Before the Market Does</h3><p class="blog-desc">Last Friday asked every crypto holder the same question. Most answered with a feeling.</p><p class="blog-go" aria-hidden="true">READ THE POST →</p></div></a></li><li><a class="blog-card" href="https://thehive5dispatch.beehiiv.com/p/62k-tested-17b-drained-what-holds-now" target="_blank" rel="noopener"><div class="blog-img"><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/7e69fda7-73d8-4243-a05c-0918adb76287/BC__Facebook_Cover_.png" alt="" width="1200" height="630" loading="lazy"></div><div class="blog-body"><p class="blog-date">16 November 2026</p><h3 class="blog-title">$62k tested, $17B drained: what holds now?</h3><p class="blog-go" aria-hidden="true">READ THE POST →</p></div></a></li><li><a class="blog-card" href="https://thehive5dispatch.beehiiv.com/p/820m-gone-in-24-hours" target="_blank" rel="noopener"><div class="blog-img"><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/a0d0bd14-9960-4123-9d82-cf90d18bf63f/_820M_.png" alt="" width="1200" height="630" loading="lazy"></div><div class="blog-body"><p class="blog-date">13 November 2026</p><h3 class="blog-title">$820M Gone in 24 Hours</h3><p class="blog-desc">The Liquidation Domino Effect</p><p class="blog-go" aria-hidden="true">READ THE POST →</p></div></a></li><li><a class="blog-card" href="https://thehive5dispatch.beehiiv.com/p/your-exchange-froze-can-you-still-pay-the-bills" target="_blank" rel="noopener"><div class="blog-img"><img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/21f6358a-5a8f-4805-8e16-f539fa5405f5/Your_Exchange_Froze._Can_You_Still_Pay_the_Bills_.png" alt="" width="1200" height="630" loading="lazy"></div><div class="blog-body"><p class="blog-date">12 November 2026</p><h3 class="blog-title">Your Exchange Froze. Can You Still Pay the Bills?</h3><p class="blog-desc">Three exchanges shut the door in two weeks. Here’s the ten-minute test that shows whether your household would feel it.</p><p class="blog-go" aria-hidden="true">READ THE POST →</p></div></a></li></ul><div class="blog-more"><a class="btn ghost" href="https://thehive5dispatch.beehiiv.com" target="_blank" rel="noopener">SEE ALL POSTS</a></div></div></div></section>
 <section class="section" id="ask"><div class="container" style="text-align:center">
   <span class="eyebrow">Your question</span><h2>NOT FINDING YOUR QUESTION?</h2><div class="rule" style="margin-left:auto;margin-right:auto"></div>
   <p class="lead" style="margin-left:auto;margin-right:auto">Start with the free 2-minute Quick Check, or book a free 30-minute call and ask us directly.</p>
@@ -433,5 +448,63 @@ a:focus-visible,.btn:focus-visible,.cta-big:focus-visible{outline:3px solid var(
   <p class="copy">© 2026 Borghi Consulting™ · Perth, WA</p>
 </div></footer></div>
 <a class="to-top" href="#top" aria-label="Back to the top">&uarr; Top</a>
+<script>
+(function(){
+  /* Hive5 Blog cards. blog-feed.json is refreshed hourly by a GitHub Action from the beehiiv RSS feed.
+     The cards already in the page are the last snapshot, so nothing breaks if the file cannot be loaded. */
+  var FEED_URL = 'blog-feed.json';
+  var MAX_POSTS = 6, TIMEOUT_MS = 8000;
+  var list = document.getElementById('blog-list');
+  if (!list || !window.fetch) return;
+
+  function isHttps(u){ return typeof u === 'string' && u.indexOf('https://') === 0; }
+  function fmtDate(sec){
+    if (typeof sec !== 'number' || !isFinite(sec)) return '';
+    try { return new Date(sec * 1000).toLocaleDateString('en-AU', {day:'numeric', month:'long', year:'numeric', timeZone:'UTC'}); }
+    catch (e) { return ''; }
+  }
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+  function build(p){
+    if (!p || typeof p.title !== 'string' || !p.title || !isHttps(p.url)) return null;
+    var li = document.createElement('li'), a = el('a', 'blog-card');
+    a.href = p.url; a.target = '_blank'; a.rel = 'noopener';
+    if (isHttps(p.thumb)) {
+      var box = el('div', 'blog-img'), img = document.createElement('img');
+      img.src = p.thumb; img.alt = ''; img.width = 1200; img.height = 630; img.setAttribute('loading', 'lazy');
+      img.addEventListener('error', function(){ if (box.parentNode) box.parentNode.removeChild(box); });
+      box.appendChild(img); a.appendChild(box);
+    }
+    var body = el('div', 'blog-body'), d = fmtDate(p.date);
+    if (d) body.appendChild(el('p', 'blog-date', d));
+    body.appendChild(el('h3', 'blog-title', p.title));
+    if (typeof p.description === 'string' && p.description) body.appendChild(el('p', 'blog-desc', p.description));
+    var go = el('p', 'blog-go', 'READ THE POST'); go.appendChild(document.createTextNode(' \u2192'));
+    go.setAttribute('aria-hidden', 'true');
+    body.appendChild(go);
+    a.appendChild(body); li.appendChild(a);
+    return li;
+  }
+
+  var ctrl = ('AbortController' in window) ? new AbortController() : null;
+  var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, TIMEOUT_MS);
+  var opts = {cache: 'no-cache'}; if (ctrl) opts.signal = ctrl.signal;
+  fetch(FEED_URL, opts)
+    .then(function(r){ if (!r.ok) throw new Error('http'); return r.json(); })
+    .then(function(data){
+      if (!data || !Array.isArray(data.posts) || !data.posts.length) return;
+      var items = data.posts.slice(0, MAX_POSTS).map(build);
+      for (var k = 0; k < items.length; k++) if (!items[k]) return;   /* all-or-nothing */
+      list.textContent = '';
+      items.forEach(function(li){ list.appendChild(li); });
+    })
+    .catch(function(){ /* silent: the snapshot already in the page stays */ })
+    .then(function(){ clearTimeout(timer); });
+})();
+</script>
 </body>
 </html>
